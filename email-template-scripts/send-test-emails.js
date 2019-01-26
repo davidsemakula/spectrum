@@ -6,6 +6,16 @@ const processArgs = process.argv.slice(2);
 const TO = processArgs.find(arg => arg.indexOf('@') > 0);
 const sg = require('@sendgrid/mail');
 
+const idMapping = JSON.parse(
+  /\{[^\}]+\}/.exec(
+    require('fs').readFileSync('../hermes/queues/id-mapping.js')
+  )[0]
+);
+
+function mapTemplate(id) {
+  return idMapping[id] || id + '-ERROR';
+}
+
 if (!TO) {
   console.error('❌ Be sure to provide a valid email');
   return;
@@ -29,7 +39,7 @@ const sendEmail = (templateId, dynamic_template_data) => {
         enable: false,
       },
     },
-    templateId,
+    templateId: mapTemplate(templateId),
     to: TO,
     dynamic_template_data,
   });
