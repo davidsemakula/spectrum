@@ -1,10 +1,10 @@
 {
   "name": "Spectrum",
   "description": "The community platform for the future.",
-  "homepage": "https://spectrum.chat",
+  "homepage": "https://chat.grindery.io",
   "author": {
     "name": "Space Program Inc.",
-    "email": "hi@spectrum.chat"
+    "email": "hi@chat.grindery.io"
   },
   "repository": "https://github.com/withspectrum/spectrum",
   "version": "1.0.5",

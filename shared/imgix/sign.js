@@ -5,7 +5,12 @@ import decodeUriComponent from 'decode-uri-component';
 import { getDefaultExpires } from './getDefaultExpires';
 
 const IS_PROD = process.env.NODE_ENV === 'production';
-export const LEGACY_PREFIX = 'https://spectrum.imgix.net/';
+
+const IMGIX_DOMAIN = process.env.IMGIX_DOMAIN || 'spectrum.imgix.net';
+const IMGIX_PROXY_DOMAIN =
+  process.env.IMGIX_PROXY_DOMAIN || 'spectrum-proxy.imgix.net';
+
+export const LEGACY_PREFIX = 'https://' + IMGIX_DOMAIN + '/';
 
 // prettier-ignore
 const isLocalUpload = (url: string): boolean => url.startsWith('/uploads/', 0) && !IS_PROD
@@ -36,7 +41,7 @@ const defaultOpts = {
 
 const signPrimary = (url: string, opts: Opts = defaultOpts): string => {
   const client = new ImgixClient({
-    domains: 'spectrum.imgix.net',
+    domains: IMGIX_DOMAIN,
     secureURLToken: process.env.IMGIX_SECURITY_KEY,
   });
   return client.buildURL(url, opts);
@@ -44,7 +49,7 @@ const signPrimary = (url: string, opts: Opts = defaultOpts): string => {
 
 const signProxy = (url: string, opts?: Opts = defaultOpts): string => {
   const client = new ImgixClient({
-    domains: 'spectrum-proxy.imgix.net',
+    domains: IMGIX_PROXY_DOMAIN,
     secureURLToken: process.env.IMGIX_PROXY_SECURITY_KEY,
   });
   return client.buildURL(url, opts);

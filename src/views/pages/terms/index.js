@@ -27,7 +27,7 @@ class Terms extends React.Component<{}> {
           <Section>
             <SectionDescription>
               These terms of service ("Terms") apply to your access and use of
-              Spectrum.chat (the "Service"). Please read them carefully.
+              chat.grindery.io (the "Service"). Please read them carefully.
             </SectionDescription>
           </Section>
 
@@ -40,7 +40,7 @@ class Terms extends React.Component<{}> {
               read all of the terms. If you don’t agree to all of the terms
               below, please do not use the Service. Also, if a term does not
               make sense to you, please let us know by e-mailing
-              support@spectrum.chat.
+              support@chat.grindery.io.
             </SectionDescription>
           </Section>
 
@@ -75,7 +75,7 @@ class Terms extends React.Component<{}> {
             <SectionDescription>
               For information about how we collect and use information about
               users of the Service, please check out our privacy policy
-              available at https://spectrum.chat/privacy.html.
+              available at https://chat.grindery.io/privacy.html.
             </SectionDescription>
           </Section>
 
@@ -401,7 +401,10 @@ class Terms extends React.Component<{}> {
             <SectionDescription>
               Questions or comments about the Service may be directed to us at
               the email address{' '}
-              <a href="mailto:support@spectrum.chat">support@spectrum.chat</a>.
+              <a href="mailto:support@chat.grindery.io">
+                support@chat.grindery.io
+              </a>
+              .
             </SectionDescription>
           </Section>
         </ContentContainer>

@@ -13,6 +13,7 @@ import type { FileUpload, EntityTypes } from 'shared/types';
 
 let S3_TOKEN = process.env.S3_TOKEN;
 let S3_SECRET = process.env.S3_SECRET;
+let S3_PATH_PREFIX = process.env.S3_PATH_PREFIX || 'spectrum-chat';
 
 if (!IS_PROD) {
   S3_TOKEN = S3_TOKEN || 'asdf123';
@@ -31,7 +32,7 @@ const s3 = new AWS.S3();
 // remove the bucket name from the url
 // the bucket name is not required since it is automatically bound
 // to our imgix source
-const generateImageUrl = path => path.replace('spectrum-chat/', '');
+const generateImageUrl = path => path.replace(S3_PATH_PREFIX + '/', '');
 
 export const uploadImage = async (
   file: FileUpload,
@@ -53,7 +54,7 @@ export const uploadImage = async (
       throw unsupportedMediaTypeError;
     }
 
-    const path = `spectrum-chat/${entity}/${id}`;
+    const path = `${S3_PATH_PREFIX}/${entity}/${id}`;
     const fileKey = `${uuidv4()}-${encoded}`;
     return s3.upload(
       {

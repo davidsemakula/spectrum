@@ -5,11 +5,11 @@ export const corsOptions = {
   origin:
     process.env.NODE_ENV === 'production' && !process.env.FORCE_DEV
       ? [
-          'https://spectrum.chat',
-          'https://alpha.spectrum.chat',
-          'https://admin.spectrum.chat',
-          'https://hyperion.workers.spectrum.chat',
-          'https://hyperion.alpha.spectrum.chat',
+          'https://chat.grindery.io',
+          'https://alpha.chat.grindery.io',
+          'https://admin.chat.grindery.io',
+          'https://hyperion.workers.chat.grindery.io',
+          'https://hyperion.alpha.chat.grindery.io',
           process.env.NOW_URL,
         ].filter(Boolean)
       : [/localhost/],

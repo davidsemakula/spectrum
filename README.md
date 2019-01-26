@@ -1,12 +1,12 @@
 <div align="center">
 
-  [![Spectrum](./public/img/media.png)](https://spectrum.chat)
+  [![Spectrum](./public/img/media.png)](https://chat.grindery.io)
 
   ### Simple, powerful online communities.
 
 </div>
 
-This is the main monorepo codebase of [Spectrum](https://spectrum.chat). Every single line of code that's not packaged into a reusable library is in this repository.
+This is the main monorepo codebase of [Spectrum](https://chat.grindery.io). Every single line of code that's not packaged into a reusable library is in this repository.
 
 ## What is Spectrum?
 
@@ -71,7 +71,7 @@ If you find a bug on Spectrum and open a PR that fixes it we'll review it as soo
 
 If you want to implement a new feature, open an issue first to discuss what it'd look like and to ensure it fits in our roadmap and plans for the app (see [the main project board](https://github.com/withspectrum/spectrum/projects/23) for planned and currently ongoing work).
 
-If you want to contribute but are unsure to start, we have [a "good first issue" label](https://github.com/withspectrum/spectrum/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) which is applied to newcomer-friendly issues. Take a look at [the full list of good first issues](https://github.com/withspectrum/spectrum/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) and pick something you like! There is also [an "open" channel in the Spectrum community on Spectrum](https://spectrum.chat/spectrum/open) (how meta), if you run into troubles while trying to contribute that is the best place to talk to us.
+If you want to contribute but are unsure to start, we have [a "good first issue" label](https://github.com/withspectrum/spectrum/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) which is applied to newcomer-friendly issues. Take a look at [the full list of good first issues](https://github.com/withspectrum/spectrum/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) and pick something you like! There is also [an "open" channel in the Spectrum community on Spectrum](https://chat.grindery.io/spectrum/open) (how meta), if you run into troubles while trying to contribute that is the best place to talk to us.
 
 Want to fix a bug or implement an agreed-upon feature? Great, jump to the [local setup instructions](#first-time-setup)!
 

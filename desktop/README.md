@@ -1,6 +1,6 @@
 # Desktop
 
-This folder contains the [Electron](https://electronjs.org/)-based desktop app for Spectrum. Electron renders a web view, which renders the main `Spectrum.chat` webpage.
+This folder contains the [Electron](https://electronjs.org/)-based desktop app for Spectrum. Electron renders a web view, which renders the main `chat.grindery.io` webpage.
 
 ## Directory Structure
 

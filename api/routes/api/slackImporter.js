@@ -30,7 +30,7 @@ slackRouter.get('/', (req: any, res: any) => {
   const communityId = req.query.state;
   const connectedBy = req.user.id;
   const returnURI = IS_PROD
-    ? 'https://spectrum.chat/api/slack'
+    ? 'https://chat.grindery.io/api/slack'
     : 'http://localhost:3001/api/slack';
 
   // generate an oauth token. This token will be used to communicate with the Slack API to get user information, and we'll store the token in the db record to allow for the user to access their Slack team info in the future.
@@ -47,7 +47,7 @@ slackRouter.get('/', (req: any, res: any) => {
     .then(community => community.slug)
     .then(slug => {
       return IS_PROD
-        ? res.redirect(`https://spectrum.chat/${slug}/settings`)
+        ? res.redirect(`https://chat.grindery.io/${slug}/settings`)
         : res.redirect(`http://localhost:3000/${slug}/settings`);
     });
 });
@@ -58,7 +58,7 @@ slackRouter.get('/onboarding', (req: any, res: any) => {
   const communityId = req.query.state;
   const connectedBy = req.user.id;
   const returnURI = IS_PROD
-    ? 'https://spectrum.chat/api/slack/onboarding'
+    ? 'https://chat.grindery.io/api/slack/onboarding'
     : 'http://localhost:3001/api/slack/onboarding';
 
   // generate an oauth token. This token will be used to communicate with the Slack API to get user information, and we'll store the token in the db record to allow for the user to access their Slack team info in the future.
@@ -75,7 +75,7 @@ slackRouter.get('/onboarding', (req: any, res: any) => {
     .then(community => community.id)
     .then(id => {
       return IS_PROD
-        ? res.redirect(`https://spectrum.chat/new/community?s=2&id=${id}`)
+        ? res.redirect(`https://chat.grindery.io/new/community?s=2&id=${id}`)
         : res.redirect(`http://localhost:3000/new/community?s=2&id=${id}`);
     });
 });

@@ -39,6 +39,7 @@ module.exports = !RUN_IN_PROD
         ? {
             ssl: {
               ca,
+              checkServerIdentity: () => undefined,
             },
           }
         : {}),

@@ -24,7 +24,7 @@ export const CommunityProfile = ({ community }) => {
         src={community.profilePhoto}
       />
       <ProfileHeaderLink
-        to={`https://spectrum.chat/${community.slug}`}
+        to={`https://chat.grindery.io/${community.slug}`}
         target={'_blank'}
       >
         <ProfileHeaderMeta>
@@ -48,7 +48,7 @@ export const MiniUserProfile = ({ user }) => {
     <MiniProfileHeader>
       <CommunityAvatar size={16} radius={36} user src={user.profilePhoto} />
       <ProfileHeaderLink
-        to={`https://spectrum.chat/users/${user.username}`}
+        to={`https://chat.grindery.io/users/${user.username}`}
         target={'_blank'}
       >
         <MiniProfileHeaderMeta>

@@ -13,6 +13,8 @@ import { Description } from '../../style';
 import { Loading } from 'src/components/loading';
 import Clipboard from 'react-clipboard.js';
 
+import DOMAIN from 'shared/site-domain';
+
 const Share = ({ community, onboarding }) => {
   if (!community) return <Loading />;
 
@@ -20,7 +22,7 @@ const Share = ({ community, onboarding }) => {
     <div>
       <ButtonRow>
         <FacebookButton
-          href={`https://www.facebook.com/sharer/sharer.php?u=https://spectrum.chat/${encodeURIComponent(
+          href={`https://www.facebook.com/sharer/sharer.php?u=https://${DOMAIN}/${encodeURIComponent(
             community.slug
           )}&t=Come hang out with me in the ${
             community.name
@@ -32,7 +34,7 @@ const Share = ({ community, onboarding }) => {
         <TwitterButton
           href={`https://twitter.com/share?text=Come hang out with me in the ${
             community.name
-          } community on @withspectrum!&url=https://spectrum.chat/${encodeURIComponent(
+          } community on @withspectrum!&url=https://${DOMAIN}/${encodeURIComponent(
             community.slug
           )}`}
         >
@@ -42,10 +44,10 @@ const Share = ({ community, onboarding }) => {
 
       <Clipboard
         component="div"
-        data-clipboard-text={`https://spectrum.chat/${community.slug}`}
+        data-clipboard-text={`https://${DOMAIN}/${community.slug}`}
       >
         <InputRow>
-          <Input>{`https://spectrum.chat/${community.slug}`}</Input>
+          <Input>{`https://${DOMAIN}/${community.slug}`}</Input>
         </InputRow>
       </Clipboard>
 

@@ -82,7 +82,7 @@ class Support extends React.Component<{}> {
               </div>
 
               <OutlineButton
-                href="https://twitter.com/withspectrum"
+                href="https://twitter.com/withgrindery"
                 onClick={() => track(events.SUPPORT_PAGE_FOLLOW_ON_TWITTER)}
               >
                 Follow us on Twitter

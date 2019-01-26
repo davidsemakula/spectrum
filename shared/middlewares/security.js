@@ -22,7 +22,7 @@ function securityMiddleware(
         // 5 mins in seconds
         // we will scale this up incrementally to ensure we dont break the
         // app for end users
-        // see deployment recommendations here https://hstspreload.org/?domain=spectrum.chat
+        // see deployment recommendations here https://hstspreload.org/?domain=chat.grindery.io
         maxAge: 300,
         includeSubDomains: true,
         preload: true,

@@ -9,9 +9,9 @@ const { resolve } = require('path');
 module.exports = {
   APP_NAME: 'Spectrum',
   APP_VERSION: app.getVersion(),
-  APP_REMOTE_URL: 'https://spectrum.chat/login',
+  APP_REMOTE_URL: 'https://chat.grindery.io/login',
   APP_DEV_URL: 'http://localhost:3000/login',
-  APP_REMOTE_HOME_URL: 'https://spectrum.chat',
+  APP_REMOTE_HOME_URL: 'https://chat.grindery.io',
   APP_DEV_HOME_URL: 'http://localhost:3000',
 
   GITHUB_URL: 'https://github.com/withspectrum/spectrum',

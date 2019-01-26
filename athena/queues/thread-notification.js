@@ -110,29 +110,29 @@ export default async (job: Job<ThreadNotificationJobData>) => {
               channel.name
             }:`,
             author_name: `${author.name} (@${author.username})`,
-            author_link: `https://spectrum.chat/users/${author.username}`,
+            author_link: `https://chat.grindery.io/users/${author.username}`,
             author_icon: signedAuthor.profilePhoto,
             pretext: `New conversation published in ${community.name} #${
               channel.name
             }:`,
             title: truncateString(incomingThread.content.title, 80),
-            title_link: `https://spectrum.chat/thread/${incomingThread.id}`,
+            title_link: `https://chat.grindery.io/thread/${incomingThread.id}`,
             text: truncateString(plainTextBody, 140),
             footer: 'Spectrum',
             footer_icon:
-              'https://spectrum.chat/img/apple-icon-57x57-precomposed.png',
+              'https://chat.grindery.io/img/apple-icon-57x57-precomposed.png',
             ts: new Date(incomingThread.createdAt).getTime() / 1000,
             color: '#4400CC',
             actions: [
               {
                 type: 'button',
                 text: 'View conversation',
-                url: `https://spectrum.chat/thread/${incomingThread.id}`,
+                url: `https://chat.grindery.io/thread/${incomingThread.id}`,
               },
               {
                 type: 'button',
                 text: `Message ${author.name}`,
-                url: `https://spectrum.chat/users/${author.username}`,
+                url: `https://chat.grindery.io/users/${author.username}`,
               },
             ],
           },

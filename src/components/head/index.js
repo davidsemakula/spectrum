@@ -21,7 +21,7 @@ export default ({ title, description, image, type, children }: Props) => {
         content={
           image
             ? image
-            : 'https://spectrum.chat/img/apple-icon-144x144-precomposed.png'
+            : 'https://chat.grindery.io/img/apple-icon-144x144-precomposed.png'
         }
       />
       <meta property="og:title" content={title} />
@@ -32,7 +32,7 @@ export default ({ title, description, image, type, children }: Props) => {
         content={
           image
             ? image
-            : 'https://spectrum.chat/img/apple-icon-144x144-precomposed.png'
+            : 'https://chat.grindery.io/img/apple-icon-144x144-precomposed.png'
         }
       />
       {children}
