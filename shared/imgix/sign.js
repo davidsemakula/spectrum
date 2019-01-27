@@ -17,7 +17,7 @@ const isLocalUpload = (url: string): boolean => url.startsWith('/uploads/', 0) &
 // prettier-ignore
 export const hasLegacyPrefix = (url: string): boolean => url.startsWith(LEGACY_PREFIX, 0)
 // prettier-ignore
-const useProxy = (url: string): boolean => url.indexOf('spectrum.imgix.net') < 0 && url.startsWith('http', 0)
+const useProxy = (url: string): boolean => url.indexOf(IMGIX_DOMAIN) < 0 && url.startsWith('http', 0)
 
 /*
   When an image is uploaded to s3, we generate a url to be stored in our db
@@ -63,6 +63,8 @@ export const signImageUrl = (url: string, opts: Opts = defaultOpts): string => {
 
   if (isLocalUpload(url)) return url;
 
+  url = url.replace(/%252520/g, '%2520');
+  url = url.replace(/%2520/g, '%20');
   const processedUrl = hasLegacyPrefix(url) ? stripLegacyPrefix(url) : url;
 
   try {
