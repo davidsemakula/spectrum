@@ -69,7 +69,7 @@ const parseNotificationTypes = notifications => {
         return {
           type,
           emailValue: notifications.types[type].email,
-          label: 'Email me if someone @mentions me on Spectrum',
+          label: 'Email me if someone @mentions me on Grindery',
           display: 'flex-start',
         };
       default:
@@ -131,7 +131,7 @@ class EmailSettings extends React.Component<Props> {
           <ListContainer>
             <Description>
               You can customize your email notifications to keep up to date on
-              what’s important to you on Spectrum. Enter your email below and
+              what’s important to you on Grindery. Enter your email below and
               we’ll send you a confirmation link.
             </Description>
 

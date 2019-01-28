@@ -90,7 +90,7 @@ const CommunitySearchWrapper = props => {
         <SecondaryContent>
           <SecondaryTagline>Create your own community</SecondaryTagline>
           <SecondaryCopy>
-            Building communities on Spectrum is easy and free!
+            Building communities on Grindery is easy and free!
           </SecondaryCopy>
 
           <Button

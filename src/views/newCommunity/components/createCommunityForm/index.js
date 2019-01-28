@@ -654,7 +654,7 @@ class CreateCommunityForm extends React.Component<Props, State> {
                   })
                 }
               >
-                Spectrum Code of Conduct
+                Grindery Code of Conduct
               </a>{' '}
               and agree to enforce it in my community.
             </span>

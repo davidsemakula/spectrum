@@ -104,7 +104,7 @@ class UpsellNewUser extends Component {
           </LargeEmoji>
           <Title>Howdy, {user.name}!</Title>
           <Subtitle>
-            Spectrum is a place where communities live. It’s easy to follow the
+            Grindery is a place where communities live. It’s easy to follow the
             things that you care about most, or even create your own community
             to share with the world.
           </Subtitle>
@@ -117,7 +117,7 @@ class UpsellNewUser extends Component {
 
           <SmallTitle>Set your username</SmallTitle>
           <SmallSubtitle>
-            Pick a username so that people can find you on Spectrum!
+            Pick a username so that people can find you on Grindery!
           </SmallSubtitle>
 
           <SetUsername user={user} usernameSaved={() => this.savedUsername()} />
@@ -148,7 +148,7 @@ class UpsellNewUser extends Component {
 
           <ButtonRow>
             <a
-              href={`https://www.facebook.com/sharer/sharer.php?u=https://chat.grindery.io&t=Come hang out with me on Spectrum, a new place on the internet for communities!`}
+              href={`https://www.facebook.com/sharer/sharer.php?u=https://chat.grindery.io&t=Come hang out with me on Grindery, a new place on the internet for communities!`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -157,7 +157,7 @@ class UpsellNewUser extends Component {
               </Button>
             </a>
             <a
-              href={`https://twitter.com/share?text=Come hang out with me on @withspectrum, a new place on the internet for communities!&url=https://chat.grindery.io`}
+              href={`https://twitter.com/share?text=Come hang out with me on @withgrindery, a new place on the internet for communities!&url=https://chat.grindery.io`}
               target="_blank"
               rel="noopener noreferrer"
             >

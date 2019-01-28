@@ -26,7 +26,7 @@ const Share = ({ community, onboarding }) => {
             community.slug
           )}&t=Come hang out with me in the ${
             community.name
-          } community on Spectrum!`}
+          } community on Grindery!`}
         >
           Share on Facebook
         </FacebookButton>
@@ -34,7 +34,7 @@ const Share = ({ community, onboarding }) => {
         <TwitterButton
           href={`https://twitter.com/share?text=Come hang out with me in the ${
             community.name
-          } community on @withspectrum!&url=https://${DOMAIN}/${encodeURIComponent(
+          } community on @withgrindery!&url=https://${DOMAIN}/${encodeURIComponent(
             community.slug
           )}`}
         >

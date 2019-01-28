@@ -104,8 +104,8 @@ class DeleteAccountForm extends React.Component<Props, State> {
 
           {ownsCommunities && (
             <Notice data-cy="owns-communities-notice">
-              You currently own communities on Spectrum. When your account is
-              deleted these communities will not be deleted. Spectrum reserves
+              You currently own communities on Grindery. When your account is
+              deleted these communities will not be deleted. Grindery reserves
               the right to manage your communities after your account is
               deleted.
             </Notice>

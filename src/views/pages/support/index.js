@@ -24,7 +24,7 @@ class Support extends React.Component<{}> {
     return (
       <Wrapper data-cy="support-page">
         <Head
-          title={'Spectrum · Support'}
+          title={'Grindery · Support'}
           description={'Questions, feedback, or just need to get in touch?'}
         />
 
@@ -77,7 +77,7 @@ class Support extends React.Component<{}> {
                 <PlanPrice>What we’ve been working on</PlanPrice>
                 <PlanDescription>
                   We post news, release notes, and threads from all over
-                  Spectrum on Twitter, or directly in our community.
+                  Grindery on Twitter, or directly in our community.
                 </PlanDescription>
               </div>
 
@@ -102,7 +102,7 @@ class Support extends React.Component<{}> {
               <div>
                 <PlanPrice>Anything else?</PlanPrice>
                 <PlanDescription>
-                  Concerned about something on Spectrum? Shoot us an email and
+                  Concerned about something on Grindery? Shoot us an email and
                   we’ll take care of it right away.
                 </PlanDescription>
               </div>

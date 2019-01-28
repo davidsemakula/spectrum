@@ -102,7 +102,7 @@ class WatercoolerActionBar extends React.Component<Props, State> {
                 <a
                   href={`https://twitter.com/share?text=${encodeURIComponent(
                     thread.content.title
-                  )} on @withspectrum&url=https://chat.grindery.io${getThreadLink(
+                  )} on @withgrindery&url=https://chat.grindery.io${getThreadLink(
                     thread
                   )}`}
                   target="_blank"

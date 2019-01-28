@@ -19,7 +19,7 @@ class Privacy extends React.Component<{}> {
   render() {
     return (
       <Wrapper data-cy="privacy-page">
-        <Head title={'Spectrum · Privacy'} />
+        <Head title={'Grindery · Privacy'} />
 
         <ContentContainer>
           <Heading>Privacy Policy</Heading>
@@ -542,7 +542,7 @@ class Privacy extends React.Component<{}> {
             <SectionDescription>
               Our Service does not address anyone under the age of 13
               (“Children”). If you’re a child under the age of 13, you may not
-              have an account on Spectrum.
+              have an account on Grindery.
             </SectionDescription>
 
             <SectionDescription>

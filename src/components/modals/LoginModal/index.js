@@ -58,7 +58,7 @@ class LoginModal extends React.Component<Props> {
             />
 
             <CodeOfConduct>
-              By using Spectrum, you agree to our{' '}
+              By using Grindery, you agree to our{' '}
               <a
                 href="https://github.com/withspectrum/code-of-conduct"
                 target="_blank"

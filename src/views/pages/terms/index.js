@@ -17,7 +17,7 @@ class Terms extends React.Component<{}> {
   render() {
     return (
       <Wrapper data-cy="terms-page">
-        <Head title={'Spectrum · Terms'} />
+        <Head title={'Grindery · Terms'} />
 
         <ContentContainer>
           <Heading>Terms of Service</Heading>
@@ -59,7 +59,7 @@ class Terms extends React.Component<{}> {
               date at the top of these Terms) or upon your acceptance if we
               provide a mechanism for your immediate acceptance of the revised
               Terms (such as a click-through confirmation or acceptance button).
-              It is your responsibility to check Spectrum for changes to these
+              It is your responsibility to check Grindery for changes to these
               Terms.
             </SectionDescription>
 
@@ -387,9 +387,9 @@ class Terms extends React.Component<{}> {
 
             <SectionDescription>
               Please let us know what you think of the Service, these Terms and,
-              in general, Spectrum. When you provide us with any feedback,
+              in general, Grindery. When you provide us with any feedback,
               comments or suggestions about the Service, these Terms and, in
-              general, Spectrum, you irrevocably assign to us all of your right,
+              general, Grindery, you irrevocably assign to us all of your right,
               title and interest in and to your feedback, comments and
               suggestions.
             </SectionDescription>

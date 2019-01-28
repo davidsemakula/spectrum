@@ -142,7 +142,7 @@ class NewCommunity extends React.Component<Props, State> {
     const { activeStep, community } = this.state;
     switch (activeStep) {
       case 1: {
-        return 'Creating a community on Spectrum is free, forever. To get started, tell us more about your community below.';
+        return 'Creating a community on Grindery is free, forever. To get started, tell us more about your community below.';
       }
       case 2: {
         return `Kickstart ${

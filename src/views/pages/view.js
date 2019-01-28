@@ -160,7 +160,7 @@ export const Overview = () => {
             IRC.
           </ThisCopy>
           <ThisCopy>
-            Spectrum makes it easy to grow safe, successful online communities
+            Grindery makes it easy to grow safe, successful online communities
             that are built to last.
           </ThisCopy>
           <Actions>
@@ -168,7 +168,7 @@ export const Overview = () => {
               to="/login"
               onClick={() => track(events.HOME_PAGE_JOIN_SPECTRUM_CLICKED)}
             >
-              Join Spectrum
+              Join Grindery
             </ThisPrimaryCTA>
             <ThisSecondaryCTA
               to="/new/community"
@@ -249,7 +249,7 @@ export const Centralized = () => {
         <Text>
           <ThisTagline>Grow together</ThisTagline>
           <ThisCopy>
-            By building on Spectrum, communities become easily discoverable
+            By building on Grindery, communities become easily discoverable
             through search, curation, and even other community members.
           </ThisCopy>
           <ThisCopy>
@@ -366,8 +366,8 @@ export const Chat = () => {
         <FlexCol>
           <ThisTagline>Real-time messaging with long-term value</ThisTagline>
           <ThisCopy>
-            Conversations on Spectrum are real-time chat, just like your
-            favorite messaging app. But on Spectrum, conversations continue to
+            Conversations on Grindery are real-time chat, just like your
+            favorite messaging app. But on Grindery, conversations continue to
             provide value to more and more people over time.
           </ThisCopy>
           <ThisCopy>
@@ -420,7 +420,7 @@ export const Sell = () => {
     <ThisSection goop={2} background="dark" color={'bg.reverse'}>
       <ThisContent>
         <Text>
-          <ThisTagline>Spectrum saves you time and money</ThisTagline>
+          <ThisTagline>Grindery saves you time and money</ThisTagline>
           <Bullets>
             <Bullet>
               <BulletHeading>
@@ -440,7 +440,7 @@ export const Sell = () => {
                 <BulletTitle>Bring people together</BulletTitle>
               </BulletHeading>
               <BulletCopy>
-                Spectrum gives your top supporters and advocates a place to
+                Grindery gives your top supporters and advocates a place to
                 share their knowledge, empower others, and foster a place of
                 belonging for everyone.
               </BulletCopy>
@@ -454,7 +454,7 @@ export const Sell = () => {
                 from your customers.
               </BulletCopy>
               <BulletCopy>
-                Think of Spectrum as a new direct line to discovering what your
+                Think of Grindery as a new direct line to discovering what your
                 audience wants the most.
               </BulletCopy>
             </Bullet>
@@ -595,7 +595,7 @@ export const Yours = () => {
     <Section goop={0} background={'reverse'}>
       <ThisContent>
         <FlexCol>
-          <ThisTagline>You’re gonna love Spectrum.</ThisTagline>
+          <ThisTagline>You’re gonna love Grindery.</ThisTagline>
           <Quotes>
             <Quote>
               <Rule>
@@ -604,7 +604,7 @@ export const Yours = () => {
                 <hr />
               </Rule>
               <Pullquote>
-                okay, honestly Spectrum is the best thing that happened to me
+                okay, honestly Grindery is the best thing that happened to me
                 regarding social interaction in 2017
               </Pullquote>
               <Signature to="/users/traykov">
@@ -624,7 +624,7 @@ export const Yours = () => {
                 <hr />
               </Rule>
               <Pullquote>
-                Spectrum will take the place that Reddit used to have a long
+                Grindery will take the place that Reddit used to have a long
                 time ago for communities (especially tech) to freely share ideas
                 and interact. Except realtime and trolling-free
               </Pullquote>
@@ -641,7 +641,7 @@ export const Yours = () => {
                 <hr />
               </Rule>
               <Pullquote>
-                Spectrum is definitely a product worth looking out for. Huge fan
+                Grindery is definitely a product worth looking out for. Huge fan
                 and been lovely to be a part of the unique communities.
               </Pullquote>
               <Signature to="/users/tayler-m-odea">
@@ -660,7 +660,7 @@ export const Yours = () => {
               to="/login"
               onClick={() => track(events.HOME_PAGE_JOIN_SPECTRUM_CLICKED)}
             >
-              Join Spectrum
+              Join Grindery
             </ThisPrimaryCTA>
             <ThisSecondaryCTA
               to="/explore"

@@ -223,7 +223,7 @@ class MessagesWithData extends React.Component<Props, State> {
           <A
             href={`https://twitter.com/share?text=${encodeURIComponent(
               threadTitle
-            )} on @withspectrum&url=https://chat.grindery.io${getThreadLink(
+            )} on @withgrindery&url=https://chat.grindery.io${getThreadLink(
               this.props.data.thread
             )}`}
             target="_blank"

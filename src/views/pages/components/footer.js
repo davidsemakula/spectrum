@@ -31,7 +31,7 @@ export default () => {
               <Icon glyph="github" hoverColor={'text.reverse'} />
             </a>
             <a
-              href="https://twitter.com/withspectrum"
+              href="https://twitter.com/withgrindery"
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -29,13 +29,13 @@ class Features extends React.Component<Props, State> {
     return (
       <Wrapper data-cy="apps-page">
         <Head
-          title={'Spectrum · Apps'}
-          description={'Download Spectrum for Mac and Windows'}
+          title={'Grindery · Apps'}
+          description={'Download Grindery for Mac and Windows'}
         />
         <Section goop={6} color="bg.reverse">
           <Intro>
             <TextContent>
-              <Heading>Spectrum for Mac</Heading>
+              <Heading>Grindery for Mac</Heading>
 
               <Copy style={{ marginTop: '8px', marginBottom: '40px' }}>
                 Keep up with your communities without distractions.
