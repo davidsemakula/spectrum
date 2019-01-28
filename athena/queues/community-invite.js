@@ -57,8 +57,8 @@ const addToSendCommunityInviteEmailQueue = (
 			type of notification since they will rarely overlap, and are high enough signal
 			that showing multiple community invitation notifications is fine.
 			For each of these users, proceed to 3
-	3. For users who are both on Spectrum but not a member of the community, and users who
-			are not on Spectrum, send an email invitation
+	3. For users who are both on Grindery but not a member of the community, and users who
+			are not on Grindery, send an email invitation
 			3a. generate a communityInvitation record in the db
 			3b. send an email
 */

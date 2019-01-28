@@ -118,7 +118,7 @@ export default async (job: Job<ThreadNotificationJobData>) => {
             title: truncateString(incomingThread.content.title, 80),
             title_link: `https://chat.grindery.io/thread/${incomingThread.id}`,
             text: truncateString(plainTextBody, 140),
-            footer: 'Spectrum',
+            footer: 'Grindery',
             footer_icon:
               'https://chat.grindery.io/img/apple-icon-57x57-precomposed.png',
             ts: new Date(incomingThread.createdAt).getTime() / 1000,

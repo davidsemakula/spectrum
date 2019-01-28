@@ -7,7 +7,7 @@ const { resolve } = require('path');
  **/
 
 module.exports = {
-  APP_NAME: 'Spectrum',
+  APP_NAME: 'Grindery',
   APP_VERSION: app.getVersion(),
   APP_REMOTE_URL: 'https://chat.grindery.io/login',
   APP_DEV_URL: 'http://localhost:3000/login',

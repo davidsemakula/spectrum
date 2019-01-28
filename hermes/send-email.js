@@ -24,7 +24,7 @@ type Options = {
 const defaultOptions = {
   from: {
     email: 'hi@chat.grindery.io',
-    name: 'Spectrum',
+    name: 'Grindery',
   },
   tracking_settings: {
     click_tracking: {
