@@ -3,7 +3,7 @@ import { request } from '../../utils';
 import db from 'shared/testing/db';
 import data from 'shared/testing/data';
 
-// various permissions for Spectrum community
+// various permissions for Grindery community
 const community = data.communities[0];
 const owner = data.users.find(({ username }) => username === 'mxstbr');
 const member = data.users.find(({ username }) => username === 'bryn');
@@ -30,11 +30,11 @@ const variables = {
 it('should edit a community name and description', async () => {
   const query = /* GraphQL */ `
     mutation editCommunity($input: EditCommunityInput!) {
-      editCommunity (input: $input) {
+      editCommunity(input: $input) {
         name
         description
       }
-    },
+    }
   `;
 
   const context = { user: owner };
@@ -52,11 +52,11 @@ it('should edit a community name and description', async () => {
 it('should prevent community from being edited by a non owner', async () => {
   const query = /* GraphQL */ `
     mutation editCommunity($input: EditCommunityInput!) {
-      editCommunity (input: $input) {
+      editCommunity(input: $input) {
         name
         description
       }
-    },
+    }
   `;
 
   const context = { user: member };
@@ -70,11 +70,11 @@ it('should prevent community from being edited by a non owner', async () => {
 it('should prevent community from being edited by a non user', async () => {
   const query = /* GraphQL */ `
     mutation editCommunity($input: EditCommunityInput!) {
-      editCommunity (input: $input) {
+      editCommunity(input: $input) {
         name
         description
       }
-    },
+    }
   `;
 
   expect.assertions(1);

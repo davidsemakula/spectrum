@@ -3,7 +3,7 @@ import { request } from '../../utils';
 import db from 'shared/testing/db';
 import data from 'shared/testing/data';
 
-// various permissions for Spectrum community
+// various permissions for Grindery community
 const community = data.communities[0];
 const owner = data.users.find(({ username }) => username === 'mxstbr');
 const member = data.users.find(({ username }) => username === 'bryn');
@@ -62,7 +62,7 @@ const getUsersCommunities = (userId: string, communityId: string) =>
 it('should join a community', async () => {
   const query = /* GraphQL */ `
     mutation toggleCommunityMembership($communityId: ID!) {
-      toggleCommunityMembership (communityId: $communityId) {
+      toggleCommunityMembership(communityId: $communityId) {
         id
         communityPermissions {
           isMember
@@ -89,7 +89,7 @@ it('should join a community', async () => {
 it('should leave a community', async () => {
   const query = /* GraphQL */ `
     mutation toggleCommunityMembership($communityId: ID!) {
-      toggleCommunityMembership (communityId: $communityId) {
+      toggleCommunityMembership(communityId: $communityId) {
         id
         communityPermissions {
           isMember
@@ -116,7 +116,7 @@ it('should leave a community', async () => {
 it('should join all default channels when joining a community', async () => {
   const query = /* GraphQL */ `
     mutation toggleCommunityMembership($communityId: ID!) {
-      toggleCommunityMembership (communityId: $communityId) {
+      toggleCommunityMembership(communityId: $communityId) {
         id
         communityPermissions {
           isMember
@@ -144,7 +144,7 @@ it('should join all default channels when joining a community', async () => {
 it('should leave all channels when leaving a community', async () => {
   const query = /* GraphQL */ `
     mutation toggleCommunityMembership($communityId: ID!) {
-      toggleCommunityMembership (communityId: $communityId) {
+      toggleCommunityMembership(communityId: $communityId) {
         id
         communityPermissions {
           isMember
@@ -172,7 +172,7 @@ it('should leave all channels when leaving a community', async () => {
 it('should prevent a blocked user from joining a community', async () => {
   const query = /* GraphQL */ `
     mutation toggleCommunityMembership($communityId: ID!) {
-      toggleCommunityMembership (communityId: $communityId) {
+      toggleCommunityMembership(communityId: $communityId) {
         id
         communityPermissions {
           isMember
@@ -196,7 +196,7 @@ it('should prevent a blocked user from joining a community', async () => {
 it('should prevent community owner from leaving community', async () => {
   const query = /* GraphQL */ `
     mutation toggleCommunityMembership($communityId: ID!) {
-      toggleCommunityMembership (communityId: $communityId) {
+      toggleCommunityMembership(communityId: $communityId) {
         id
         communityPermissions {
           isMember
@@ -220,7 +220,7 @@ it('should prevent community owner from leaving community', async () => {
 it('should only have one usersCommunities record after joining a community', async () => {
   const query = /* GraphQL */ `
     mutation toggleCommunityMembership($communityId: ID!) {
-      toggleCommunityMembership (communityId: $communityId) {
+      toggleCommunityMembership(communityId: $communityId) {
         id
         communityPermissions {
           isMember
@@ -249,7 +249,7 @@ it('should only have one usersCommunities record after joining a community', asy
 it('should only have one usersCommunities record after leaving a community', async () => {
   const query = /* GraphQL */ `
     mutation toggleCommunityMembership($communityId: ID!) {
-      toggleCommunityMembership (communityId: $communityId) {
+      toggleCommunityMembership(communityId: $communityId) {
         id
         communityPermissions {
           isMember

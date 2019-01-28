@@ -3,7 +3,7 @@ import { request } from '../../utils';
 import db from 'shared/testing/db';
 import data from 'shared/testing/data';
 
-// various permissions for Spectrum community
+// various permissions for Grindery community
 const member = data.users.find(({ username }) => username === 'mxstbr');
 const noPermissionUser = data.users.find(
   ({ username }) => username === 'bad-boy'
@@ -32,7 +32,7 @@ const variables = {
 it('should create a thread if user has permissions', async () => {
   const query = /* GraphQL */ `
     mutation publishThread($thread: ThreadInput!) {
-      publishThread (thread: $thread) {
+      publishThread(thread: $thread) {
         isPublished
         isLocked
         type
@@ -40,7 +40,7 @@ it('should create a thread if user has permissions', async () => {
           title
         }
       }
-    },
+    }
   `;
 
   const context = {
@@ -56,7 +56,7 @@ it('should create a thread if user has permissions', async () => {
 it('should prevent thread publish if user has no permissions', async () => {
   const query = /* GraphQL */ `
     mutation publishThread($thread: ThreadInput!) {
-      publishThread (thread: $thread) {
+      publishThread(thread: $thread) {
         isPublished
         isLocked
         type
@@ -64,7 +64,7 @@ it('should prevent thread publish if user has no permissions', async () => {
           title
         }
       }
-    },
+    }
   `;
 
   const context = {
@@ -80,7 +80,7 @@ it('should prevent thread publish if user has no permissions', async () => {
 it('should prevent signed out users from publishing a thread', async () => {
   const query = /* GraphQL */ `
     mutation publishThread($thread: ThreadInput!) {
-      publishThread (thread: $thread) {
+      publishThread(thread: $thread) {
         isPublished
         isLocked
         type
@@ -88,7 +88,7 @@ it('should prevent signed out users from publishing a thread', async () => {
           title
         }
       }
-    },
+    }
   `;
 
   expect.assertions(1);

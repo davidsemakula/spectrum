@@ -4,7 +4,7 @@ import db from 'shared/testing/db';
 import data from 'shared/testing/data';
 
 const channel = data.channels[0];
-// various permissions for Spectrum community
+// various permissions for Grindery community
 const owner = data.users.find(({ username }) => username === 'mxstbr');
 const noPermissionUser = data.users.find(({ username }) => username === 'bryn');
 
@@ -29,13 +29,13 @@ const variables = {
 it('should edit a channel if user is owner', async () => {
   const query = /* GraphQL */ `
     mutation editChannel($input: EditChannelInput!) {
-      editChannel (input: $input) {
+      editChannel(input: $input) {
         name
         slug
         description
         isPrivate
       }
-    },
+    }
   `;
 
   const context = {
@@ -56,13 +56,13 @@ it('should edit a channel if user is owner', async () => {
 it('should not edit a channel if user is not owner', async () => {
   const query = /* GraphQL */ `
     mutation editChannel($input: EditChannelInput!) {
-      editChannel (input: $input) {
+      editChannel(input: $input) {
         name
         slug
         description
         isPrivate
       }
-    },
+    }
   `;
 
   const context = {
@@ -78,13 +78,13 @@ it('should not edit a channel if user is not owner', async () => {
 it('should not edit a channel if user is not signed in', async () => {
   const query = /* GraphQL */ `
     mutation editChannel($input: EditChannelInput!) {
-      editChannel (input: $input) {
+      editChannel(input: $input) {
         name
         slug
         description
         isPrivate
       }
-    },
+    }
   `;
 
   expect.assertions(1);

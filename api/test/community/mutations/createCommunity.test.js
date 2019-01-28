@@ -3,7 +3,7 @@ import { request } from '../../utils';
 import db from 'shared/testing/db';
 import data from 'shared/testing/data';
 
-// various permissions for Spectrum community
+// various permissions for Grindery community
 const user = data.users.find(({ username }) => username === 'mxstbr');
 
 afterEach(() => {
@@ -39,12 +39,12 @@ const noslug = {
 it('should create a community', async () => {
   const query = /* GraphQL */ `
     mutation createCommunity($input: CreateCommunityInput!) {
-      createCommunity (input: $input) {
+      createCommunity(input: $input) {
         name
         slug
         description
       }
-    },
+    }
   `;
 
   const context = { user };
@@ -58,12 +58,12 @@ it('should create a community', async () => {
 it('should prevent blacklisted community slug', async () => {
   const query = /* GraphQL */ `
     mutation createCommunity($input: CreateCommunityInput!) {
-      createCommunity (input: $input) {
+      createCommunity(input: $input) {
         name
         slug
         description
       }
-    },
+    }
   `;
 
   const context = { user };
@@ -77,12 +77,12 @@ it('should prevent blacklisted community slug', async () => {
 it('should prevent signed out users from creating a community', async () => {
   const query = /* GraphQL */ `
     mutation createCommunity($input: CreateCommunityInput!) {
-      createCommunity (input: $input) {
+      createCommunity(input: $input) {
         name
         slug
         description
       }
-    },
+    }
   `;
 
   const context = {};
@@ -96,12 +96,12 @@ it('should prevent signed out users from creating a community', async () => {
 it('should prevent a community being created without a slug', async () => {
   const query = /* GraphQL */ `
     mutation createCommunity($input: CreateCommunityInput!) {
-      createCommunity (input: $input) {
+      createCommunity(input: $input) {
         name
         slug
         description
       }
-    },
+    }
   `;
 
   const context = { user };

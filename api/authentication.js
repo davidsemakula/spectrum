@@ -58,7 +58,7 @@ const init = () => {
 
   // NOTE(@mxstbr): `data` used to be just the userID, but is now the full user data
   // to avoid having to go to the db on every single request. We have to handle both
-  // cases here, as more and more users use Spectrum again we go to the db less and less
+  // cases here, as more and more users use Grindery again we go to the db less and less
   passport.deserializeUser((data, done) => {
     // Fast path: we got the full user data in the cookie
     if (isSerializedJSON(data)) {
