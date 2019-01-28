@@ -32,7 +32,7 @@ const sendEmail = (templateId, dynamic_template_data) => {
   return sg.send({
     from: {
       email: 'hi@chat.grindery.io',
-      name: 'Spectrum',
+      name: 'Grindery',
     },
     tracking_settings: {
       click_tracking: {
