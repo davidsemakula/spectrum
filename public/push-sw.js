@@ -19,7 +19,7 @@ self.addEventListener('push', function(event) {
     return;
   }
 
-  // Check if the user is looking at Spectrum right now and don't show a notification
+  // Check if the user is looking at Grindery right now and don't show a notification
   event.waitUntil(
     clients
       .matchAll({
@@ -29,7 +29,7 @@ self.addEventListener('push', function(event) {
       .then(windowClients => {
         for (let i = 0; i < windowClients.length; i++) {
           const windowClient = windowClients[i];
-          // The user is looking at Spectrum right now abort showing the notification!
+          // The user is looking at Grindery right now abort showing the notification!
           // (except for if we're on localhost, i.e. in development)
           if (
             windowClient.focused &&

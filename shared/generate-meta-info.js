@@ -12,7 +12,7 @@ var striptags = require('striptags');
 var toPlainText = require('./clients/draft-js/utils/plaintext').toPlainText;
 
 var DEFAULT_META = {
-  title: 'Spectrum',
+  title: 'Grindery',
   description: 'Where communities live.',
 };
 
@@ -70,7 +70,7 @@ function setDefault(input /*: MaybeMeta */) /*: Meta */ {
   // prefix "On spectrum" to the description
   // Otherwise you end up with "SpecFM | Where communities live"
   if (input.title && !input.description) {
-    description = 'on Spectrum, ' + DEFAULT_META.description.toLowerCase();
+    description = 'on Grindery, ' + DEFAULT_META.description.toLowerCase();
   }
   return {
     title: title,
@@ -91,7 +91,7 @@ function generateMetaInfo(input /*: Input */) /*: Meta */ {
     case 'explore': {
       return {
         title: 'Explore',
-        description: 'Explore some of the communities on Spectrum',
+        description: 'Explore some of the communities on Grindery',
       };
     }
     case 'thread': {
