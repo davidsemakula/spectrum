@@ -177,6 +177,12 @@ app.get('/', (req: express$Request, res, next) => {
   }
   next();
 });
+app.get('/privacy', (req: express$Request, res) => {
+  return res.redirect('https://www.grindery.io/privacy');
+});
+app.get('/terms', (req: express$Request, res) => {
+  return res.redirect('https://www.grindery.io/terms');
+});
 
 app.get('*', (req: express$Request, res, next) => {
   // Electron requests should only be client-side rendered

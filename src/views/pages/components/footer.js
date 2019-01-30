@@ -53,7 +53,7 @@ export default () => {
         <Safety>
           <span>Safety</span>
           <a
-            href="https://github.com/withspectrum/code-of-conduct"
+            href="https://www.grindery.io/code-of-conduct"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() =>
@@ -64,8 +64,20 @@ export default () => {
           >
             Code of Conduct
           </a>
-          <Link to="/privacy">Privacy Policy</Link>
-          <Link to="/terms">Terms of Service</Link>
+          <a
+            href="https://www.grindery.io/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Privacy Policy
+          </a>
+          <a
+            href="https://www.grindery.io/terms"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Terms of Service
+          </a>
         </Safety>
       </FooterGrid>
     </Footer>
