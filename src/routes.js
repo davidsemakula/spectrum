@@ -184,6 +184,11 @@ type State = {
   navigationIsOpen: boolean,
 };
 
+const externalRedirect = url => () => {
+  location.replace(url);
+  return '';
+};
+
 class Routes extends React.Component<Props, State> {
   previousLocation = this.props.location;
   state = { navigationIsOpen: false };

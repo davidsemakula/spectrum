@@ -174,14 +174,18 @@ app.get('/', (req: express$Request, res, next) => {
   if (req.session && req.user && !req.query.t) {
     // Show notification page by default
     return res.redirect('/notifications');
+  } else {
+    return res.redirect('/login');
   }
-  next();
 });
 app.get('/privacy', (req: express$Request, res) => {
   return res.redirect('https://www.grindery.io/privacy');
 });
 app.get('/terms', (req: express$Request, res) => {
   return res.redirect('https://www.grindery.io/terms');
+});
+app.get('/about', (req: express$Request, res) => {
+  return res.redirect('https://www.grindery.io/');
 });
 
 app.get('*', (req: express$Request, res, next) => {

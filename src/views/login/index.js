@@ -69,7 +69,7 @@ class Login extends React.Component<Props> {
           <CodeOfConduct>
             By using Grindery, you agree to our{' '}
             <a
-              href="https://github.com/withspectrum/code-of-conduct"
+              href="https://www.grindery.io/code-of-conduct"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() =>
@@ -78,8 +78,23 @@ class Login extends React.Component<Props> {
             >
               Code of Conduct
             </a>
-            , <Link to={'/privacy'}>Privacy Policy</Link> and{' '}
-            <Link to={'/terms'}>Terms of Service</Link>.
+            ,
+            <a
+              href="https://www.grindery.io/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Privacy Policy
+            </a>{' '}
+            and{' '}
+            <a
+              href="https://www.grindery.io/terms"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Terms of Service
+            </a>
+            .
           </CodeOfConduct>
         </FullscreenContent>
       </FullscreenView>
