@@ -60,7 +60,7 @@ class LoginModal extends React.Component<Props> {
             <CodeOfConduct>
               By using Grindery, you agree to our{' '}
               <a
-                href="https://github.com/withspectrum/code-of-conduct"
+                href="https://www.grindery.io/code-of-conduct"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() =>
