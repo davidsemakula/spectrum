@@ -103,7 +103,10 @@ const renderer = (req: express$Request, res: express$Response) => {
         <HelmetProvider context={helmetContext}>
           <Provider store={store}>
             <StaticRouter location={req.url} context={routerContext}>
-              <Routes maintenanceMode={IN_MAINTENANCE_MODE} />
+              <Routes
+                maintenanceMode={IN_MAINTENANCE_MODE}
+                ssrHost={req.hostname}
+              />
             </StaticRouter>
           </Provider>
         </HelmetProvider>

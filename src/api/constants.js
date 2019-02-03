@@ -10,3 +10,7 @@ export const SERVER_URL = IS_PROD
 export const CLIENT_URL = IS_PROD
   ? `${window.location.protocol}//${window.location.host}`
   : 'http://localhost:3000';
+
+export const CLIENT_MAIN_DOMAIN = IS_PROD
+  ? `chat.grindery.io`
+  : 'localhost:3000';
