@@ -189,6 +189,10 @@ const externalRedirect = url => () => {
   return '';
 };
 
+// Key can be a slug or a domain name. Must be all lowercased.
+// If slug is used, the final domain will be SLUG.chat.grindery.io
+// No need to add alias if desired slug is the same as community slug,
+// like `startup-framework`
 const COMMUNITY_DOMAIN_ALIASES = {
   suf: 'startup-framework',
 };
