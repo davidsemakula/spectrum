@@ -195,6 +195,7 @@ const externalRedirect = url => () => {
 // like `startup-framework`
 const COMMUNITY_DOMAIN_ALIASES = {
   suf: 'startup-framework',
+  'suf.inboundlabs.co': 'startup-framework',
 };
 
 class CommunityHostHelper {
