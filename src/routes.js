@@ -185,6 +185,10 @@ type State = {
 };
 
 const externalRedirect = url => () => {
+  if (!global.location) {
+    // Server mode
+    return <Redirect to={url} />;
+  }
   location.replace(url);
   return '';
 };
