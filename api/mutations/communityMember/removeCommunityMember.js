@@ -54,7 +54,7 @@ export default requireAuth(async (_: any, args: Input, ctx: GraphQLContext) => {
       },
     });
 
-    return new UserError("You're not a member of this community.");
+    return new UserError("You're not a member of thislearning group.");
   }
 
   const permission = permissions[0];
@@ -70,7 +70,7 @@ export default requireAuth(async (_: any, args: Input, ctx: GraphQLContext) => {
       },
     });
 
-    return new UserError("You're not a member of this community.");
+    return new UserError("You're not a member of thislearning group.");
   }
 
   // in theory this should only get triggered if someone is trying to manually

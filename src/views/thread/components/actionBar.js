@@ -27,8 +27,6 @@ import {
 } from '../style';
 import ActionsDropdown from './actionsDropdown';
 
-import DOMAIN from 'shared/site-domain';
-
 type Props = {
   thread: GetThreadType,
   currentUser: Object,
@@ -106,7 +104,7 @@ class ActionBar extends React.Component<Props> {
                       <a
                         href={`https://www.facebook.com/sharer/sharer.php?t=${encodeURIComponent(
                           thread.content.title
-                        )}&u=https://${DOMAIN}${getThreadLink(thread)}`}
+                        )}&u=https://learn.keyy.org${getThreadLink(thread)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -124,11 +122,11 @@ class ActionBar extends React.Component<Props> {
                   <Tooltip content={'Tweet'}>
                     <ShareButton twitter data-cy="thread-tweet-button">
                       <a
-                        href={`https://twitter.com/share?url=https://${DOMAIN}${getThreadLink(
+                        href={`https://twitter.com/share?url=https://learn.keyy.org${getThreadLink(
                           thread
                         )}&text=${encodeURIComponent(
                           thread.content.title
-                        )} on @withgrindery`}
+                        )} on @withkeyy`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >

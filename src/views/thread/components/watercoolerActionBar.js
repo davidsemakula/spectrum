@@ -85,7 +85,7 @@ class WatercoolerActionBar extends React.Component<Props, State> {
                 <a
                   href={`https://www.facebook.com/sharer/sharer.php?t=${encodeURIComponent(
                     thread.content.title
-                  )}&u=https://chat.grindery.io${getThreadLink(thread)}`}
+                  )}&u=https://learn.keyy.org/${getThreadLink(thread)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -102,7 +102,7 @@ class WatercoolerActionBar extends React.Component<Props, State> {
                 <a
                   href={`https://twitter.com/share?text=${encodeURIComponent(
                     thread.content.title
-                  )} on @withgrindery&url=https://chat.grindery.io${getThreadLink(
+                  )} on @withkeyy&url=https://learn.keyy.org/${getThreadLink(
                     thread
                   )}`}
                   target="_blank"
@@ -114,7 +114,7 @@ class WatercoolerActionBar extends React.Component<Props, State> {
 
               <Clipboard
                 style={{ background: 'none' }}
-                data-clipboard-text={`https://chat.grindery.io${getThreadLink(
+                data-clipboard-text={`https://learn.keyy.org/${getThreadLink(
                   thread
                 )}`}
                 onSuccess={() =>

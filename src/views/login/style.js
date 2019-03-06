@@ -59,7 +59,7 @@ export const Subtitle = styled.h2`
   font-size: 16px;
   line-height: 1.4;
   margin-bottom: 16px;
-  padding: 0 32px;
+  padding: 0 0;
   text-align: center;
 
   b {
@@ -161,6 +161,8 @@ export const UpsellIconContainer = styled.div`
   justify-content: center;
   margin-bottom: 16px;
   margin-top: 32px;
+  width: 124px;
+  height: 50px;
   color: ${theme.text.alt};
 `;
 
@@ -199,7 +201,7 @@ export const FullscreenContent = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 32px 16px;
+  padding: 10px 0;
   flex: 1 0 auto;
 `;
 

@@ -56,7 +56,7 @@ const ThreadHead = (props: Props) => {
       />
       <meta
         property="article:section"
-        content={`${community.name} community`}
+        content={`${community.name} learning group`}
       />
     </Head>
   );

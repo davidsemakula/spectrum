@@ -237,6 +237,7 @@ const init = async () => {
   for (const key in existingMappings) {
     idMapping[key.split(',')[0]] = existingMappings[key].template;
   }
+  console.log('idMapping => ', idMapping);
   fs.writeFileSync(
     RELATIVE_PATH_TO_ID_MAPPING,
     `const idMapping = ${JSON.stringify(idMapping)}; export default idMapping`

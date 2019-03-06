@@ -50,7 +50,7 @@ class Login extends React.Component<Props> {
     const viewSubtitle =
       signinType === 'login'
         ? "We're happy to see you again - sign in below to get back into the conversation!"
-        : 'Grindery is a place where communities can share, discuss, and grow together. Sign in below to get in on the conversation.';
+        : 'Keyy is an alternative educational experience designed to help achieve your goals with less time, frustration, and money - while feeling inspired, challenged and loved.';
 
     return (
       <FullscreenView closePath={CLIENT_URL}>
@@ -59,7 +59,7 @@ class Login extends React.Component<Props> {
           style={{ justifyContent: 'center' }}
         >
           <UpsellIconContainer>
-            <Icon glyph={'emoji'} size={64} />
+            <Icon glyph={'login-page-logo'} size={120} tipText={'logo'} />
           </UpsellIconContainer>
           <LargeTitle>{viewTitle}</LargeTitle>
           <LargeSubtitle>{viewSubtitle}</LargeSubtitle>
@@ -67,9 +67,9 @@ class Login extends React.Component<Props> {
           <LoginButtonSet redirectPath={redirectPath} signinType={signinType} />
 
           <CodeOfConduct>
-            By using Grindery, you agree to our{' '}
+            By using Keyy, you agree to our{' '}
             <a
-              href="https://www.grindery.io/code-of-conduct"
+              href="https://learn.keyy.org/keyy-support/getting-started/keyys-code-of-conduct~87204628-d977-4945-af9d-2f60d3e38c9f"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() =>
@@ -80,7 +80,7 @@ class Login extends React.Component<Props> {
             </a>
             ,{' '}
             <a
-              href="https://www.grindery.io/privacy"
+              href="https://www.keyy.org/privacypolicy"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -88,7 +88,7 @@ class Login extends React.Component<Props> {
             </a>{' '}
             and{' '}
             <a
-              href="https://www.grindery.io/terms"
+              href="https://www.keyy.org/termsofservice"
               target="_blank"
               rel="noopener noreferrer"
             >

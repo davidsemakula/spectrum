@@ -24,7 +24,11 @@ class Reputation extends React.Component<Props> {
   };
 
   render() {
-    const { reputation } = this.props;
+    const {
+      tipText = 'Keyy Coin',
+      tipLocation = 'top-right',
+      reputation,
+    } = this.props;
 
     if (reputation === undefined || reputation === null) return null;
 
@@ -32,8 +36,12 @@ class Reputation extends React.Component<Props> {
 
     return (
       <Tooltip content={'Reputation'}>
-        <ReputationWrapper onClick={this.open}>
-          <Icon glyph="rep" size={24} />
+        <ReputationWrapper
+          onClick={this.open}
+          tipText={`${tipText}`}
+          tipLocation={tipLocation}
+        >
+          <Icon glyph="keyy-coin" size={18} />
 
           <ReputationLabel>
             {truncateNumber(parseInt(renderedReputation, 10), 1)}

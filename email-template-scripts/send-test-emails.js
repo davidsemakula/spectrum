@@ -31,8 +31,8 @@ sg.setApiKey(SENDGRID_API_KEY);
 const sendEmail = (templateId, dynamic_template_data) => {
   return sg.send({
     from: {
-      email: 'hi@chat.grindery.io',
-      name: 'Grindery',
+      email: 'hi@learn.keyy.org',
+      name: 'Keyy',
     },
     tracking_settings: {
       click_tracking: {

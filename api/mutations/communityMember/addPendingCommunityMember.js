@@ -79,7 +79,7 @@ export default requireAuth(async (_: any, args: Input, ctx: GraphQLContext) => {
         },
       });
 
-      return new UserError("You're already a member of this community.");
+      return new UserError("You're already a member of thislearning group.");
     }
 
     return await Promise.all([
@@ -118,7 +118,7 @@ export default requireAuth(async (_: any, args: Input, ctx: GraphQLContext) => {
       },
     });
 
-    return new UserError("You're already a member of this community.");
+    return new UserError("You're already a member of thislearning group.");
   }
 
   if (permission && permission.isPending) {

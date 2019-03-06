@@ -246,7 +246,7 @@ class Search extends React.Component<Props, State> {
             }}
             type="text"
             value={searchString}
-            placeholder="Search for communities or topics..."
+            placeholder="Search for learning groups or topics..."
             onChange={this.handleChange}
             onFocus={this.onFocus}
           />
@@ -291,9 +291,9 @@ class Search extends React.Component<Props, State> {
                 <SearchResult>
                   <SearchResultTextContainer>
                     <SearchResultNull>
-                      <p>No communities found matching “{searchString}”</p>
+                      <p>No learning groups found matching “{searchString}”</p>
                       <Link to={'/new/community'}>
-                        <Button>Create a Community</Button>
+                        <Button>Create a Learning Group</Button>
                       </Link>
                     </SearchResultNull>
                   </SearchResultTextContainer>

@@ -19,7 +19,7 @@ exports.up = function(r, conn) {
             customerId: null,
             paidAt: invoice.stripeData.created,
             planId: 'community-standard',
-            planName: 'Grindery Standard Community',
+            planName: 'Keyy Standard Community',
             quantity: 1,
             sourceBrand: invoice.stripeData.source.brand,
             sourceLast4: invoice.stripeData.source.last4,

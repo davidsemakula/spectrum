@@ -35,7 +35,7 @@ class MemberGrowth extends React.Component<Props> {
       } = community.memberGrowth;
       return (
         <SectionCard>
-          <SectionSubtitle>Your community</SectionSubtitle>
+          <SectionSubtitle>Your learning group</SectionSubtitle>
           <SectionTitle>{count.toLocaleString()} members</SectionTitle>
           {parseGrowth(weeklyGrowth, 'this week')}
           {parseGrowth(monthlyGrowth, 'this month')}

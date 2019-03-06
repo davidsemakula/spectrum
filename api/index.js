@@ -76,7 +76,7 @@ apolloServer.applyMiddleware({ app, path: '/api', cors: corsOptions });
 app.use('/', (req: express$Request, res: express$Response) => {
   res.redirect(
     process.env.NODE_ENV === 'production' && !process.env.FORCE_DEV
-      ? 'https://chat.grindery.io'
+      ? 'https://learn.keyy.org'
       : 'http://localhost:3000'
   );
 });

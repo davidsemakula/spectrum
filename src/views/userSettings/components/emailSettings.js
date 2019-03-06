@@ -54,7 +54,7 @@ const parseNotificationTypes = notifications => {
           type,
           emailValue: notifications.types[type].email,
           label:
-            'Email me every day with the top conversations in my communities.',
+            'Email me every day with the top conversations in my learning groups.',
           display: 'center',
         };
       case 'weeklyDigest':
@@ -62,14 +62,14 @@ const parseNotificationTypes = notifications => {
           type,
           emailValue: notifications.types[type].email,
           label:
-            'Email me once every week with the top conversations in my communities',
+            'Email me once every week with the top conversations in my learning groups',
           display: 'center',
         };
       case 'newMention':
         return {
           type,
           emailValue: notifications.types[type].email,
-          label: 'Email me if someone @mentions me on Grindery',
+          label: 'Email me if someone @mentions me on Keyy',
           display: 'flex-start',
         };
       default:
@@ -131,8 +131,8 @@ class EmailSettings extends React.Component<Props> {
           <ListContainer>
             <Description>
               You can customize your email notifications to keep up to date on
-              what’s important to you on Grindery. Enter your email below and
-              we’ll send you a confirmation link.
+              what’s important to you on Keyy. Enter your email below and we’ll
+              send you a confirmation link.
             </Description>
 
             <UserEmailConfirmation user={user} />

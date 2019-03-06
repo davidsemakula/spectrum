@@ -172,7 +172,7 @@ class CommunityMembers extends React.Component<Props, State> {
     return (
       <SectionCard>
         <SectionTitle>
-          Community Members · {community.metaData.members.toLocaleString()}
+          Learning Group Members · {community.metaData.members.toLocaleString()}
         </SectionTitle>
 
         <Filters>
@@ -237,7 +237,7 @@ class CommunityMembers extends React.Component<Props, State> {
 
                 const subheading =
                   searchString.length > 1
-                    ? 'Grow your community by inviting people via email, or by importing a Slack team'
+                    ? 'Grow your learning group by inviting people via email, or by importing a Slack team'
                     : 'Find people by name, username, and profile description - try searching for "designer" or "developer"';
 
                 return (
@@ -264,7 +264,7 @@ class CommunityMembers extends React.Component<Props, State> {
         {searchIsFocused && !queryString && (
           <ViewError
             emoji={' '}
-            heading={'Search for community members'}
+            heading={'Search for learning group members'}
             subheading={
               'Find people by name or description - try searching for "designer"!'
             }
@@ -287,9 +287,9 @@ class CommunityMembers extends React.Component<Props, State> {
                     {filter && filter.isBlocked && !community.isPrivate && (
                       <Notice>
                         <strong>A note about blocked users:</strong> Your
-                        community is publicly viewable (except for private
+                        learning group is publicly viewable (except for private
                         channels). This means that a blocked user may be able to
-                        see the content and conversations in your community.
+                        see the content and conversations in your learning group.
                         However, they will be prevented from creating new
                         conversations, or leaving messages in existing
                         conversations.
@@ -339,7 +339,7 @@ class CommunityMembers extends React.Component<Props, State> {
                       emoji={' '}
                       heading={'No members found'}
                       subheading={
-                        "We couldn't find any members in your community. That's strange..."
+                        "We couldn't find any members in your learning group. That's strange..."
                       }
                     />
                   );
@@ -351,7 +351,7 @@ class CommunityMembers extends React.Component<Props, State> {
                       emoji={' '}
                       heading={'No team members found'}
                       subheading={
-                        "You haven't added any team members to your community yet."
+                        "You haven't added any team members to your learning group yet."
                       }
                     />
                   );
@@ -363,7 +363,7 @@ class CommunityMembers extends React.Component<Props, State> {
                       emoji={' '}
                       heading={'No pending members found'}
                       subheading={
-                        'There are no pending members in your community.'
+                        'There are no pending members in your learning group.'
                       }
                     />
                   );

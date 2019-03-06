@@ -80,7 +80,7 @@ const Component = (props: Props) => {
       generateMetaInfo({
         type: 'community',
         data: {
-          name: `${community.name} community`,
+          name: `${community.name} learning group`,
           description: community.description,
         },
       })

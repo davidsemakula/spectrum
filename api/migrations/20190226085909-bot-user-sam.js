@@ -3,7 +3,7 @@ exports.up = function(r, conn) {
     .table('users')
     .insert({
       id: 'sam',
-      description: "Grindery's automated bot.",
+      description: "Keyy's automated bot.",
       createdAt: new Date(),
       email: null,
       providerId: null,
@@ -14,10 +14,10 @@ exports.up = function(r, conn) {
       isOnline: true,
       lastSeen: new Date(),
       modifiedAt: new Date(),
-      name: 'Grindery Bot',
+      name: 'Keyy Bot',
       termsLastAcceptedAt: new Date(),
       username: 'spectrumbot',
-      website: 'https://chat.grindery.io',
+      website: 'https://learn.keyy.org',
       profilePhoto: '/default_images/sam.png',
     })
     .run(conn);

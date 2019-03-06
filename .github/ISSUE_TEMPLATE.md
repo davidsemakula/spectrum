@@ -6,7 +6,7 @@ FILL OUT THE FORM BELOW OR THE ISSUE WILL BE AUTO-CLOSED
 - [ ] Bug Report
 - [ ] Feature Idea
 - [ ] Technical Discussion
-- [ ] Question (these will be auto-closed, please ask them on Spectrum instead https://chat.grindery.io/spectrum/open)
+- [ ] Question (these will be auto-closed, please ask them on Spectrum instead https://learn.keyy.org/spectrum/open)
 
 **Description (type any text below)** -->
 

@@ -18,23 +18,23 @@ const IS_PROD = !process.env.FORCE_DEV && process.env.NODE_ENV === 'production';
 
 const TWITTER_OAUTH_CLIENT_SECRET = IS_PROD
   ? process.env.TWITTER_OAUTH_CLIENT_SECRET
-  : process.env.TWITTER_OAUTH_CLIENT_SECRET_DEVELOPMENT;
+  : process.env.TWITTER_OAUTH_CLIENT_SECRET_DEVELOPMENT || "DUMMY";
 
 const FACEBOOK_OAUTH_CLIENT_ID = IS_PROD
   ? process.env.FACEBOOK_OAUTH_CLIENT_ID
-  : process.env.FACEBOOK_OAUTH_CLIENT_ID_DEVELOPMENT;
+  : process.env.FACEBOOK_OAUTH_CLIENT_ID_DEVELOPMENT || "DUMMY";
 
 const FACEBOOK_OAUTH_CLIENT_SECRET = IS_PROD
   ? process.env.FACEBOOK_OAUTH_CLIENT_SECRET
-  : process.env.FACEBOOK_OAUTH_CLIENT_SECRET_DEVELOPMENT;
+  : process.env.FACEBOOK_OAUTH_CLIENT_SECRET_DEVELOPMENT || "DUMMY";
 
 const GOOGLE_OAUTH_CLIENT_SECRET = IS_PROD
   ? process.env.GOOGLE_OAUTH_CLIENT_SECRET
-  : process.env.GOOGLE_OAUTH_CLIENT_SECRET_DEVELOPMENT;
+  : process.env.GOOGLE_OAUTH_CLIENT_SECRET_DEVELOPMENT || "DUMMY";
 
 const GITHUB_OAUTH_CLIENT_SECRET = IS_PROD
   ? process.env.GITHUB_OAUTH_CLIENT_SECRET
-  : process.env.GITHUB_OAUTH_CLIENT_SECRET_DEVELOPMENT;
+  : process.env.GITHUB_OAUTH_CLIENT_SECRET_DEVELOPMENT || "DUMMY";
 
 const TWITTER_OAUTH_CLIENT_ID = IS_PROD
   ? process.env.TWITTER_OAUTH_CLIENT_ID || 'vxmsICGyIIoT5NEYi1I8baPrf'
@@ -70,7 +70,7 @@ const init = () => {
 
   // NOTE(@mxstbr): `data` used to be just the userID, but is now the full user data
   // to avoid having to go to the db on every single request. We have to handle both
-  // cases here, as more and more users use Grindery again we go to the db less and less
+  // cases here, as more and more users use Keyy again we go to the db less and less
   passport.deserializeUser((data, done) => {
     // Fast path: we got the full user data in the cookie
     if (isSerializedJSON(data)) {
@@ -102,7 +102,7 @@ const init = () => {
         consumerKey: TWITTER_OAUTH_CLIENT_ID,
         consumerSecret: TWITTER_OAUTH_CLIENT_SECRET,
         callbackURL: IS_PROD
-          ? 'https://chat.grindery.io/auth/twitter/callback'
+          ? 'https://learn.keyy.org/auth/twitter/callback'
           : 'http://localhost:3001/auth/twitter/callback',
         includeEmail: true,
       },
@@ -376,7 +376,7 @@ const init = () => {
           if (existingUserWithProviderId) {
             return done(null, req.user, {
               message:
-                'Your GitHub account is already linked to another Grindery profile.',
+                'Your GitHub account is already linked to another Keyy profile.',
             });
           }
         }
@@ -420,7 +420,7 @@ const init = () => {
         clientID: SLACK_OAUTH_CLIENT_ID,
         clientSecret: SLACK_OAUTH_CLIENT_SECRET,
         callbackURL: IS_PROD
-          ? 'https://chat.grindery.io/auth/slack/callback'
+          ? 'https://learn.keyy.org/auth/slack/callback'
           : 'http://localhost:3001/auth/slack/callback',
       },
       (accessToken, refreshToken, profile, done) => {

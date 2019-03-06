@@ -27,7 +27,7 @@ class ImportSlackTeam extends React.Component<Props> {
         }&redirect_uri=${
           process.env.NODE_ENV === 'development'
             ? 'http://localhost:3001/api/slack/onboarding'
-            : 'https://chat.grindery.io/api/slack/onboarding'
+            : 'https://learn.keyy.org/api/slack/onboarding'
         }`
       : `https://slack.com/oauth/authorize?client_id=${
           process.env.SLACK_CLIENT_ID
@@ -36,7 +36,7 @@ class ImportSlackTeam extends React.Component<Props> {
         }&redirect_uri=${
           process.env.NODE_ENV === 'development'
             ? 'http://localhost:3001/api/slack'
-            : 'https://chat.grindery.io/api/slack'
+            : 'https://learn.keyy.org/api/slack'
         }`;
 
     return (
@@ -46,7 +46,7 @@ class ImportSlackTeam extends React.Component<Props> {
           Connect a Slack team
         </SectionTitleWithIcon>
         <SectionSubtitle>
-          Invite your Slack team to your community or get notified when new
+          Invite your Slack team to your learning group or get notified when new
           conversations are created.
         </SectionSubtitle>
 

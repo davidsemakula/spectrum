@@ -13,7 +13,7 @@ import isSpectrumUrl from '../../utils/is-spectrum-url';
 
 const IS_PROD = process.env.NODE_ENV === 'production';
 const FALLBACK_URL = IS_PROD
-  ? 'https://chat.grindery.io/home'
+  ? 'https://learn.keyy.org/home'
   : 'http://localhost:3000/home';
 
 type Strategy = 'twitter' | 'facebook' | 'github' | 'google' | 'slack' | 'jwt';

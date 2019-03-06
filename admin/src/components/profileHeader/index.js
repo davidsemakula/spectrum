@@ -16,7 +16,7 @@ export const ProfileHeader = ({ user }: any) => {
       </Row>
 
       <Link
-        to={`https://chat.grindery.io/users/${user.username}`}
+        to={`https://learn.keyy.org/users/${user.username}`}
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -38,7 +38,7 @@ export const CommunityProfileHeader = ({ community }) => {
       </Row>
 
       <Link
-        to={`https://chat.grindery.io/${community.slug}`}
+        to={`https://learn.keyy.org/${community.slug}`}
         target="_blank"
         rel="noopener noreferrer"
       >

@@ -209,7 +209,7 @@ class CommunityWithData extends React.Component<Props, State> {
         // community was returned
         if (community !== undefined) {
           this.props.dispatch(
-            addToastWithTimeout('success', 'Community saved!')
+            addToastWithTimeout('success', 'learning group saved!')
           );
           this.props.communityUpdated(community);
         }
@@ -264,11 +264,11 @@ class CommunityWithData extends React.Component<Props, State> {
             Name
           </Input>
           <UnderlineInput defaultValue={slug} disabled>
-            chat.grindery.io/
+            learn.keyy.org/
           </UnderlineInput>
 
           {nameError && (
-            <Error>Community names can be up to 20 characters long.</Error>
+            <Error>Learning group names can be up to 20 characters long.</Error>
           )}
 
           <TextArea
@@ -283,7 +283,7 @@ class CommunityWithData extends React.Component<Props, State> {
             onChange={this.changeWebsite}
             autoFocus={true}
           >
-            Optional: Add your community’s website
+            Optional: Add your learning group’s website
           </Input>
 
           {photoSizeError && (

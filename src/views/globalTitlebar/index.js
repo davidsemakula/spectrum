@@ -23,7 +23,7 @@ type TitlebarProps = {
 
 const GlobalTitlebar = (props: TitlebarProps): React$Node => {
   const {
-    title = 'Grindery',
+    title = 'Keyy',
     titleIcon = null,
     rightAction = null,
     leftAction = 'menu',

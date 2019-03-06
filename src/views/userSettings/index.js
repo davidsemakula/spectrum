@@ -59,7 +59,7 @@ class UserSettings extends React.Component<Props> {
     if (user && user.id && currentUser.id === user.id) {
       const subheading = {
         to: `/users/${user.username}`,
-        label: `Return to profile`,
+        label: `Return to portfolio`,
       };
 
       const avatar = {

@@ -26,7 +26,7 @@ class Navbar extends Component {
           </IconLink>
 
           <IconLink data-active={url.includes('/users')} to="/users">
-            <Icon glyph={'profile'} />
+            <Icon glyph={'portfolio'} />
             <Label>Users</Label>
           </IconLink>
 
@@ -43,4 +43,7 @@ class Navbar extends Component {
   }
 }
 
-export default compose(withRouter, connect())(Navbar);
+export default compose(
+  withRouter,
+  connect()
+)(Navbar);

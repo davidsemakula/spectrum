@@ -1,6 +1,6 @@
 export const collections = [
   {
-    title: 'Top Communities',
+    title: 'Top Learning Groups',
     curatedContentType: 'top-communities-by-members',
     communities: [
       'spectrum',
@@ -23,8 +23,9 @@ export const collections = [
       'tech-tea',
       'design-code',
       'journalism',
+      'book-club',
     ],
-  },
+  } /*,
   {
     title: 'Design',
     curatedContentType: 'design-communities',
@@ -113,5 +114,5 @@ export const collections = [
       'job-opportunities',
       'need-some-work',
     ],
-  },
+  },*/,
 ];

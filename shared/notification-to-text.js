@@ -231,7 +231,7 @@ const formatNotification = (
     }
     case 'COMMUNITY_INVITE': {
       href = `/${notification.context.payload.slug}`;
-      title = `${actors} invited you to join their community, ${context}`;
+      title = `${actors} invited you to join their learning group, ${context}`;
       break;
     }
     default:

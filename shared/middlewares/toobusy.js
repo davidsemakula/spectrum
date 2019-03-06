@@ -12,7 +12,7 @@ export default (
   if (process.env.NODE_ENV !== 'testing' && !process.env.TEST_DB && toobusy()) {
     res.statusCode = 503;
     res.end(
-      'It looks like Grindery is very busy right now, please try again in a minute.'
+      'It looks like Keyy is very busy right now, please try again in a minute.'
     );
   } else {
     next();

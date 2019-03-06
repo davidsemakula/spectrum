@@ -10,8 +10,8 @@ import { deduplicateChildren } from 'src/components/infiniteScroll/deduplicateCh
 import { sortAndGroupMessages } from 'shared/clients/group-messages';
 import ChatMessages from 'src/components/messageGroup';
 import { Loading } from 'src/components/loading';
-import { Button } from 'src/components/buttons';
-import Icon from 'src/components/icons';
+import { Button } from 'src/components/button';
+import Icon from 'src/components/icon';
 import { NullState } from 'src/components/upsell';
 import viewNetworkHandler from 'src/components/viewNetworkHandler';
 import Head from 'src/components/head';
@@ -88,21 +88,9 @@ class MessagesWithData extends React.Component<Props, State> {
     const previousMessageCount =
       previousMessagesHaveLoaded &&
       prev.data.thread.messageConnection.edges.length;
-    const previousOptimistic =
-      previousMessagesHaveLoaded &&
-      prev.data.thread.messageConnection.edges.filter(
-        ({ node }) => node.messageType === 'optimistic'
-      ).length;
-    const newOptimistic =
-      newMessagesHaveLoaded &&
-      curr.data.thread.messageConnection.edges.filter(
-        ({ node }) => node.messageType === 'optimistic'
-      ).length;
     const newMessageCount =
       newMessagesHaveLoaded && curr.data.thread.messageConnection.edges.length;
-    const newMessageSent =
-      previousMessageCount < newMessageCount ||
-      previousOptimistic !== newOptimistic;
+    const newMessageSent = previousMessageCount < newMessageCount;
     const messagesLoadedForFirstTime = !prev.data.thread && curr.data.thread;
 
     if (
@@ -120,15 +108,9 @@ class MessagesWithData extends React.Component<Props, State> {
       setTimeout(() => curr.forceScrollToBottom());
     }
 
-    // scroll to bottom when a message is sent in the same thread
+    // force scroll to bottom when a message is sent in the same thread
     if (newMessageSent && !prev.isFetchingMore) {
-      // If user sent a message themselves, force the scroll
-      if (previousOptimistic !== newOptimistic) {
-        curr.forceScrollToBottom();
-        // otherwise only scroll to the bottom if they are near the bottom
-      } else {
-        curr.contextualScrollToBottom();
-      }
+      curr.contextualScrollToBottom();
     }
 
     // if the thread changes in the inbox we have to update the subscription
@@ -223,7 +205,7 @@ class MessagesWithData extends React.Component<Props, State> {
           <A
             href={`https://twitter.com/share?text=${encodeURIComponent(
               threadTitle
-            )} on @withgrindery&url=https://chat.grindery.io${getThreadLink(
+            )} on @withkeyy&url=https://learn.keyy.org/${getThreadLink(
               this.props.data.thread
             )}`}
             target="_blank"
@@ -234,7 +216,7 @@ class MessagesWithData extends React.Component<Props, State> {
             </Button>
           </A>
           <A
-            href={`https://www.facebook.com/sharer/sharer.php?u=https://chat.grindery.io${getThreadLink(
+            href={`https://www.facebook.com/sharer/sharer.php?u=https://learn.keyy.org/${getThreadLink(
               this.props.data.thread
             )}&t=${encodeURIComponent(threadTitle)}`}
             target="_blank"
@@ -319,7 +301,7 @@ class MessagesWithData extends React.Component<Props, State> {
                   )}
                   <link
                     rel="canonical"
-                    href={'https://chat.grindery.io' + getThreadLink(thread)}
+                    href={'https://learn.keyy.org/' + getThreadLink(thread)}
                   />
                 </Head>
               </div>
@@ -334,7 +316,7 @@ class MessagesWithData extends React.Component<Props, State> {
                 )}
                 <link
                   rel="canonical"
-                  href={'https://chat.grindery.io' + getThreadLink(thread)}
+                  href={'https://learn.keyy.org/' + getThreadLink(thread)}
                 />
               </Head>
             )}

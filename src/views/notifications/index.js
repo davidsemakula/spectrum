@@ -437,7 +437,7 @@ class NotificationsPure extends React.Component<Props, State> {
       <ErrorView
         emoji="😙"
         heading="No notifications...yet"
-        subheading="Looks like you’re new around here! When you start receiving notifications about conversations on Grindery, they'll show up here."
+        subheading="Looks like you’re new around here! When you start receiving notifications about conversations on Keyy, they'll show up here."
       />
     );
   }

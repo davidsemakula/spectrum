@@ -100,11 +100,11 @@ export const Action = styled.li`
 
 export const LikeAction = styled(Action)`
   color: ${props =>
-    props.hasReacted ? props.theme.warn.alt : props.theme.text.secondary};
+    props.hasReacted ? props.theme.space.default : props.theme.text.secondary};
 
   &:hover {
     color: ${props =>
-      props.hasReacted ? props.theme.warn.alt : props.theme.text.default};
+      props.hasReacted ? props.theme.space.default : props.theme.text.default};
   }
 `;
 

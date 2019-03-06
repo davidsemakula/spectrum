@@ -1,11 +1,11 @@
 {
   "rules": [
-    { "pathname": "/api", "dest": "api.chat.grindery.io" },
-    { "pathname": "/api/**", "dest": "api.chat.grindery.io" },
-    { "pathname": "/auth", "dest": "api.chat.grindery.io" },
-    { "pathname": "/auth/**", "dest": "api.chat.grindery.io" },
-    { "pathname": "/websocket", "dest": "api.chat.grindery.io" },
-    { "pathname": "/websocket/**", "dest": "api.chat.grindery.io" },
-    { "dest": "hyperion.workers.chat.grindery.io" }
+    { "pathname": "/api", "dest": "api.learn.keyy.org" },
+    { "pathname": "/api/**", "dest": "api.learn.keyy.org" },
+    { "pathname": "/auth", "dest": "api.learn.keyy.org" },
+    { "pathname": "/auth/**", "dest": "api.learn.keyy.org" },
+    { "pathname": "/websocket", "dest": "api.learn.keyy.org" },
+    { "pathname": "/websocket/**", "dest": "api.learn.keyy.org" },
+    { "dest": "hyperion.workers.learn.keyy.org" }
   ]
 }

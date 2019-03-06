@@ -6,7 +6,7 @@ const IS_PROD = process.env.NODE_ENV === 'production';
 const EXPO_URL = /^https:\/\/auth\.expo\.io\//;
 
 /**
- * Make a URL string is a chat.grindery.io URL
+ * Make a URL string is a learn.keyy.org URL
  */
 export default (url: string): boolean => {
   if (RELATIVE_URL.test(url)) return true;
@@ -14,12 +14,12 @@ export default (url: string): boolean => {
 
   try {
     const { hostname, protocol } = new URL(url);
-    // hostname might be chat.grindery.io or subdomain.chat.grindery.io, so we use .endsWith
-    // We don't just check .contains because otherwise folks could make chat.grindery.io.mydomain.com
-    const IS_SPECTRUM_URL = hostname.endsWith('.chat.grindery.io');
+    // hostname might be learn.keyy.org or subdomain.learn.keyy.org, so we use .endsWith
+    // We don't just check .contains because otherwise folks could make learn.keyy.org.mydomain.com
+    const IS_SPECTRUM_URL = hostname.endsWith('.learn.keyy.org');
     const IS_LOCALHOST = hostname === 'localhost';
     const IS_HTTP = protocol === 'https:' || protocol === 'http:';
-    // Make sure the passed redirect URL is a chat.grindery.io one or (in development) localhost
+    // Make sure the passed redirect URL is a learn.keyy.org one or (in development) localhost
     if (IS_HTTP && (IS_SPECTRUM_URL || (!IS_PROD && IS_LOCALHOST))) {
       return true;
     }

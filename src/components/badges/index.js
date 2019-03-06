@@ -50,10 +50,10 @@ class Badge extends React.Component<Props> {
           <Tooltip
             content={`${
               type === 'moderator' ? 'Moderator' : 'Owner'
-            } of this community`}
+            } of this learning group`}
           >
-            <TeamBadge type={type} {...rest}>
-              Team
+            <TeamBadge type={type} tipLocation="top-left" {...rest}>
+              Coach
             </TeamBadge>
           </Tooltip>
         );

@@ -6,7 +6,7 @@ Object {
     "channel": Object {
       "blockedUsers": Array [
         Object {
-          "description": "I am blocked in the Grindery community",
+          "description": "I am blocked in the Keyy community",
           "firstName": null,
           "id": "4",
           "isOnline": null,
@@ -28,7 +28,7 @@ Object {
     "channel": Object {
       "blockedUsers": Array [
         Object {
-          "description": "I am blocked in the Grindery community",
+          "description": "I am blocked in the Keyy community",
           "firstName": null,
           "id": "4",
           "isOnline": null,
@@ -50,7 +50,7 @@ Object {
     "channel": Object {
       "blockedUsers": Array [
         Object {
-          "description": "I am blocked in the Grindery community",
+          "description": "I am blocked in the Keyy community",
           "firstName": null,
           "id": "4",
           "isOnline": null,

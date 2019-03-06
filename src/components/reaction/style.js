@@ -10,12 +10,12 @@ export const ReactionWrapper = styled.span`
   padding: 2px 8px;
   margin-top: 4px;
   background: ${props =>
-    props.hasReacted ? props.theme.warn.wash : props.theme.bg.wash};
+    props.hasReacted ? props.theme.space.alt : props.theme.bg.wash};
   border: 1px solid
     ${props =>
-      props.hasReacted ? props.theme.warn.border : props.theme.bg.border};
+      props.hasReacted ? props.theme.space.default : props.theme.bg.border};
   color: ${props =>
-    props.hasReacted ? props.theme.warn.alt : props.theme.text.alt};
+    props.hasReacted ? props.theme.space.default : props.theme.text.alt};
   align-self: flex-start;
   cursor: pointer;
   font-size: 13px;
@@ -24,12 +24,12 @@ export const ReactionWrapper = styled.span`
 
   &:hover {
     color: ${props =>
-      props.hasReacted ? props.theme.warn.alt : props.theme.text.secondary};
+      props.hasReacted ? props.theme.bg.reverse : props.theme.text.secondary};
   }
 
   .icon {
     color: ${props =>
-      props.hasReacted ? props.theme.warn.alt : props.theme.text.alt};
+      props.hasReacted ? props.theme.space.default : props.theme.text.alt};
     margin-right: 4px;
     margin-top: -1px;
   }

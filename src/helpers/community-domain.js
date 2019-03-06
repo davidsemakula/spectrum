@@ -2,7 +2,7 @@ import { Route } from 'react-router';
 import { CLIENT_MAIN_DOMAIN } from './api/constants';
 
 // Key can be a slug or a domain name. Must be all lowercased.
-// If slug is used, the final domain will be SLUG.chat.grindery.io
+// If slug is used, the final domain will be SLUG.learn.keyy.org
 // No need to add alias if desired slug is the same as community slug,
 // like `startup-framework`
 const COMMUNITY_DOMAIN_ALIASES = {

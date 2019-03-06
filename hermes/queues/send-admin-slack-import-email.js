@@ -21,9 +21,9 @@ export default (job: Job<AdminSlackImportJobData>): Promise<void> => {
     return sendEmail({
       templateId: ADMIN_SLACK_IMPORT_PROCESSED_TEMPLATE,
       to: [
-        { email: 'brian@chat.grindery.io ' },
-        { email: 'max@chat.grindery.io ' },
-        { email: 'bryn@chat.grindery.io ' },
+        { email: 'brian@learn.keyy.org ' },
+        { email: 'max@learn.keyy.org ' },
+        { email: 'bryn@learn.keyy.org ' },
       ],
       dynamic_template_data: {
         subject,

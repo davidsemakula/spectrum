@@ -5,14 +5,15 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Icon from 'src/components/icon';
 import { UserAvatar } from 'src/components/avatar';
-import { FlexCol, Transition, HorizontalRule } from 'src/components/globals';
+import {
+  Shadow,
+  Gradient,
+  FlexCol,
+  Transition,
+  HorizontalRule,
+} from 'src/components/globals';
 import Search from '../explore/components/search';
 import Section from 'src/components/themedSection';
-import {
-  PrimaryButton,
-  WhiteOutlineButton,
-  WhiteButton,
-} from 'src/components/button';
 import { Conversation, Discover } from 'src/components/illustrations';
 import {
   AbstractLogo,
@@ -35,12 +36,14 @@ import {
   BulletCopy,
   Flexer,
   PrimaryCTA,
+  SecondaryCTA,
   Content,
 } from './style';
 import { track, events } from 'src/helpers/analytics';
-import { MEDIA_BREAK } from 'src/components/layout';
 
-export const Overview = () => {
+type Props = Object;
+
+export const Overview = (props: Props) => {
   const ThisContent = styled(Content)`
     max-width: 100vw;
     margin-top: 92px;
@@ -57,7 +60,7 @@ export const Overview = () => {
     align-items: flex-start;
     z-index: 2;
 
-    @media (max-width: ${MEDIA_BREAK}px) {
+    @media (max-width: 768px) {
       margin-top: 0;
       margin-bottom: 16px;
       text-align: center;
@@ -70,7 +73,7 @@ export const Overview = () => {
     font-weight: 500;
     max-width: 580px;
 
-    @media (max-width: ${MEDIA_BREAK}px) {
+    @media (max-width: 768px) {
       text-align: center;
     }
   `;
@@ -79,28 +82,27 @@ export const Overview = () => {
     margin-bottom: 16px;
     font-size: 40px;
 
-    @media (max-width: ${MEDIA_BREAK}px) {
+    @media (max-width: 768px) {
       font-size: 24px;
     }
   `;
 
-  const Actions = styled.div`
-    display: flex;
+  const Actions = styled(Flexer)`
     margin-top: 48px;
-    width: 100%;
     align-items: flex-start;
+    justify-content: space-between;
 
-    @media (max-width: ${MEDIA_BREAK}px) {
-      flex-direction: column;
+    @media (max-width: 768px) {
       align-items: center;
     }
   `;
 
-  const ThisSecondaryCTA = styled(WhiteOutlineButton)`
+  const ThisSecondaryCTA = styled(SecondaryCTA)`
     margin-left: 16px;
     font-size: 16px;
+    border: 2px solid ${theme.text.reverse};
 
-    @media (max-width: ${MEDIA_BREAK}px) {
+    @media (max-width: 768px) {
       margin-left: 0;
       margin-top: 16px;
     }
@@ -119,12 +121,8 @@ export const Overview = () => {
     }
   `;
 
-  const ThisPrimaryCTA = styled(WhiteButton)`
-    color: ${theme.brand.alt};
-
-    &:hover {
-      color: ${theme.brand.default};
-    }
+  const ThisPrimaryCTA = styled(PrimaryCTA)`
+    font-size: 16px;
   `;
 
   const Img = styled.img`
@@ -143,7 +141,7 @@ export const Overview = () => {
       display: none;
     }
 
-    @media (max-width: ${MEDIA_BREAK}px) {
+    @media (max-width: 768px) {
       display: none;
     }
   `;
@@ -152,30 +150,32 @@ export const Overview = () => {
     <Section background="constellations" goop={2}>
       <ThisContent>
         <ThisText>
-          <ThisTagline>The community platform for the future.</ThisTagline>
-          <ThisCopy>The internet was built for communities.</ThisCopy>
+          <ThisTagline>The learning group platform for the future.</ThisTagline>
+          <ThisCopy>The internet was built for learning groups.</ThisCopy>
           <ThisCopy>
-            But, as the web has changed and improved radically, community
+            But, as the web has changed and improved radically, learning group
             software has hardly improved since the heyday of messageboards and
             IRC.
           </ThisCopy>
           <ThisCopy>
-            Grindery makes it easy to grow safe, successful online communities
+            Keyy makes it easy to grow safe, successful online learning groups
             that are built to last.
           </ThisCopy>
           <Actions>
-            <ThisPrimaryCTA
+            <Link
               to="/login"
               onClick={() => track(events.HOME_PAGE_JOIN_SPECTRUM_CLICKED)}
             >
-              Join Grindery
-            </ThisPrimaryCTA>
-            <ThisSecondaryCTA
+              <ThisPrimaryCTA icon="welcome">Join Keyy</ThisPrimaryCTA>
+            </Link>
+            <Link
               to="/new/community"
               onClick={() => track(events.HOME_PAGE_CREATE_COMMUNITY_CLICKED)}
             >
-              Create your community
-            </ThisSecondaryCTA>
+              <ThisSecondaryCTA icon="plus-fill">
+                Create your learning group
+              </ThisSecondaryCTA>
+            </Link>
           </Actions>
         </ThisText>
         <Img src={'/img/diagram.svg'} alt="" />
@@ -184,7 +184,7 @@ export const Overview = () => {
   );
 };
 
-export const Centralized = () => {
+export const Centralized = (props: Props) => {
   const ThisContent = styled(Content)`
     img {
       margin: 24px 0;
@@ -194,7 +194,7 @@ export const Centralized = () => {
   const Text = styled(FlexCol)`
     margin: 40px 16px 64px;
 
-    @media (max-width: ${MEDIA_BREAK}px) {
+    @media (max-width: 768px) {
       margin-top: 20px;
       margin-bottom: 44px;
     }
@@ -205,19 +205,27 @@ export const Centralized = () => {
     margin-top: 16px;
   `;
 
-  const ThisPrimaryCTA = styled(PrimaryButton)`
+  const ThisPrimaryCTA = styled(PrimaryCTA)`
     margin-top: 32px;
+    background-color: ${theme.brand.alt};
+    background-image: ${props =>
+      Gradient(props.theme.brand.alt, props.theme.brand.default)};
+    color: ${theme.text.reverse};
+
+    &:hover {
+      color: ${theme.text.reverse};
+    }
   `;
 
   const Actions = styled.div`
-    @media (max-width: ${MEDIA_BREAK}px) {
+    @media (max-width: 768px) {
       display: flex;
       justify-content: center;
     }
   `;
 
   const ThisTagline = styled(Tagline)`
-    @media (max-width: ${MEDIA_BREAK}px) {
+    @media (max-width: 768px) {
       margin-bottom: 0;
     }
   `;
@@ -249,8 +257,8 @@ export const Centralized = () => {
         <Text>
           <ThisTagline>Grow together</ThisTagline>
           <ThisCopy>
-            By building on Grindery, communities become easily discoverable
-            through search, curation, and even other community members.
+            By building on Keyy, learning groups become easily discoverable
+            through search, curation, and even other learning group members.
           </ThisCopy>
           <ThisCopy>
             It also means no more managing multiple logins or playing
@@ -258,12 +266,14 @@ export const Centralized = () => {
             wins!
           </ThisCopy>
           <Actions>
-            <ThisPrimaryCTA
-              to="/explore"
-              onClick={() => track(events.HOME_PAGE_EXPLORE_CLICKED)}
-            >
-              Explore communities
-            </ThisPrimaryCTA>
+            <Link to="/explore">
+              <ThisPrimaryCTA
+                icon="explore"
+                onClick={() => track(events.HOME_PAGE_EXPLORE_CLICKED)}
+              >
+                Explore learning groups
+              </ThisPrimaryCTA>
+            </Link>
           </Actions>
         </Text>
       </ThisContent>
@@ -282,7 +292,7 @@ export const Centralized = () => {
   );
 };
 
-export const CommunitySearch = () => {
+export const CommunitySearch = (props: Props) => {
   const ThisContent = styled(Content)`
     flex-direction: column;
     width: 640px;
@@ -309,7 +319,7 @@ export const CommunitySearch = () => {
     text-align: center;
     max-width: 640px;
 
-    @media (max-width: ${MEDIA_BREAK}px) {
+    @media (max-width: 768px) {
       text-align: left;
     }
   `;
@@ -317,9 +327,9 @@ export const CommunitySearch = () => {
   return (
     <Section goop={4} background="bright">
       <ThisContent>
-        <ThisTagline>Find a community for you!</ThisTagline>
+        <ThisTagline>Find a learning group for you!</ThisTagline>
         <ThisCopy>
-          Try searching for topics like “start” or for products like “Grindery”!
+          Try searching for topics like “start” or for products like “Keyy”!
         </ThisCopy>
         <Search />
       </ThisContent>
@@ -327,12 +337,12 @@ export const CommunitySearch = () => {
   );
 };
 
-export const Chat = () => {
+export const Chat = (props: Props) => {
   const ThisContent = styled(Content)`
     overflow: hidden;
     margin: 40px 16px 80px;
 
-    @media (max-width: ${MEDIA_BREAK}px) {
+    @media (max-width: 768px) {
       margin-bottom: 40px;
     }
   `;
@@ -342,19 +352,27 @@ export const Chat = () => {
     margin-top: 16px;
   `;
 
-  const ThisPrimaryCTA = styled(PrimaryButton)``;
-
-  const Actions = styled.div`
+  const ThisPrimaryCTA = styled(PrimaryCTA)`
+    background-color: ${theme.brand.alt};
+    background-image: ${props =>
+      Gradient(props.theme.brand.alt, props.theme.brand.default)};
+    color: ${theme.text.reverse};
     margin-top: 32px;
 
-    @media (max-width: ${MEDIA_BREAK}px) {
+    &:hover {
+      color: ${theme.text.reverse};
+    }
+  `;
+
+  const Actions = styled.div`
+    @media (max-width: 768px) {
       display: flex;
       justify-content: center;
     }
   `;
 
   const ThisTagline = styled(Tagline)`
-    @media (max-width: ${MEDIA_BREAK}px) {
+    @media (max-width: 768px) {
       margin-bottom: 0;
     }
   `;
@@ -366,9 +384,9 @@ export const Chat = () => {
         <FlexCol>
           <ThisTagline>Real-time messaging with long-term value</ThisTagline>
           <ThisCopy>
-            Conversations on Grindery are real-time chat, just like your
-            favorite messaging app. But on Grindery, conversations continue to
-            provide value to more and more people over time.
+            Conversations on Keyy are real-time chat, just like your favorite
+            messaging app. But on Keyy, conversations continue to provide value
+            to more and more people over time.
           </ThisCopy>
           <ThisCopy>
             Every conversation gets a unique link to make it easy for people to
@@ -376,14 +394,16 @@ export const Chat = () => {
           </ThisCopy>
 
           <Actions>
-            <ThisPrimaryCTA
+            <Link
               to="/thread/764331db-16dd-4fc4-a2c5-aabd735a64a9"
               onClick={() =>
                 track(events.HOME_PAGE_EXAMPLE_CONVERSATION_CLICKED)
               }
             >
-              Check out a conversation
-            </ThisPrimaryCTA>
+              <ThisPrimaryCTA icon="message-fill">
+                Check out a conversation
+              </ThisPrimaryCTA>
+            </Link>
           </Actions>
         </FlexCol>
       </ThisContent>
@@ -391,7 +411,7 @@ export const Chat = () => {
   );
 };
 
-export const Sell = () => {
+export const Sell = (props: Props) => {
   const Text = styled(FlexCol)`
     align-items: center;
     margin: 40px 0;
@@ -420,7 +440,7 @@ export const Sell = () => {
     <ThisSection goop={2} background="dark" color={'bg.reverse'}>
       <ThisContent>
         <Text>
-          <ThisTagline>Grindery saves you time and money</ThisTagline>
+          <ThisTagline>Keyy saves you time and money</ThisTagline>
           <Bullets>
             <Bullet>
               <BulletHeading>
@@ -431,8 +451,8 @@ export const Sell = () => {
                 answering the same question over and over.
               </BulletCopy>
               <BulletCopy>
-                Now your team can have conversations with your community as a
-                whole and chat privately when a particular issue is sensitive.
+                Now your team can have conversations with your learning group as
+                a whole and chat privately when a particular issue is sensitive.
               </BulletCopy>
             </Bullet>
             <Bullet>
@@ -440,9 +460,9 @@ export const Sell = () => {
                 <BulletTitle>Bring people together</BulletTitle>
               </BulletHeading>
               <BulletCopy>
-                Grindery gives your top supporters and advocates a place to
-                share their knowledge, empower others, and foster a place of
-                belonging for everyone.
+                Keyy gives your top supporters and advocates a place to share
+                their knowledge, empower others, and foster a place of belonging
+                for everyone.
               </BulletCopy>
             </Bullet>
             <Bullet>
@@ -454,7 +474,7 @@ export const Sell = () => {
                 from your customers.
               </BulletCopy>
               <BulletCopy>
-                Think of Grindery as a new direct line to discovering what your
+                Think of Keyy as a new direct line to discovering what your
                 audience wants the most.
               </BulletCopy>
             </Bullet>
@@ -462,18 +482,20 @@ export const Sell = () => {
         </Text>
       </ThisContent>
       <Actions>
-        <PrimaryCTA
+        <Link
           to="/new/community"
           onClick={() => track(events.HOME_PAGE_CREATE_COMMUNITY_CLICKED)}
         >
-          Start building your community
-        </PrimaryCTA>
+          <PrimaryCTA icon="plus-fill">
+            Start building your learning group
+          </PrimaryCTA>
+        </Link>
       </Actions>
     </ThisSection>
   );
 };
 
-export const Yours = () => {
+export const Yours = (props: Props) => {
   const ThisContent = styled(Content)`
     margin: 60px 16px 80px;
     font-size: 18px;
@@ -486,16 +508,26 @@ export const Yours = () => {
     align-self: center;
   `;
 
-  const ThisSecondaryCTA = styled(WhiteOutlineButton)`
+  const ThisSecondaryCTA = styled(SecondaryCTA)`
     margin-left: 16px;
+    font-size: 16px;
+    border: 2px solid ${theme.text.reverse};
 
-    @media (max-width: ${MEDIA_BREAK}px) {
+    @media (max-width: 768px) {
       margin-left: 0;
       margin-top: 16px;
     }
   `;
 
-  const ThisPrimaryCTA = styled(WhiteButton)``;
+  const ThisPrimaryCTA = styled(PrimaryCTA)`
+    font-size: 16px;
+    color: ${theme.text.default};
+
+    &:hover {
+      color: ${theme.brand.alt};
+      box-shadow: ${Shadow.high} #000;
+    }
+  `;
 
   const Actions = styled(Flexer)`
     margin-top: 32px;
@@ -505,7 +537,7 @@ export const Yours = () => {
       display: inline-block;
     }
 
-    @media (max-width: ${MEDIA_BREAK}px) {
+    @media (max-width: 768px) {
       justify-content: center;
     }
   `;
@@ -520,7 +552,7 @@ export const Yours = () => {
     flex-wrap: wrap;
     margin-left: -32px;
 
-    @media (max-width: ${MEDIA_BREAK}px) {
+    @media (max-width: 768px) {
       display: none;
     }
   `;
@@ -595,7 +627,7 @@ export const Yours = () => {
     <Section goop={0} background={'reverse'}>
       <ThisContent>
         <FlexCol>
-          <ThisTagline>You’re gonna love Grindery.</ThisTagline>
+          <ThisTagline>You’re gonna love Keyy.</ThisTagline>
           <Quotes>
             <Quote>
               <Rule>
@@ -604,7 +636,7 @@ export const Yours = () => {
                 <hr />
               </Rule>
               <Pullquote>
-                okay, honestly Grindery is the best thing that happened to me
+                okay, honestly Keyy is the best thing that happened to me
                 regarding social interaction in 2017
               </Pullquote>
               <Signature to="/users/traykov">
@@ -624,8 +656,8 @@ export const Yours = () => {
                 <hr />
               </Rule>
               <Pullquote>
-                Grindery will take the place that Reddit used to have a long
-                time ago for communities (especially tech) to freely share ideas
+                Keyy will take the place that Reddit used to have a long time
+                ago for learning groups (especially tech) to freely share ideas
                 and interact. Except realtime and trolling-free
               </Pullquote>
               <Signature to="/users/rauchg">
@@ -641,8 +673,8 @@ export const Yours = () => {
                 <hr />
               </Rule>
               <Pullquote>
-                Grindery is definitely a product worth looking out for. Huge fan
-                and been lovely to be a part of the unique communities.
+                Keyy is definitely a product worth looking out for. Huge fan and
+                been lovely to be a part of the unique learning groups.
               </Pullquote>
               <Signature to="/users/tayler-m-odea">
                 <UserAvatar
@@ -656,18 +688,20 @@ export const Yours = () => {
             </Quote>
           </Quotes>
           <Actions>
-            <ThisPrimaryCTA
+            <Link
               to="/login"
               onClick={() => track(events.HOME_PAGE_JOIN_SPECTRUM_CLICKED)}
             >
-              Join Grindery
-            </ThisPrimaryCTA>
-            <ThisSecondaryCTA
+              <ThisPrimaryCTA icon="welcome">Join Keyy</ThisPrimaryCTA>
+            </Link>
+            <Link
               to="/explore"
               onClick={() => track(events.HOME_PAGE_CREATE_COMMUNITY_CLICKED)}
             >
-              Explore communities
-            </ThisSecondaryCTA>
+              <ThisSecondaryCTA icon="explore">
+                Explore learning groups
+              </ThisSecondaryCTA>
+            </Link>
           </Actions>
         </FlexCol>
       </ThisContent>

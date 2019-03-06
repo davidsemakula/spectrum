@@ -68,7 +68,7 @@ export default requireAuth(
       });
 
       return new UserError(
-        "You're on an old version of Grindery, please refresh your browser."
+        "You're on an old version of Keyy, please refresh your browser."
       );
     }
 

@@ -67,8 +67,10 @@ class DesktopAppUpsell extends React.Component<{}, State> {
             <Icon glyph="view-close" size={20} />
           </CloseIconContainer>
           <Content>
-            <Title>Download Grindery for Mac</Title>
-            <Subtitle>A better way to keep up with your communities.</Subtitle>
+            <Title>Download Keyy for Mac</Title>
+            <Subtitle>
+              A better way to keep up with your learning groups.
+            </Subtitle>
 
             <a href={DESKTOP_APP_MAC_URL} onClick={this.download}>
               <OutlineButton>Download</OutlineButton>

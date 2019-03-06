@@ -181,7 +181,9 @@ class DeleteDoubleCheckModal extends React.Component<Props, State> {
               // eslint-disable-next-line
               window.location.href = redirect ? redirect : '/';
               // history.push(redirect ? redirect : '/');
-              dispatch(addToastWithTimeout('neutral', 'Community deleted.'));
+              dispatch(
+                addToastWithTimeout('neutral', 'Learning group deleted.')
+              );
               this.setState({
                 isLoading: false,
               });
@@ -193,7 +195,7 @@ class DeleteDoubleCheckModal extends React.Component<Props, State> {
             dispatch(
               addToastWithTimeout(
                 'error',
-                `Sorry, we weren't able to delete this community. ${
+                `Sorry, we weren't able to delete this learning group. ${
                   err.message
                 }`
               )

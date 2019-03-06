@@ -44,7 +44,7 @@ export const CommunityInviteNotification = ({
       <CreatedContext>
         <Icon glyph="community" />
         <TextContent pointer={true}>
-          {actors.asObjects[0].name} invited you to join their community,{' '}
+          {actors.asObjects[0].name} invited you to join their learning group,{' '}
           {context.asString} {date}
         </TextContent>
       </CreatedContext>

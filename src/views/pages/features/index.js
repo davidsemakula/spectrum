@@ -2,11 +2,12 @@
 import * as React from 'react';
 import Section from 'src/components/themedSection';
 import PageFooter from '../components/footer';
+import { Link } from 'react-router-dom';
 import Icon from 'src/components/icon';
 import { Easy, Happy, Impact, Ideas } from 'src/components/illustrations';
 import { Wrapper } from '../style';
 import { Heading, Copy } from '../pricing/style';
-import { PrimaryButton } from 'src/components/button';
+import { Button } from 'src/components/button';
 import {
   Intro,
   TextContent,
@@ -42,25 +43,29 @@ class Features extends React.Component<Props, State> {
   render() {
     return (
       <Wrapper data-cy="features-page">
-        <Head title={'Grindery · Features'} />
+        <Head title={'Keyy · Features'} />
 
         <Section background={'blank'} goop={1} color={'brand.alt'}>
           <Intro>
             <TextContent>
               <Heading>
-                Everything you need to build a great online community
+                Everything you need to build a great online learning group
               </Heading>
               <Copy style={{ marginBottom: '32px' }}>
-                We give you a powerful set of tools to grow your community
+                We give you a powerful set of tools to grow your learning group
                 organically, moderate it effectively, and measure its ROI for
                 your organization.
               </Copy>
-              <PrimaryButton
-                to={'/new/community'}
-                onClick={() => track(events.FEATURES_PAGE_GET_STARTED_CLICKED)}
-              >
-                Get started
-              </PrimaryButton>
+              <Link to={`/new/community`}>
+                <Button
+                  icon="welcome"
+                  onClick={() =>
+                    track(events.FEATURES_PAGE_GET_STARTED_CLICKED)
+                  }
+                >
+                  Get started
+                </Button>
+              </Link>
             </TextContent>
             <Waterfall src="/img/waterfall.png" />
           </Intro>
@@ -72,14 +77,14 @@ class Features extends React.Component<Props, State> {
             </Topic>
             <FeatureList>
               <Heading reverse>
-                Growing your community has never been so easy.
+                Growing your learning group has never been so easy.
               </Heading>
               <Feature>
                 <Icon glyph="message" size="48" />
                 <FeatureName>Finally, chat that scales</FeatureName>
                 <FeatureCopy>
                   <p>
-                    We’ve taken the best features of modern chat platforms and
+                    We've taken the best features of modern chat platforms and
                     old-school forums and smashed them together into a format
                     that makes it easy scale to any size - even across
                     timezones.
@@ -91,21 +96,23 @@ class Features extends React.Component<Props, State> {
                 <FeatureName>Location, location, location</FeatureName>
                 <FeatureCopy>
                   <p>
-                    Conversations and communities on Grindery are public,
+                    Conversations and learning groups on Keyy are public,
                     permalinked, and search engine optimized by default which
-                    makes it easy for new members to find and join your
-                    community.
+                    makes it easy for new members to find and join your learning
+                    group.
                   </p>
                 </FeatureCopy>
               </Feature>
               <Feature>
                 <Icon glyph="profile" size="48" />
-                <FeatureName>Every community, only one account</FeatureName>
+                <FeatureName>
+                  Every learning group, only one account
+                </FeatureName>
                 <FeatureCopy>
                   <p>
                     Skip managing multiple credentials and playing whack-a-mole
-                    with DMs and notifications, Grindery lets you join as many
-                    communities as you want with only one account.
+                    with DMs and notifications, Keyy lets you join as many
+                    learning groups as you want with only one account.
                   </p>
                 </FeatureCopy>
               </Feature>
@@ -118,7 +125,9 @@ class Features extends React.Component<Props, State> {
               <Happy />
             </Topic>
             <FeatureList>
-              <Heading reverse>Keep your community happy and healthy.</Heading>
+              <Heading reverse>
+                Keep your learning group happy and healthy.
+              </Heading>
               <Feature>
                 <Icon glyph="controls" size="48" />
                 <FeatureName>
@@ -128,23 +137,23 @@ class Features extends React.Component<Props, State> {
                   <p>
                     We give you fine-grained solutions to moderation issues via
                     individual locking, blocking, and deletion controls for each
-                    thread, message, and member in your community.
+                    thread, message, and member in your learning group.
                   </p>
                   <p>
-                    We also give every community automated toxicity monitoring
-                    and spam prevention by default.
+                    We also give every learning group automated toxicity
+                    monitoring and spam prevention by default.
                   </p>
                 </FeatureCopy>
               </Feature>
               <Feature>
-                <Icon glyph="rep" size="48" />
-                <FeatureName>Real members. Real reputation.</FeatureName>
+                <Icon glyph="keyy-coin" size="48" />
+                <FeatureName>Real members. Real Keyy Coin.</FeatureName>
                 <FeatureCopy>
                   <p>
-                    With Grindery’s Rep system, you can see how active and
-                    constructive a member is in your community - and globally
-                    across communities - which makes it simple to figure out if
-                    an issue is a trend or an isolated incident.
+                    With Keyy's Keyy Coin system, you can see how active and
+                    constructive a member is in your learning group - and
+                    globally across learning groups - which makes it simple to
+                    figure out if an issue is a trend or an isolated incident.
                   </p>
                 </FeatureCopy>
               </Feature>
@@ -156,7 +165,7 @@ class Features extends React.Component<Props, State> {
                 <FeatureCopy>
                   <p>
                     Identifying a problem is one thing, but it can still be hard
-                    to know how to act on a moderation issue. SAM (Grindery
+                    to know how to act on a moderation issue. KAM (Keyy
                     Assistant Moderator) helps you make those decisions by
                     recommending proven solutions, automatically flagging toxic
                     messages for removal, and even addressing issues with
@@ -175,16 +184,18 @@ class Features extends React.Component<Props, State> {
             <FeatureList>
               <Heading>Focus on impact, not usage.</Heading>
               <Feature>
-                <Icon glyph="like" size="48" />
-                <FeatureName>Understand your community’s health</FeatureName>
+                <Icon glyph="aha" size="48" />
+                <FeatureName>
+                  Understand your learning group's health
+                </FeatureName>
                 <FeatureCopy>
                   <p>
-                    When you add Community Analytics to your community, you’ll
-                    get a bird’s eye view of your community’s overall growth and
-                    user engagement.
+                    When you add Learning group Analytics to your learning
+                    group, you'll get a bird's eye view of your learning group's
+                    overall growth and user engagement.
                   </p>
                   <p>
-                    You’ll also get a heads up of what types of conversations
+                    You'll also get a heads up of what types of conversations
                     are most active as well as a list of any that have gone
                     unanswered.
                   </p>
@@ -197,7 +208,7 @@ class Features extends React.Component<Props, State> {
                 </FeatureName>
                 <FeatureCopy>
                   <p>
-                    With Grindery integrations, your community can go beyond
+                    With Keyy integrations, your learning group can go beyond
                     engagement to provide a convenient first-touch experience to
                     organically onboard and convert new users.
                   </p>
@@ -206,13 +217,13 @@ class Features extends React.Component<Props, State> {
               <Feature>
                 <Icon glyph="analytics" size="48" />
                 <FeatureName comingSoon bright>
-                  Visualize your community’s ROI
+                  Visualize your learning group's ROI
                 </FeatureName>
                 <FeatureCopy>
                   <p>
                     With Business Analytics, you can connect your user accounts
-                    to your community and correlate member activity directly to
-                    key customer success metrics.
+                    to your learning group and correlate member activity
+                    directly to key customer success metrics.
                   </p>
                   <p>
                     See how member engagement directly impacts customer LTV,
@@ -241,8 +252,8 @@ class Features extends React.Component<Props, State> {
                     provide help to users efficiently - especially at scale.
                   </p>
                   <p>
-                    Grindery enables you and your users to address issues
-                    globally and searchably without the extra duplicated effort.
+                    Keyy enables you and your users to address issues globally
+                    and searchably without the extra duplicated effort.
                   </p>
                 </FeatureCopy>
               </Feature>
@@ -251,14 +262,14 @@ class Features extends React.Component<Props, State> {
                 <FeatureName>Collect actionable feedback and ideas</FeatureName>
                 <FeatureCopy>
                   <p>
-                    Grindery’s great for collecting feature requests and user
+                    Keyy's great for collecting feature requests and user
                     feedback, and the realtime nature makes it easy for the
                     requests to adapt as you update your product.
                   </p>
                   <p>
                     Want feedback on an upcoming release? Spin up a private
                     channel for your beta testers alongside the rest of your
-                    community!
+                    learning group!
                   </p>
                 </FeatureCopy>
               </Feature>
@@ -280,7 +291,7 @@ class Features extends React.Component<Props, State> {
         </Section>
         <Section background={'default'} goop={4} color={'bg.reverse'}>
           <EtcGrid>
-            <Heading>And there’s a whole lot more to love...</Heading>
+            <Heading>And there's a whole lot more to love...</Heading>
             <EtcFeature color="success.alt">
               <Icon glyph="thread" />
               <EtcName>Unlimited chat</EtcName>
@@ -299,7 +310,7 @@ class Features extends React.Component<Props, State> {
             </EtcFeature>
             <EtcFeature color="special.default">
               <Icon glyph="community" />
-              <EtcName>Public community</EtcName>
+              <EtcName>Public learning group</EtcName>
             </EtcFeature>
             <EtcFeature color="warn.alt">
               <Icon glyph="private-outline" />
@@ -332,12 +343,14 @@ class Features extends React.Component<Props, State> {
           </EtcGrid>
           <EtcCTA>
             <EtcName>What are you waiting for?</EtcName>
-            <PrimaryButton
-              to={'/new/community'}
-              onClick={() => track(events.FEATURES_PAGE_GET_STARTED_CLICKED)}
-            >
-              Get started
-            </PrimaryButton>
+            <Link to={`/new/community`}>
+              <Button
+                icon="welcome"
+                onClick={() => track(events.FEATURES_PAGE_GET_STARTED_CLICKED)}
+              >
+                Get started
+              </Button>
+            </Link>
           </EtcCTA>
         </Section>
         <PageFooter />

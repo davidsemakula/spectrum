@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import { theme } from 'shared/theme';
 
 export const Container = styled.div`
+  display: none;
+`;
+
+export const Card = styled.div`
   padding: 16px;
 
   a,

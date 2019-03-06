@@ -330,9 +330,9 @@ class UserWithData extends React.Component<Props, State> {
       <SectionCard data-cy="user-edit-form">
         <Location>
           <Icon glyph="view-back" size={16} />
-          <Link to={`/users/${username}`}>Return to Profile</Link>
+          <Link to={`/users/${username}`}>Return to Portfolio</Link>
         </Location>
-        <SectionTitle>Profile Settings</SectionTitle>
+        <SectionTitle>Portfolio Settings</SectionTitle>
         <Form onSubmit={this.save}>
           <ImageInputWrapper>
             <CoverInput

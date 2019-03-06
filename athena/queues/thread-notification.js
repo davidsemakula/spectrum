@@ -110,29 +110,29 @@ export default async (job: Job<ThreadNotificationJobData>) => {
               channel.name
             }:`,
             author_name: `${author.name} (@${author.username})`,
-            author_link: `https://chat.grindery.io/users/${author.username}`,
+            author_link: `https://learn.keyy.org/users/${author.username}`,
             author_icon: signedAuthor.profilePhoto,
             pretext: `New conversation published in ${community.name} #${
               channel.name
             }:`,
             title: truncateString(incomingThread.content.title, 80),
-            title_link: `https://chat.grindery.io/thread/${incomingThread.id}`,
+            title_link: `https://learn.keyy.org/thread/${incomingThread.id}`,
             text: truncateString(plainTextBody, 140),
-            footer: 'Grindery',
+            footer: 'Keyy',
             footer_icon:
-              'https://chat.grindery.io/img/apple-icon-57x57-precomposed.png',
+              'https://learn.keyy.org/img/apple-icon-57x57-precomposed.png',
             ts: new Date(incomingThread.createdAt).getTime() / 1000,
             color: '#4400CC',
             actions: [
               {
                 type: 'button',
                 text: 'View conversation',
-                url: `https://chat.grindery.io/thread/${incomingThread.id}`,
+                url: `https://learn.keyy.org/thread/${incomingThread.id}`,
               },
               {
                 type: 'button',
                 text: `Message ${author.name}`,
-                url: `https://chat.grindery.io/users/${author.username}`,
+                url: `https://learn.keyy.org/users/${author.username}`,
               },
             ],
           },

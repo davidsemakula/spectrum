@@ -21,9 +21,7 @@ export default requireAuth(async (_: any, args: Input, ctx: GraphQLContext) => {
   const result = await getUserByEmail(email);
 
   if (result && result.email === email) {
-    return new UserError(
-      'Another person on Grindery is already using this email.'
-    );
+    return new UserError('Another person on Keyy is already using this email.');
   }
 
   return await setUserPendingEmail(user.id, email)

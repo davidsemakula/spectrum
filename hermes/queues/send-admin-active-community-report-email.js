@@ -35,9 +35,9 @@ export default (
     return sendEmail({
       templateId: ADMIN_ACTIVE_COMMUNITY_REPORT_TEMPLATE,
       to: [
-        { email: 'brian@chat.grindery.io ' },
-        { email: 'max@chat.grindery.io ' },
-        { email: 'bryn@chat.grindery.io ' },
+        { email: 'brian@learn.keyy.org ' },
+        { email: 'max@learn.keyy.org ' },
+        { email: 'bryn@learn.keyy.org ' },
       ],
       dynamic_template_data: {
         subject: `Active Community Report: ${month} ${day}, ${year}`,

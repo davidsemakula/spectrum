@@ -3,7 +3,7 @@ import { request } from '../../utils';
 import db from 'shared/testing/db';
 import data from 'shared/testing/data';
 
-// various permissions for Grindery community
+// various permissions for Keyy community
 const community = data.communities[0];
 const owner = data.users.find(({ username }) => username === 'mxstbr');
 const member = data.users.find(({ username }) => username === 'bryn');

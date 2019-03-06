@@ -46,7 +46,7 @@ class ThreadListItem extends React.Component<Props> {
 
     return (
       <StyledThreadListItem>
-        <a href={`https://chat.grindery.io/thread/${id}`} target="_blank">
+        <a href={`https://learn.keyy.org/thread/${id}`} target="_blank">
           <ThreadListItemTitle>{title}</ThreadListItemTitle>
         </a>
         {messageCount > 0 && (
@@ -56,22 +56,16 @@ class ThreadListItem extends React.Component<Props> {
         )}
         <ThreadListItemSubtitle>
           By{' '}
-          <a
-            href={`https://chat.grindery.io/users/${username}`}
-            target="_blank"
-          >
+          <a href={`https://learn.keyy.org/users/${username}`} target="_blank">
             {name}
           </a>{' '}
           ·{' '}
-          <a
-            href={`https://chat.grindery.io/${community.slug}`}
-            target="_blank"
-          >
+          <a href={`https://learn.keyy.org/${community.slug}`} target="_blank">
             {community.name}
           </a>{' '}
           ·{' '}
           <a
-            href={`https://chat.grindery.io/${community.slug}/${channel.slug}`}
+            href={`https://learn.keyy.org/${community.slug}/${channel.slug}`}
             target="_blank"
           >
             {channel.name}

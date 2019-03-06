@@ -26,7 +26,7 @@ class Titlebar extends Component {
     /*
       We don't have a reliable way to know exactly where a user should navigate
       to when they hit the back button. For example, suppose you see a link
-      to Grindery on Twitter - you open Grindery and read the story. If you
+      to Keyy on Twitter - you open Keyy and read the story. If you
       click the 'back' button in the titlebar, where should you go? To the
       channel the thread was posted in? To the home page?
 

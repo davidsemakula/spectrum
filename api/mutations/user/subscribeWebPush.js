@@ -26,7 +26,7 @@ export default requireAuth(async (_: any, args: Input, ctx: GraphQLContext) => {
       return sendWebPushNotification(
         subscription,
         {
-          title: 'A notification from Grindery',
+          title: 'A notification from Keyy',
           body: 'Yay, notifications are enabled! 🚀',
         },
         {

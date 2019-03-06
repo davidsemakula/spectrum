@@ -3,7 +3,8 @@ import * as React from 'react';
 import PageFooter from '../components/footer';
 import Section from 'src/components/themedSection';
 import { Wrapper } from '../style';
-import { OutlineButton } from 'src/components/button';
+import { Link } from 'react-router-dom';
+import { Button } from 'src/components/button';
 import {
   FourUp,
   Heading,
@@ -15,8 +16,6 @@ import {
 import { track, events } from 'src/helpers/analytics';
 import Head from 'src/components/head';
 
-import DOMAIN from 'shared/site-domain';
-
 class Support extends React.Component<{}> {
   componentDidMount() {
     track(events.SUPPORT_PAGE_VIEWED);
@@ -26,7 +25,7 @@ class Support extends React.Component<{}> {
     return (
       <Wrapper data-cy="support-page">
         <Head
-          title={'Grindery · Support'}
+          title={'Keyy · Support'}
           description={'Questions, feedback, or just need to get in touch?'}
         />
 
@@ -49,12 +48,15 @@ class Support extends React.Component<{}> {
                 </PlanDescription>
               </div>
 
-              <OutlineButton
-                to="/spectrum/hugs-n-bugs"
-                onClick={() => track(events.SUPPORT_PAGE_REPORT_BUG)}
-              >
-                Join Hugs-n-Bugs
-              </OutlineButton>
+              <Link to={'/spectrum/hugs-n-bugs'}>
+                <Button
+                  gradientTheme={'warn'}
+                  icon={'bug'}
+                  onClick={() => track(events.SUPPORT_PAGE_REPORT_BUG)}
+                >
+                  Join Hugs-n-Bugs
+                </Button>
+              </Link>
             </PlanSection>
 
             <PlanSection style={{ gridArea: 'two' }}>
@@ -66,55 +68,71 @@ class Support extends React.Component<{}> {
                 </PlanDescription>
               </div>
 
-              <OutlineButton
-                to="/spectrum/feature-requests"
-                onClick={() => track(events.SUPPORT_PAGE_REQUEST_FEATURE)}
-              >
-                Request a feature
-              </OutlineButton>
+              <Link to={'/spectrum/feature-requests'}>
+                <Button
+                  gradientTheme={'space'}
+                  icon={'idea'}
+                  onClick={() => track(events.SUPPORT_PAGE_REQUEST_FEATURE)}
+                >
+                  Request a feature
+                </Button>
+              </Link>
             </PlanSection>
 
             <PlanSection style={{ gridArea: 'three' }}>
               <div>
                 <PlanPrice>What we’ve been working on</PlanPrice>
                 <PlanDescription>
-                  We post news, release notes, and threads from all over
-                  Grindery on Twitter, or directly in our community.
+                  We post news, release notes, and threads from all over Keyy on
+                  Twitter, or directly in our learning group.
                 </PlanDescription>
               </div>
 
-              <OutlineButton
-                href="https://twitter.com/withgrindery"
-                onClick={() => track(events.SUPPORT_PAGE_FOLLOW_ON_TWITTER)}
+              <a
+                href={'https://twitter.com/withkeyy'}
+                target={'_blank'}
+                rel={'noopener noreferrer'}
               >
-                Follow us on Twitter
-              </OutlineButton>
+                <Button
+                  gradientTheme={'social.twitter'}
+                  icon={'twitter'}
+                  onClick={() => track(events.SUPPORT_PAGE_FOLLOW_ON_TWITTER)}
+                >
+                  Follow us on Twitter
+                </Button>
+              </a>
 
-              <OutlineButton
-                to="/spectrum"
-                onClick={() =>
-                  track(events.SUPPORT_PAGE_JOIN_SPECTRUM_COMMUNITY)
-                }
-              >
-                Join our community
-              </OutlineButton>
+              <Link to={'/spectrum'}>
+                <Button
+                  gradientTheme={'brand'}
+                  icon={'button-logo'}
+                  onClick={() =>
+                    track(events.SUPPORT_PAGE_JOIN_SPECTRUM_COMMUNITY)
+                  }
+                >
+                  Join our learning group
+                </Button>
+              </Link>
             </PlanSection>
 
             <PlanSection style={{ gridArea: 'four' }}>
               <div>
                 <PlanPrice>Anything else?</PlanPrice>
                 <PlanDescription>
-                  Concerned about something on Grindery? Shoot us an email and
-                  we’ll take care of it right away.
+                  Concerned about something on Keyy? Shoot us an email and we’ll
+                  take care of it right away.
                 </PlanDescription>
               </div>
 
-              <OutlineButton
-                href={`mailto:hi@${DOMAIN}`}
-                onClick={() => track(events.SUPPORT_PAGE_EMAIL_US)}
-              >
-                Email us
-              </OutlineButton>
+              <a href={'mailto:hi@learn.keyy.org'}>
+                <Button
+                  gradientTheme={'special'}
+                  icon={'email'}
+                  onClick={() => track(events.SUPPORT_PAGE_EMAIL_US)}
+                >
+                  Email us
+                </Button>
+              </a>
             </PlanSection>
           </FourUp>
         </Section>

@@ -203,7 +203,7 @@ class Search extends Component {
           ref="input"
           type="text"
           value={searchString}
-          placeholder="Search for communities..."
+          placeholder="Search for learning groups..."
           onChange={this.handleChange}
           autoFocus={true}
         />
@@ -245,7 +245,7 @@ class Search extends Component {
               <SearchResult>
                 <SearchResultTextContainer>
                   <SearchResultNull>
-                    No communities found matching "{searchString}"
+                    No learning groups found matching "{searchString}"
                   </SearchResultNull>
                 </SearchResultTextContainer>
               </SearchResult>

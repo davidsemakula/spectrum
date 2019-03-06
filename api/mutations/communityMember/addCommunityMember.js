@@ -74,7 +74,7 @@ export default requireAuth(async (_: any, args: Input, ctx: GraphQLContext) => {
       },
     });
 
-    return new UserError("You're already the owner of this community.");
+    return new UserError("You're already the owner of thislearning group.");
   }
 
   if (permission.isModerator) {
@@ -100,7 +100,7 @@ export default requireAuth(async (_: any, args: Input, ctx: GraphQLContext) => {
       },
     });
 
-    return new UserError('You are already a member of this community.');
+    return new UserError('You are already a member of thislearning group.');
   }
 
   // if the user has previously joined the community, but is not a member,

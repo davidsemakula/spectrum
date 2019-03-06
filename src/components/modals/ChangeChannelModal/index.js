@@ -112,7 +112,7 @@ class ChangeChannelModal extends React.Component<Props, State> {
             <Section data-cy="move-thread-modal">
               <Title>Change channel</Title>
               <Subtitle>
-                Move this thread to a new channel in the same community.
+                Move this thread to a new channel in the same learning group.
               </Subtitle>
 
               <ChannelSelector

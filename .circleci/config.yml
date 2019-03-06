@@ -1,5 +1,4 @@
-# CircleCI configuration for Spectrum 
-version: 2.1
+# CircleCI configuration for Spectrum
 
 # Aliases
 aliases:
@@ -64,6 +63,7 @@ js_defaults: &js_defaults
   docker:
     - image: circleci/node:8
 
+version: 2
 jobs:
 
   # Set up environment and install required dependencies
@@ -72,32 +72,21 @@ jobs:
     steps:
       - checkout
 
-      - restore_cache: *restore-yarn-cache
+      - restore-cache: *restore-yarn-cache
       - run: *yarn
-      - save_cache: *save-yarn-cache
+      - save-cache: *save-yarn-cache
 
       - persist_to_workspace:
           root: .
           paths: .
 
-  build_web:
-    <<: *js_defaults
-    steps:
-      - attach_workspace:
-          at: ~/spectrum
-      - run: *setup-and-build-web
-      - run: *build-api
-      - persist_to_workspace:
-          root: .
-          paths:
-            - build-api
-            - build
-
-  test_unit:
+  # Start db and servers, then run e2e and unit tests
+  test_web:
     <<: *defaults
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:8-browsers
       - image: redis:3.2.7
+      - image: cypress/base:6
       - image: rethinkdb:2.3.5
     environment:
       TERM: xterm
@@ -109,52 +98,42 @@ jobs:
       - run:
           name: Run Unit Tests
           command: yarn run test:ci
-
-
-  # Start db and servers, then run e2e and unit tests
-  test_integration:
-    <<: *defaults
-    docker:
-      - image: circleci/node:8-browsers
-      - image: redis:3.2.7
-      - image: cypress/base:6
-      - image: rethinkdb:2.3.5
-    parameters:
-      parallelism:
-        type: integer
-        default: 1
-        description: Number of boxes to use to run this job
-    parallelism: <<parameters.parallelism>>
-    environment:
-      TERM: xterm
-    steps:
-      - attach_workspace:
-          at: ~/spectrum
-      - run: yarn run db:migrate
-      - run: yarn run db:seed
+      - run: *setup-and-build-web
+      - run: *build-api
       - run: *start-api
       - run: *start-web
       # Wait for the API and webserver to start
       - run: ./node_modules/.bin/wait-on http://localhost:3000 http://localhost:3001
       - run:
+          name: Run Unit Tests
+          command: yarn run test:ci
+      - run:
           name: Install Cypress
           command: yarn run cypress:install
       - run:
           name: Run E2E Tests
-          command: |
-            if [ $CYPRESS_RECORD_KEY ]; then 
-              yarn run test:e2e -- --record --parallel
-            else
-              yarn run test:e2e
-            fi
+          command: test $CYPRESS_RECORD_KEY && yarn run test:e2e -- --record || yarn run test:e2e
+      - run:
+          name: Test desktop apps
+          command: yarn run test:desktop
 
-  # This runs after the above and is only here to hack around missing support for varying jobs based on external vs internal PRs
-  # See https://github.com/withspectrum/spectrum/pull/4820
-  test_e2e:
-    docker:
-      - image: cypress/base:10
-    steps:
-      - run: echo "pass"
+  # deploy_alpha:
+    # <<: *js_defaults
+    # docker:
+      # - image: circleci/node:8-browsers
+    # steps:
+      # - attach_workspace:
+          # at: ~/spectrum
+      # - run: *build-api
+      # - run:
+          # name: Deploy and alias API
+          # command: |
+            # cd build-api
+            # npx now-cd --alias "alpha=api.alpha.learn.keyy.org" --team space-program
+            # cd ..
+      # - run:
+          # name: Deploy and alias Hyperion
+          # command: npx now-cd --alias "alpha=hyperion.alpha.learn.keyy.org" --team space-program
 
   # Run eslint, flow etc.
   test_static_js:
@@ -170,38 +149,25 @@ jobs:
           command: yarn run lint
 
 workflows:
+  version: 2
+
   test:
     jobs:
       - checkout_environment
-      - test_unit:
+
+      # Testing
+      - test_web:
           requires:
             - checkout_environment
       - test_static_js:
           requires:
             - checkout_environment
-      - build_web:
-          requires:
-            - checkout_environment
-      # Run pull requests from internal contributors in parallel
-      - test_integration:
-          name: test_e2e_internal
-          requires:
-            - build_web
-          parallelism: 4
-          filters:
-            branches:
-              ignore: /pull.*/
-      # Run pull requests from external contributors on one machine
-      - test_integration:
-          name: test_e2e_external
-          requires:
-            - build_web
-          parallelism: 1
-          filters:
-            branches:
-              only: /pull.*/
-      # If either of the test_e2e_* jobs pass, this one passes so we can mark it as required on GitHub
-      - test_e2e:
-          requires:
-            - test_e2e_internal
-            - test_e2e_external
+
+      # Deployment
+      # - deploy_alpha:
+          # requires:
+            # - test_static_js
+            # - test_web
+          # filters:
+            # branches:
+              # only: alpha

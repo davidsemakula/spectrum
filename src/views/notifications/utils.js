@@ -110,7 +110,7 @@ export const parseEvent = event => {
     }
     case 'THREAD_REACTION_CREATED':
     case 'REACTION_CREATED': {
-      return <span>liked</span>;
+      return <span>had an Aha! moment about</span>;
     }
     case 'CHANNEL_CREATED': {
       return <span>created a channel</span>;

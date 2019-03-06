@@ -74,17 +74,17 @@ class ProfileDropdown extends React.Component<ProfileProps, State> {
             </Link>
           )}
 
-          {didMount && isMac() && !isDesktopApp() && (
+          {/*didMount && isMac() && !isDesktopApp() && (
             <Link to={`/apps`}>
               <UserProfileDropdownListItem>
                 Desktop App
               </UserProfileDropdownListItem>
             </Link>
-          )}
+          )*/}
 
           <Link to={`/about`}>
             <UserProfileDropdownListItem>
-              About Grindery
+              About Keyy
             </UserProfileDropdownListItem>
           </Link>
           <Link to={`/support`}>

@@ -80,8 +80,8 @@ export const UpsellMiniCreateCommunity = () => {
   return (
     <MiniNullCard
       bg="onboarding"
-      heading="Create a community"
-      copy="Building communities on Grindery is easy and free forever"
+      heading="Create a learning group"
+      copy="Building learning groups on Keyy is easy and free forever"
     >
       <Link to="/new/community">
         <Button>Get Started</Button>
@@ -95,8 +95,8 @@ export const UpsellMiniCreateCommunity = () => {
 // to go down the path of creating a community, clicking on the 'get started'
 // button will close the new user onboarding
 export const UpsellCreateCommunity = () => {
-  const title = 'Create a community';
-  const subtitle = 'Building communities on Grindery is easy and free forever';
+  const title = 'Create a learning group';
+  const subtitle = 'Building learning groups on Keyy is easy and free forever';
 
   return (
     <NullCard bg={'onboarding'}>
@@ -157,13 +157,13 @@ export class UpsellSignIn extends React.Component<SigninProps, SigninState> {
     } else {
       const subtitle = view
         ? view.type === 'community'
-          ? `Grindery is a place where communities can share, discuss, and grow together. Sign up to join the ${
+          ? `Keyy is a place where learning groups can share, discuss, and grow together. Sign up to join the ${
               view.data.name
-            } community and get in on the conversation.`
-          : `Grindery is a place where communities can share, discuss, and grow together. Sign up to join the ${
+            } learning group and get in on the conversation.`
+          : `Keyy is a place where learning groups can share, discuss, and grow together. Sign up to join the ${
               view.data.community.name
-            } community and get in on the conversation.`
-        : 'Grindery is a place where communities can share, discuss, and grow together. Sign up below to get in on the conversation.';
+            } learning group and get in on the conversation.`
+        : 'Keyy is a place where learning groups can share, discuss, and grow together. Sign up below to get in on the conversation.';
 
       return (
         <NullCard bg={'signup'} noPadding noShadow={noShadow}>
@@ -213,7 +213,7 @@ export const Upsell404Community = () => {
       </Link>
 
       <Link to={'/new/community'}>
-        <Button large>Create a community</Button>
+        <Button large>Create a learning group</Button>
       </Link>
     </Actions>
   );
@@ -237,9 +237,9 @@ export class UpsellNewUser extends React.Component<NewUserProps> {
         </LargeEmoji>
         <Title>Howdy, {user.name}!</Title>
         <Subtitle>
-          Grindery is a place where communities live. It’s easy to follow the
-          things that you care about most, or even create your own community to
-          share with the world.
+          Keyy is a place where learning groups live. It’s easy to follow the
+          things that you care about most, or even create your own learning
+          group to share with the world.
         </Subtitle>
       </NullCard>
     );

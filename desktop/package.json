@@ -1,10 +1,10 @@
 {
-  "name": "Grindery",
+  "name": "Keyy",
   "description": "The community platform for the future.",
-  "homepage": "https://chat.grindery.io",
+  "homepage": "https://learn.keyy.org",
   "author": {
     "name": "Space Program Inc.",
-    "email": "hi@chat.grindery.io"
+    "email": "hi@learn.keyy.org"
   },
   "repository": "https://github.com/withspectrum/spectrum",
   "version": "1.0.5",
@@ -35,7 +35,7 @@
     "release": "yarn run package:all --publish always"
   },
   "build": {
-    "productName": "Grindery",
+    "productName": "Keyy",
     "appId": "chat.spectrum",
     "copyright": "Copyright © 2018 Space Program Inc.",
     "publish": [

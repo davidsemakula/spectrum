@@ -7,11 +7,11 @@ const { resolve } = require('path');
  **/
 
 module.exports = {
-  APP_NAME: 'Grindery',
+  APP_NAME: 'Keyy',
   APP_VERSION: app.getVersion(),
-  APP_REMOTE_URL: 'https://chat.grindery.io/login',
+  APP_REMOTE_URL: 'https://learn.keyy.org/login',
   APP_DEV_URL: 'http://localhost:3000/login',
-  APP_REMOTE_HOME_URL: 'https://chat.grindery.io',
+  APP_REMOTE_HOME_URL: 'https://learn.keyy.org',
   APP_DEV_HOME_URL: 'http://localhost:3000',
 
   GITHUB_URL: 'https://github.com/withspectrum/spectrum',

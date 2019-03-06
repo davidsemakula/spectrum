@@ -3,7 +3,7 @@ const path = require('path');
 const parse = require('./utils/parse-argv');
 const error = require('./utils/error');
 
-const DOMAIN = 'chat.grindery.io';
+const DOMAIN = 'learn.keyy.org';
 const TEAM = 'inboundlabs';
 
 // Debug util
@@ -84,7 +84,7 @@ if (servers.length > 0) {
     exec(`yarn run build:${server}`);
 
     console.log(`Deploying ${server}...`);
-    const stdout = exec(now(`build-${server}`), {
+    const stdout = exec(now(`--public build-${server}`), {
       stdio: 'pipe',
     });
 

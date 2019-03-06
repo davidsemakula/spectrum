@@ -52,7 +52,7 @@ class BlockedUsers extends React.Component<Props> {
             <SectionSubtitle>
               Blocked users can not see threads or messages posted in this
               channel. They will still be able to join any other public channels
-              in the Grindery community and request access to other private
+              in the Keyy community and request access to other private
               channels.
             </SectionSubtitle>
           )}

@@ -7,6 +7,13 @@ export const CurrentCount = styled.b`
   font-size: 13px;
 `;
 
+/*export const SvgWrapper = styled.svg`
+  height: 20px;
+  width: 20px;
+  max-width: 20px;
+  max-width: 20px;
+`;*/
+
 export const LikeButtonWrapper = styled(Button)`
   background: ${theme.bg.default};
   border: 1px solid ${theme.bg.border};
@@ -39,6 +46,20 @@ export const LikeButtonWrapper = styled(Button)`
     background: ${theme.bg.default};
     color: ${props =>
       props.hasReacted ? props.theme.brand.alt : props.theme.text.default};
+  }
+
+  .icon {
+    color: ${props =>
+      props.hasReacted ? props.theme.brand.alt : props.theme.text.alt};
+
+    svg {
+      padding: 5px 0 5px 0;
+    }
+  }
+
+  icon:hover {
+    color: ${props =>
+      props.hasReacted ? props.theme.brand.reverse : props.theme.text.alt};
   }
 `;
 

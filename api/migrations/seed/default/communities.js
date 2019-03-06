@@ -15,9 +15,9 @@ module.exports = [
     id: SPECTRUM_COMMUNITY_ID,
     createdAt: new Date(DATE),
     isPrivate: false,
-    name: 'Grindery',
+    name: 'Keyy',
     description: 'The future of communities',
-    website: 'https://chat.grindery.io',
+    website: 'https://learn.keyy.org',
     profilePhoto:
       'https://spectrum.imgix.net/communities/-Kh6RfPYjmSaIWbkck8i/Twitter Profile.png.0.6225566835336693',
     coverPhoto:
@@ -31,7 +31,7 @@ module.exports = [
     isPrivate: false,
     name: 'Payments',
     description: 'Where payments are tested',
-    website: 'https://chat.grindery.io',
+    website: 'https://learn.keyy.org',
     profilePhoto:
       'https://spectrum.imgix.net/communities/-Kh6RfPYjmSaIWbkck8i/Twitter Profile.png.0.6225566835336693',
     coverPhoto:
@@ -46,7 +46,7 @@ module.exports = [
     isPrivate: false,
     name: 'Deleted',
     description: 'Things didnt work out',
-    website: 'https://chat.grindery.io',
+    website: 'https://learn.keyy.org',
     profilePhoto:
       'https://spectrum.imgix.net/communities/-Kh6RfPYjmSaIWbkck8i/Twitter Profile.png.0.6225566835336693',
     coverPhoto:
@@ -60,7 +60,7 @@ module.exports = [
     isPrivate: true,
     name: 'Private community',
     description: 'Private community',
-    website: 'https://chat.grindery.io',
+    website: 'https://learn.keyy.org',
     profilePhoto:
       'https://spectrum.imgix.net/communities/-Kh6RfPYjmSaIWbkck8i/Twitter Profile.png.0.6225566835336693',
     coverPhoto:
@@ -74,7 +74,7 @@ module.exports = [
     isPrivate: false,
     name: 'Single channel community',
     description: 'Single channel community',
-    website: 'https://chat.grindery.io',
+    website: 'https://learn.keyy.org',
     profilePhoto:
       'https://spectrum.imgix.net/communities/-Kh6RfPYjmSaIWbkck8i/Twitter Profile.png.0.6225566835336693',
     coverPhoto:
@@ -88,7 +88,7 @@ module.exports = [
     isPrivate: true,
     name: 'private community with join token',
     description: 'private community with join token',
-    website: 'https://chat.grindery.io',
+    website: 'https://learn.keyy.org',
     profilePhoto:
       'https://spectrum.imgix.net/communities/-Kh6RfPYjmSaIWbkck8i/Twitter Profile.png.0.6225566835336693',
     coverPhoto:

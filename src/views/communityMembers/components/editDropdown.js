@@ -73,14 +73,14 @@ class EditDropdown extends React.Component<Props, State> {
       id: 'moderator',
       title: 'Team member',
       subtitle:
-        'Highlighted across the community, and can moderate conversations',
+        'Highlighted across the learning group, and can moderate conversations',
       selected: false,
     },
     blocked: {
       id: 'blocked',
       title: 'Blocked',
       subtitle:
-        'Can not start or join conversations, and will not receive any notifications about community activity',
+        'Can not start or join conversations, and will not receive any notifications about group activity',
       selected: false,
     },
     member: {
@@ -93,14 +93,14 @@ class EditDropdown extends React.Component<Props, State> {
     approvePendingMember: {
       id: 'approvePending',
       title: 'Approve',
-      subtitle: 'Approve this person to join your community',
+      subtitle: 'Approve this person to join your learning group',
       selected: false,
     },
     blockPendingMember: {
       id: 'blockPending',
       title: 'Block',
       subtitle:
-        'Block this person from joining your community and requesting to join in the future',
+        'Block this person from joining your learning group and requesting to join in the future',
       selected: false,
     },
   };

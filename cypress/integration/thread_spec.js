@@ -418,7 +418,7 @@ describe('/new/thread', () => {
     cy.get('[data-cy="rich-text-editor"]').should('be.visible');
     cy.get('[data-cy="composer-community-selector"]')
       .should('be.visible')
-      .select('Grindery');
+      .select('Keyy');
     cy.get('[data-cy="composer-channel-selector"]')
       .should('be.visible')
       .select('General');

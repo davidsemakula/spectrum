@@ -44,7 +44,7 @@ const JoinCommunity = (props: Props) => {
         dispatch(
           addToastWithTimeout(
             'success',
-            `Welcome to the ${community.name} community!`
+            `Welcome to the ${community.name} learning group!`
           )
         );
 

@@ -47,7 +47,7 @@ class ConversationGrowth extends React.Component<Props> {
             <ViewError
               small
               emoji={'😭'}
-              heading={'Your community has been quiet this week'}
+              heading={'Your learning group has been quiet this week'}
               subheading={
                 'When people are posting new threads and joining conversations, the most active people will appear here.'
               }

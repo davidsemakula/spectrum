@@ -21,7 +21,7 @@
 
 <body>
   <div style="display: none; max-height: 0px; overflow: hidden;">
-    New community {{community.name}} created by {{user.name}}
+    New learning group {{community.name}} created by {{user.name}}
   </div>
 
   <!-- Insert &zwnj;&nbsp; hack after hidden preview text -->
@@ -40,18 +40,18 @@
     &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
   </div>
 
-  <p><strong>New community:</strong></p>
+  <p><strong>New learning group:</strong></p>
   <ul>
-    <li><a href="https://chat.grindery.io/{{community.slug}}">{{community.name}}</a></li>
+    <li><a href="https://learn.keyy.org/{{community.slug}}">{{community.name}}</a></li>
     <li>About: {{community.description}}</li>
     <li>Website: <a href="{{community.website}}">{{community.website}}</a></li>
   </ul>
 
   <p><strong>Creator:</strong></p>
   <ul>
-    <li><a href="https://chat.grindery.io/users/{{user.username}}">{{user.name}}</a></li>
+    <li><a href="https://learn.keyy.org/users/{{user.username}}">{{user.name}}</a></li>
     <li>About: {{user.description}}</li>
-    <li>Joined Grindery: {{user.createdAt}}</li>
+    <li>Joined Keyy: {{user.createdAt}}</li>
     <li>Email: <a href="mailto:{{user.email}}">{{user.email}}</a></li>
   </ul>
 </body>

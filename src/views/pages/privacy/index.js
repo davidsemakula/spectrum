@@ -19,7 +19,7 @@ class Privacy extends React.Component<{}> {
   render() {
     return (
       <Wrapper data-cy="privacy-page">
-        <Head title={'Grindery · Privacy'} />
+        <Head title={'Keyy · Privacy'} />
 
         <ContentContainer>
           <Heading>Privacy Policy</Heading>
@@ -28,7 +28,7 @@ class Privacy extends React.Component<{}> {
           <Section>
             <SectionDescription>
               GitHub, Inc. (“GitHub”, “us”, “we”, or “our”) operates the
-              chat.grindery.io website (the “Service”).
+              learn.keyy.org website (the “Service”).
             </SectionDescription>
 
             <SectionDescription>
@@ -43,7 +43,7 @@ class Privacy extends React.Component<{}> {
               accordance with this policy. Unless otherwise defined in this
               Privacy Policy, terms used in this Privacy Policy have the same
               meanings as in our Terms and Conditions, accessible from
-              chat.grindery.io.
+              learn.keyy.org.
             </SectionDescription>
           </Section>
 
@@ -51,7 +51,7 @@ class Privacy extends React.Component<{}> {
             <SectionTitle>Definitions</SectionTitle>
 
             <SectionDescription>
-              “Service” is the chat.grindery.io website operated by GitHub.
+              “Service” is the learn.keyy.org website operated by GitHub.
             </SectionDescription>
 
             <SectionDescription>
@@ -542,7 +542,7 @@ class Privacy extends React.Component<{}> {
             <SectionDescription>
               Our Service does not address anyone under the age of 13
               (“Children”). If you’re a child under the age of 13, you may not
-              have an account on Grindery.
+              have an account on Keyy.
             </SectionDescription>
 
             <SectionDescription>
@@ -582,7 +582,7 @@ class Privacy extends React.Component<{}> {
             <SectionDescription>
               If you have any questions about this Privacy Policy, please
               contact us by email:{' '}
-              <a href="mailto:help@chat.grindery.io">help@chat.grindery.io</a>
+              <a href="mailto:help@learn.keyy.org">help@learn.keyy.org</a>
             </SectionDescription>
           </Section>
         </ContentContainer>

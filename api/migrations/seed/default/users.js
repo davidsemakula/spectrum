@@ -63,7 +63,7 @@ module.exports = [
   {
     id: QUIET_USER_ID,
     name: 'Quiet user',
-    description: "I've never joined anything on Grindery",
+    description: "I've never joined anything on Keyy",
     website: '',
     username: 'quiet-user',
     profilePhoto:
@@ -77,7 +77,7 @@ module.exports = [
   {
     id: BLOCKED_USER_ID,
     name: 'Blocked user',
-    description: 'I am blocked in the Grindery community',
+    description: 'I am blocked in the Keyy community',
     website: '',
     username: 'blocked-user',
     profilePhoto:
@@ -91,7 +91,7 @@ module.exports = [
   {
     id: PREVIOUS_MEMBER_USER_ID,
     name: 'Previous member',
-    description: 'I used to be in the Grindery community, but then left',
+    description: 'I used to be in the Keyy community, but then left',
     website: '',
     username: 'previous-user',
     profilePhoto:

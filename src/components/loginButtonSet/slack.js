@@ -2,7 +2,7 @@
 import * as React from 'react';
 import type { ButtonProps } from './';
 import { SlackButton, Label, A } from './style';
-import Icon from '../icons';
+import Icon from '../icon';
 
 export const SlackSigninButton = (props: ButtonProps) => {
   const { href, preferred, showAfter, onClickHandler } = props;

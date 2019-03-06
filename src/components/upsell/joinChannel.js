@@ -85,10 +85,10 @@ class JoinChannel extends React.Component<Props, State> {
     const { isLoading } = this.state;
     const { channel, community, currentUser } = this.props;
     const label = !currentUser
-      ? `Join ${community.name} community`
+      ? `Join ${community.name} learning group`
       : community.communityPermissions.isMember
       ? `Join ${channel.name} channel`
-      : `Join ${community.name} community`;
+      : `Join ${community.name} learning group`;
 
     return (
       <JoinChannelContainer>

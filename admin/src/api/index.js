@@ -14,7 +14,7 @@ import getSharedApolloClientOptions from './apollo-options';
 const IS_PROD = process.env.NODE_ENV === 'production';
 // In production the API is at the same URL, in development it's at a different port
 const API_URI = IS_PROD
-  ? 'https://chat.grindery.io/api'
+  ? 'https://learn.keyy.org/api'
   : 'http://localhost:3001/api';
 
 const cache = new InMemoryCache({

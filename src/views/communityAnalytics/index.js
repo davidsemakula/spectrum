@@ -68,9 +68,9 @@ class CommunityAnalytics extends React.Component<Props, State> {
 
     return (
       <ViewError
-        heading={'You don’t have permission to manage this community.'}
+        heading={'You don’t have permission to manage this learning group.'}
         subheading={
-          'If you want to create your own community, you can get started below.'
+          'If you want to create your own learning group, you can get started below.'
         }
       >
         <div style={{ display: 'flex' }}>
@@ -79,7 +79,7 @@ class CommunityAnalytics extends React.Component<Props, State> {
           </Link>
 
           <Link to={'/new/community'}>
-            <Button large>Create a community</Button>
+            <Button large>Create a learning group</Button>
           </Link>
         </div>
       </ViewError>

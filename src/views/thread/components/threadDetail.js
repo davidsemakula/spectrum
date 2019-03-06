@@ -113,7 +113,7 @@ class ThreadDetailPure extends React.Component<Props, State> {
       body: null,
     });
 
-    fetch('https://convert.chat.grindery.io/to', {
+    fetch('https://convert.learn.keyy.org/to', {
       method: 'POST',
       body: thread.content.body,
     })

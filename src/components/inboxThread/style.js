@@ -135,7 +135,7 @@ export const CountWrapper = styled.div`
     props.new
       ? props.active
         ? props.theme.text.reverse
-        : props.theme.warn.alt
+        : props.theme.space.alt
       : props.active
       ? props.theme.text.reverse
       : props.theme.text.alt};

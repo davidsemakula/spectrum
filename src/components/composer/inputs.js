@@ -51,7 +51,7 @@ export default (props: Props) => {
 
     if (show) {
       setPreviewBody(null);
-      fetch('https://convert.chat.grindery.io/from', {
+      fetch('https://convert.learn.keyy.org/from', {
         method: 'POST',
         body,
       })

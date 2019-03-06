@@ -7,13 +7,14 @@
  * so it chokes on the Flow syntax.
  * More info: https://flow.org/en/docs/types/comments/
  */
+var draft = require('./draft-utils');
 var truncate = require('./truncate');
 var striptags = require('striptags');
-var toPlainText = require('./clients/draft-js/utils/plaintext').toPlainText;
 
 var DEFAULT_META = {
-  title: 'Grindery',
-  description: 'Where communities live.',
+  title: 'Keyy - Unlock Greatness.',
+  description:
+    'Keyy is an alternative educational experience designed to help achieve your goals with less time, frustration, and money - while feeling challenged and loved.',
 };
 
 var HIDE_FROM_CRAWLERS = '<meta name="robots" content="noindex, nofollow">';
@@ -70,7 +71,7 @@ function setDefault(input /*: MaybeMeta */) /*: Meta */ {
   // prefix "On spectrum" to the description
   // Otherwise you end up with "SpecFM | Where communities live"
   if (input.title && !input.description) {
-    description = 'on Grindery, ' + DEFAULT_META.description.toLowerCase();
+    description = 'on Keyy, ' + DEFAULT_META.description.toLowerCase();
   }
   return {
     title: title,
@@ -90,8 +91,8 @@ function generateMetaInfo(input /*: Input */) /*: Meta */ {
   switch (type) {
     case 'explore': {
       return {
-        title: 'Explore',
-        description: 'Explore some of the communities on Grindery',
+        title: 'Explore · Keyy',
+        description: 'Explore some of the learning groups on Keyy',
       };
     }
     case 'thread': {
@@ -104,7 +105,7 @@ function generateMetaInfo(input /*: Input */) /*: Meta */ {
         data &&
         data.body &&
         (data.type === 'DRAFTJS'
-          ? toPlainText(JSON.parse(data.body))
+          ? draft.toPlainText(draft.toState(JSON.parse(data.body)))
           : data.body);
       return setDefault({
         title: data && data.title + ' · ' + data.communityName,
@@ -113,7 +114,7 @@ function generateMetaInfo(input /*: Input */) /*: Meta */ {
     }
     case 'user': {
       return setDefault({
-        title: data && data.name + ' · @' + data.username,
+        title: data && data.name + ' (@' + data.username + ')',
         description: data && data.description,
       });
     }
@@ -137,12 +138,6 @@ function generateMetaInfo(input /*: Input */) /*: Meta */ {
       return setDefault({
         title: data && data.title,
         description: data && data.description,
-      });
-    }
-    case 'notifications': {
-      return setDefault({
-        title: 'Notifications',
-        description: 'Notifications on Grindery',
       });
     }
     default: {

@@ -35,7 +35,7 @@ class ConversationGrowth extends React.Component<Props> {
       } = community.conversationGrowth;
       return (
         <SectionCard>
-          <SectionSubtitle>Your community‘s conversations</SectionSubtitle>
+          <SectionSubtitle>Your learning group‘s conversations</SectionSubtitle>
           <SectionTitle>
             {count.toLocaleString()} total conversations
           </SectionTitle>

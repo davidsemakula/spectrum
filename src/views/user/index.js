@@ -364,7 +364,7 @@ class UserView extends React.Component<Props, State> {
         <ErrorView
           heading={'We couldn’t find a user with this username'}
           subheading={
-            'You may be trying to view a profile that is deleted, or Grindery is just having a hiccup. If you think something has gone wrong, please contact us.'
+            'You may be trying to view a profile that is deleted, or Keyy is just having a hiccup. If you think something has gone wrong, please contact us.'
           }
         />
       );

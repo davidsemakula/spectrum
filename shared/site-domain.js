@@ -1,2 +1,2 @@
-const DOMAIN = "chat.grindery.io";
+const DOMAIN = "learn.keyy.org";
 export default DOMAIN;

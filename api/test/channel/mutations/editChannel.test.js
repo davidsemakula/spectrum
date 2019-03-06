@@ -4,7 +4,7 @@ import db from 'shared/testing/db';
 import data from 'shared/testing/data';
 
 const channel = data.channels[0];
-// various permissions for Grindery community
+// various permissions for Keyy community
 const owner = data.users.find(({ username }) => username === 'mxstbr');
 const noPermissionUser = data.users.find(({ username }) => username === 'bryn');
 

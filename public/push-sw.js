@@ -19,7 +19,7 @@ self.addEventListener('push', function(event) {
     return;
   }
 
-  // Check if the user is looking at Grindery right now and don't show a notification
+  // Check if the user is looking at Keyy right now and don't show a notification
   event.waitUntil(
     clients
       .matchAll({
@@ -29,7 +29,7 @@ self.addEventListener('push', function(event) {
       .then(windowClients => {
         for (let i = 0; i < windowClients.length; i++) {
           const windowClient = windowClients[i];
-          // The user is looking at Grindery right now abort showing the notification!
+          // The user is looking at Keyy right now abort showing the notification!
           // (except for if we're on localhost, i.e. in development)
           if (
             windowClient.focused &&
@@ -77,13 +77,13 @@ self.addEventListener('notificationclick', function(event) {
         includeUncontrolled: true,
       })
       .then(function(clientList) {
-        // If there is an open chat.grindery.io window navigate to the notification href
+        // If there is an open learn.keyy.org window navigate to the notification href
         if (clientList.length > 0) {
           return clientList[0]
             .focus()
             .then(client => client.navigate(urlToOpen));
         }
-        // If there's no open chat.grindery.io window open a new one
+        // If there's no open learn.keyy.org window open a new one
         // eslint-disable-next-line
         return self.clients.openWindow(urlToOpen);
       })
