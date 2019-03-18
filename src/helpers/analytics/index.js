@@ -8,9 +8,17 @@ const {
   setUser,
   unsetUser,
   transformations,
+  setUserProperties,
 } = createAmplitudeHelpers({
   amplitude: window.amplitude,
   client: isDesktopApp() ? 'desktop' : 'web',
 });
 
-export { events, track, setUser, unsetUser, transformations };
+export {
+  events,
+  track,
+  setUser,
+  unsetUser,
+  transformations,
+  setUserProperties,
+};

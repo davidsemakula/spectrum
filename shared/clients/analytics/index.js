@@ -4,6 +4,7 @@ import { createTrack } from './track';
 import { createSetUser } from './setUser';
 import { createUnsetUser } from './unsetUser';
 import * as transformations from './transformations';
+import { createSetUserProperties } from './setUserProperties';
 
 export type AmplitudeClient = 'web' | 'desktop';
 
@@ -24,6 +25,14 @@ export const createAmplitudeHelpers = (input: CreateAmplitudeHelpersInput) => {
   const track = createTrack(amplitude, client);
   const setUser = createSetUser(amplitude);
   const unsetUser = createUnsetUser(amplitude);
+  const setUserProperties = createSetUserProperties(amplitude);
 
-  return { events, track, setUser, unsetUser, transformations };
+  return {
+    events,
+    track,
+    setUser,
+    unsetUser,
+    transformations,
+    setUserProperties,
+  };
 };

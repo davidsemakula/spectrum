@@ -1,4 +1,4 @@
-import { setUser, unsetUser } from 'src/helpers/analytics';
+import { setUser, unsetUser, setUserProperties } from 'src/helpers/analytics';
 
 export const logout = () => {
   // no longer track analytics
@@ -25,10 +25,17 @@ export const setTrackingContexts = async (user: ?GetUserType) => {
     `https://micro-anonymizomatic-woewfxwpkp.now.sh?text=${user.id}`
   );
   const { text: id } = await response.json();
-  return Promise.all([setAmplitudeUserContext(id), setRavenUserContext(id)]);
+  return Promise.all([
+    setAmplitudeUserContext(id),
+    setAmplitudeUserProperties(user),
+    setRavenUserContext(id),
+  ]);
 };
 
 export const setAmplitudeUserContext = (id: string) => setUser(id);
+
+export const setAmplitudeUserProperties = (user: Object) =>
+  setUserProperties(user);
 
 export const setRavenUserContext = (id: string) => {
   // logs the user id to Sentry
