@@ -87,3 +87,24 @@ export const getCommunitiesByCuratedContentType = graphql(
   getCommunitiesByCuratedContentTypeQuery,
   getCommunitiesByCuratedContentTypeOptions
 );
+
+export const getTopCommunitiesQuery = gql`
+  query getTopCommunities($explore: Boolean = true) {
+    communities(explore: $explore) {
+      ...communityInfo
+    }
+  }
+  ${communityInfoFragment}
+`;
+
+const getTopCommunitiesOptions = {
+  options: () => ({
+    variables: {},
+    fetchPolicy: 'cache-first',
+  }),
+};
+
+export const getTopCommunities = graphql(
+  getTopCommunitiesQuery,
+  getTopCommunitiesOptions
+);

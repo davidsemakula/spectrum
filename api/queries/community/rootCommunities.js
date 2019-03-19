@@ -1,6 +1,9 @@
 // @flow
 import type { GraphQLContext } from '../../';
-import { getCuratedCommunities } from '../../models/curatedContent';
+import {
+  getCuratedCommunities,
+  getTopCommunitiesByActivity,
+} from '../../models/curatedContent';
 
 type GetCommunitiesByIds = {
   ids: Array<string>,
@@ -35,5 +38,6 @@ export default (
   }
   if (args.ids) return loaders.community.loadMany(args.ids);
   if (args.slugs) return loaders.communityBySlug.loadMany(args.slugs);
+  if (args.explore) return getTopCommunitiesByActivity(20);
   return null;
 };
