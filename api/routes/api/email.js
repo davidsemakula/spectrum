@@ -206,7 +206,7 @@ emailRouter.get('/validate', (req, res) => {
     } catch (err) {
       console.error(err);
       return res.redirect(
-        `${rootRedirect}/me/settings?toastType=error&toastMessage=We ran into an issue validating this email address. You can re-enter your email address in your community settings to resend a confirmation email, or get in touch with us at hi@spectrum.chat.`
+        `${rootRedirect}/me/settings?toastType=error&toastMessage=We ran into an issue validating this email address. You can re-enter your email address in your community settings to resend a confirmation email, or get in touch with us at hi@chat.grindery.io.`
       );
     }
   }

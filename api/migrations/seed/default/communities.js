@@ -74,7 +74,7 @@ module.exports = [
     isPrivate: false,
     name: 'Single channel community',
     description: 'Single channel community',
-    website: 'https://spectrum.chat',
+    website: 'https://chat.grindery.io',
     profilePhoto:
       'https://spectrum.imgix.net/communities/-Kh6RfPYjmSaIWbkck8i/Twitter Profile.png.0.6225566835336693',
     coverPhoto:

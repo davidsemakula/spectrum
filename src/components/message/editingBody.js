@@ -12,6 +12,8 @@ import editMessageMutation from 'shared/graphql/mutations/message/editMessage';
 import { ESC } from '../../helpers/keycodes';
 import { openModal } from '../../actions/modals';
 
+import DOMAIN from 'shared/site-domain';
+
 type Props = {
   message: MessageInfoType,
   cancelEdit: Function,
@@ -34,7 +36,7 @@ const EditingChatInput = (props: Props) => {
     if (props.message.messageType === 'text') return;
 
     setText(null);
-    fetch('https://convert.spectrum.chat/to', {
+    fetch(`https://convert.${DOMAIN}/to`, {
       method: 'POST',
       body: props.message.content.body,
     })

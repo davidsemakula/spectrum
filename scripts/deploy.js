@@ -87,10 +87,10 @@ if (servers.length > 0) {
 
     const alias =
       server === 'api'
-        ? `api.${!flags.prod ? 'alpha.' : ''}spectrum.chat`
+        ? `api.${!flags.prod ? 'alpha.' : ''}chat.grindery.io`
         : `${server}.${
             flags.prod === true ? 'workers' : 'alpha'
-          }.spectrum.chat`;
+          }.chat.grindery.io`;
     console.log(`Aliasing ${stdout.toString()} to ${alias}...`);
     exec(now(`alias ${stdout.toString()} ${alias}`), {
       cwd: buildDir,

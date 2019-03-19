@@ -22,7 +22,7 @@ It is difficult to grow, manage and measure the impact of online communities. Co
 
 ### Status
 
-Spectrum has been in full-time development since March 2017 and is [part of GitHub since November 2018](https://spectrum.chat/spectrum/general/spectrum-is-joining-github~1d3eb8ee-4c99-46c0-8daf-ca35a96be6ce). See our current priorities and what we are working on in the [main project board](https://github.com/withspectrum/spectrum/projects/23).
+Spectrum has been in full-time development since March 2017 and is [part of GitHub since November 2018](https://chat.grindery.io/spectrum/general/spectrum-is-joining-github~1d3eb8ee-4c99-46c0-8daf-ca35a96be6ce). See our current priorities and what we are working on in the [main project board](https://github.com/withspectrum/spectrum/projects/23).
 
 <div align="center">
   <img height="50px" src="public/img/cluster-1.svg" />
