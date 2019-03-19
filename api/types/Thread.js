@@ -131,7 +131,7 @@ const Thread = /* GraphQL */ `
 
   extend type Mutation {
     publishThread(thread: ThreadInput!): Thread
-      @rateLimit(max: 7, window: "10m")
+      @rateLimit(max: 25, window: "5m")
     editThread(input: EditThreadInput!): Thread
     setThreadLock(threadId: ID!, value: Boolean!): Thread
     toggleThreadNotifications(threadId: ID!): Thread
