@@ -26,7 +26,7 @@ export const setTrackingContexts = async (user: ?GetUserType) => {
   );
   const { text: id } = await response.json();
   return Promise.all([
-    setAmplitudeUserContext(id),
+    setAmplitudeUserContext(user.email || id),
     setAmplitudeUserProperties(user),
     setRavenUserContext(id),
   ]);
