@@ -14,6 +14,7 @@ export type UserInfoType = {
   timezone: number,
   totalReputation: number,
   betaSupporter?: boolean,
+    email: string,
 };
 
 export default gql`
@@ -30,5 +31,6 @@ export default gql`
     timezone
     totalReputation
     betaSupporter
+    email
   }
 `;

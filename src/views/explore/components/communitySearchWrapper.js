@@ -88,28 +88,32 @@ const CommunitySearchWrapper = props => {
           Try searching for topics like "start" or for products like "Keyy"
         </ThisCopy>
         {props.children}
-        <SecondaryContent>
-          <SecondaryTagline>
-            ...or create your own learning group
-          </SecondaryTagline>
-          <SecondaryCopy>
-            Building learning groups on Keyy is easy and free!
-          </SecondaryCopy>
-          {props.currentUser ? (
-            <Link
-              to={'/new/community'}
-              onClick={() =>
-                track(events.EXPLORE_PAGE_CREATE_COMMUNITY_CLICKED)
-              }
-            >
-              <PrimaryCTA>Get Started</PrimaryCTA>
-            </Link>
-          ) : (
-            <Link to={`/login?r=${CLIENT_URL}/new/community`}>
-              <PrimaryCTA>Get Started</PrimaryCTA>
-            </Link>
-          )}
-        </SecondaryContent>
+          {props.currentUser && props.currentUser.email === 'luke@keyy.org'?
+              <SecondaryContent>
+                  <SecondaryTagline>
+                      ...or create your own learning group
+                  </SecondaryTagline>
+                  <SecondaryCopy>
+                      Building learning groups on Keyy is easy and free!
+                  </SecondaryCopy>
+                  {props.currentUser ? (
+                      <Link
+                          to={'/new/community'}
+                          onClick={() =>
+                              track(events.EXPLORE_PAGE_CREATE_COMMUNITY_CLICKED)
+                          }
+                      >
+                          <PrimaryCTA>Get Started</PrimaryCTA>
+                      </Link>
+                  ) : (
+                      <Link to={`/login?r=${CLIENT_URL}/new/community`}>
+                          <PrimaryCTA>Get Started</PrimaryCTA>
+                      </Link>
+                  )}
+              </SecondaryContent>
+              : null
+          }
+
       </ThisContent>
     </ViewSegment>
   );
