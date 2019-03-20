@@ -184,6 +184,16 @@ app.get('/', (req: express$Request, res, next) => {
     return res.redirect('/login');
   }
 });
+app.get('/home', (req: express$Request, res, next) => {
+  if (req.hostname.toLowerCase() !== 'learn.keyy.org') {
+    return next();
+  }
+  if (req.session && req.user && !req.query.t) {
+    return res.redirect('/');
+  } else {
+    return res.redirect('/login');
+  }
+});
 app.get('/privacy', (req: express$Request, res) => {
   return res.redirect('https://www.keyy.org/privacypolicy');
 });
