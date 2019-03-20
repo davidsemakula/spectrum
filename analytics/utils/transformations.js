@@ -48,6 +48,10 @@ type AnalyticsThreadPermissions = {
 };
 
 type AnalyticsUser = {
+  email: ?string,
+  name: ?string,
+  username: ?string,
+  timezone: ?number,
   createdAt: ?string,
   twitterAuthed: boolean,
   fbAuthed: boolean,
@@ -55,6 +59,7 @@ type AnalyticsUser = {
   googleAuthed: boolean,
   hasUsername: boolean,
   lastSeen: ?string,
+  betaSupporter: ?boolean,
 };
 
 type AnalyticsReaction = {
@@ -223,6 +228,10 @@ export const analyticsThreadPermissions = (
 export const analyticsUser = (user: DBUser): AnalyticsUser => {
   if (!user) {
     return {
+      email: null,
+      name: null,
+      username: null,
+      timezone: null,
       createdAt: null,
       twitterAuthed: false,
       fbAuthed: false,
@@ -230,9 +239,14 @@ export const analyticsUser = (user: DBUser): AnalyticsUser => {
       googleAuthed: false,
       hasUsername: false,
       lastSeen: null,
+      betaSupporter: false,
     };
   }
   return {
+    email: user.email,
+    name: user.name,
+    username: user.username,
+    timezone: user.timezone,
     createdAt: user.createdAt,
     twitterAuthed: user.providerId ? true : false,
     fbAuthed: user.fbProviderId ? true : false,
@@ -240,5 +254,6 @@ export const analyticsUser = (user: DBUser): AnalyticsUser => {
     googleAuthed: user.googleProviderId ? true : false,
     hasUsername: user.username ? true : false,
     lastSeen: user.lastSeen ? user.lastSeen : null,
+    betaSupporter: user.betaSupporter,
   };
 };
