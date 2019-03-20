@@ -129,12 +129,12 @@ class Navbar extends React.Component<Props, State> {
     }
   };
 
-    handleShopClick = () => {
-        window.open('https://shop.keyy.org', '_blank');
+  handleShopClick = (e) => {
+    e.preventDefault();
+    window.open('https://shop.keyy.org', '_blank');
+  };
 
-    };
-
-    render() {
+  render() {
     const {
       history,
       match,

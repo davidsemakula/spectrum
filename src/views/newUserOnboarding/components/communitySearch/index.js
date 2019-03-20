@@ -348,7 +348,7 @@ class Search extends React.Component<Props, State> {
                   <SearchResultNull>
                     <p>No learning groups found matching “{searchString}”</p>
                     <Link to={'/new/community'}>
-                      <Button>Create a Community</Button>
+                      <Button>Create a Learning Group</Button>
                     </Link>
                   </SearchResultNull>
                 </SearchResult>
