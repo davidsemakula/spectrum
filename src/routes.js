@@ -455,6 +455,30 @@ class Routes extends React.Component<Props, State> {
                     <Route path="/features" component={Pages} />
                     <Route path="/faq" component={Pages} />
                     <Route path="/apps" component={Pages} />
+                    <Route
+                      path="/whatIsKeyyCoin"
+                      render={externalRedirect(
+                          'https://learn.keyy.org/keyy-support/faq/what-is-keyy-coin~eeebf0d6-b1ea-4a69-9cc2-d45456486e25?utm_campaign=In%20App%20Usage%20-%20Learn.Keyy.org&utm_source=in%20app%20user%20menu&utm_content=What%20is%20Keyy%20Coin/'
+                      )}
+                    />
+                    <Route
+                      path="/earningBadges"
+                      render={externalRedirect(
+                          'https://learn.keyy.org/keyy-support/getting-started/earning-badges-in-keyy~59734ff9-747c-4d4d-8b36-12e6a1d26e6f?utm_campaign=In%20App%20Usage%20-%20Learn.Keyy.org&utm_source=in%20app%20user%20menu&utm_content=Earning%20Badges/'
+                      )}
+                    />
+                    <Route
+                      path="/earningLevels"
+                      render={externalRedirect(
+                          'https://learn.keyy.org/keyy-support/getting-started/earning-levels-in-keyy~246b8e07-5158-432e-83cb-62708112fdbc?utm_campaign=In%20App%20Usage%20-%20Learn.Keyy.org&utm_source=in%20app%20user%20menu&utm_content=Earning%20levels'
+                      )}
+                    />
+                    <Route
+                      path="/becomeCoach"
+                      render={externalRedirect(
+                          'https://www.keyy.org/become-a-coach?utm_campaign=In%20App%20Usage%20-%20Learn.Keyy.org&utm_source=in%20app%20user%20menu&utm_content=Become%20a%20Coach'
+                      )}
+                    />
 
                     {/* App Pages */}
                     <Route

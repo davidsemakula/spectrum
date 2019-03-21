@@ -79,13 +79,13 @@ export const NullState = (props: NullStateProps) => (
 export const UpsellMiniCreateCommunity = () => {
   return (
     <MiniNullCard
-      bg="onboarding"
-      heading="Create a learning group"
-      copy="Building learning groups on Keyy is easy and free forever"
+      bg=""
+      /*heading="Create a learning group"
+      copy="Building learning groups on Keyy is easy and free forever"*/
     >
-      <Link to="/new/community">
+    {/*<Link to="/new/community">
         <Button>Get Started</Button>
-      </Link>
+        </Link>*/}
     </MiniNullCard>
   );
 };
@@ -99,14 +99,14 @@ export const UpsellCreateCommunity = () => {
   const subtitle = 'Building learning groups on Keyy is easy and free forever';
 
   return (
-    <NullCard bg={'onboarding'}>
-      <Title>{title}</Title>
+    <NullCard bg={''}>
+        {/*<Title>{title}</Title>
       <Subtitle>{subtitle}</Subtitle>
       <Actions>
         <Link to="/new/community">
           <Button>Get Started</Button>
         </Link>
-      </Actions>
+      </Actions>*/}
     </NullCard>
   );
 };

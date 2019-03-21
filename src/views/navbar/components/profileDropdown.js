@@ -81,6 +81,26 @@ class ProfileDropdown extends React.Component<ProfileProps, State> {
               </UserProfileDropdownListItem>
             </Link>
           )*/}
+            <Link to={`/WhatIsKeyyCoin`}>
+                <UserProfileDropdownListItem>
+                    What is Keyy Coin?
+                </UserProfileDropdownListItem>
+            </Link>
+            <Link to={`/earningBadges`}>
+                <UserProfileDropdownListItem>
+                    Earning Badges
+                </UserProfileDropdownListItem>
+            </Link>
+            <Link to={`/earningLevels`}>
+                <UserProfileDropdownListItem>
+                    Earning levels
+                </UserProfileDropdownListItem>
+            </Link>
+            <Link to={`/becomeCoach`}>
+                <UserProfileDropdownListItem>
+                    Become a Coach
+                </UserProfileDropdownListItem>
+            </Link>
 
           <Link to={`/about`}>
             <UserProfileDropdownListItem>

@@ -88,7 +88,7 @@ const CommunitySearchWrapper = props => {
           Try searching for topics like "start" or for products like "Keyy"
         </ThisCopy>
         {props.children}
-          {props.currentUser && props.currentUser.email === 'luke@keyy.org'?
+          {props.currentUser && ['luke@keyy.org', 'lukesummerfield@gmail.com'].includes(props.currentUser.email)?
               <SecondaryContent>
                   <SecondaryTagline>
                       ...or create your own learning group

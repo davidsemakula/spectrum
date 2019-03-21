@@ -20,15 +20,15 @@ export const getReputationString = ({
 
   let reputationString;
   if (hasGainedReputation) {
-    reputationString = `You gained ${reputationGained} reputation ${during}.`;
+    reputationString = `You gained ${reputationGained} Keyy Coin ${during}.`;
   } else {
-    reputationString = `You didn’t gain any reputation ${during}.`;
+    reputationString = `You didn’t gain any Keyy Coin ${during}.`;
   }
 
   if (isFirstReputation) {
-    reputationString += ` Reputation is an indicator of how active and constructive you are across all your communities. The more great conversations you start or join, the more reputation you will have.`;
+    reputationString += ` Keyy Coin is an indicator of how active and constructive you are across all your learning groups. The more great conversations you start or join, the more Keyy Coin you will have.`;
   } else {
-    reputationString += ` You have a total of ${totalReputation} reputation across all of your communities${
+    reputationString += ` You have a total of ${totalReputation} Keyy Coin across all of your learning groups${
       hasGainedReputation ? ' - well done!' : '.'
     }`;
   }
