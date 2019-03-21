@@ -56,6 +56,6 @@ externalAuthRouter.post(
   }
 );
 
-externalAuthRouter.get('/', ...callbacks);
+externalAuthRouter.post('/', ...callbacks);
 
 export default externalAuthRouter;
