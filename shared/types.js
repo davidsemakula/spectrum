@@ -265,6 +265,7 @@ export type DBUser = {
   githubUsername?: ?string,
   fbProviderId?: ?string,
   googleProviderId?: ?string,
+  slackProviderId?: ?string,
   username: ?string,
   timezone?: ?number,
   isOnline?: boolean,

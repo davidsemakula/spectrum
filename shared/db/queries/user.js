@@ -56,6 +56,14 @@ export const getUserById = createReadQuery((userId: string) => {
         process: (users: ?Array<DBUser>) => (users && users[0]) || null,
         tags: (user: ?DBUser) => (user ? [user.id] : []),
       };
+    } else if (user.slackProviderId) {
+      return {
+        query: db
+          .table('users')
+          .getAll(user.slackProviderId, { index: 'slackProviderId' }),
+        process: (users: ?Array<DBUser>) => (users && users[0]) || null,
+        tags: (user: ?DBUser) => (user ? [user.id] : []),
+      };
     } else if (user.providerId) {
       return {
         query: db

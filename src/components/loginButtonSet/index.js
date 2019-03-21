@@ -9,6 +9,7 @@ import { TwitterSigninButton } from './twitter';
 import { FacebookSigninButton } from './facebook';
 import { GoogleSigninButton } from './google';
 import { GithubSigninButton } from './github';
+import { SlackSigninButton } from './slack';
 import { track, events } from 'src/helpers/analytics';
 
 type Props = {
@@ -81,6 +82,13 @@ class LoginButtonSet extends React.Component<Props> {
           href={`${SERVER_URL}/auth/github${postAuthRedirectPath}`}
           preferred={nonePreferred ? true : preferredSigninMethod === 'github'}
           showAfter={preferredSigninMethod === 'github'}
+        />
+
+        <SlackSigninButton
+          onClickHandler={this.saveLoginMethod}
+          href={`${SERVER_URL}/auth/slack${postAuthRedirectPath}`}
+          preferred={nonePreferred ? true : preferredSigninMethod === 'slack'}
+          showAfter={preferredSigninMethod === 'slack'}
         />
       </Container>
     );

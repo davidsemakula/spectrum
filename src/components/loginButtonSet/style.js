@@ -111,3 +111,14 @@ export const GithubButton = styled(SigninButton)`
     color: ${theme.text.default};
   }
 `;
+
+export const SlackButton = styled(SigninButton)`
+  background: ${props =>
+    props.preferred ? props.theme.social.slack.default : 'none'};
+  color: ${props =>
+    props.preferred ? '#fff' : props.theme.social.slack.default};
+
+  &:after {
+    color: ${theme.social.slack.default};
+  }
+`;

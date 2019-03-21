@@ -36,6 +36,10 @@ export const theme = {
       default: '#16171A',
       alt: '#828C99',
     },
+    slack: {
+      default: '#611f69',
+      alt: '#E01E5A',
+    },
     ph: {
       default: '#D85537',
       alt: '#D85537',

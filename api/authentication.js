@@ -5,6 +5,7 @@ const { Strategy: TwitterStrategy } = require('passport-twitter');
 const { Strategy: FacebookStrategy } = require('passport-facebook');
 const { Strategy: GoogleStrategy } = require('passport-google-oauth2');
 const { Strategy: GitHubStrategy } = require('passport-github2');
+const { Strategy: SlackStrategy } = require('passport-slack');
 const {
   getUserById,
   createOrFindUser,
@@ -46,6 +47,14 @@ const GOOGLE_OAUTH_CLIENT_ID = IS_PROD
 const GITHUB_OAUTH_CLIENT_ID = IS_PROD
   ? process.env.GITHUB_OAUTH_CLIENT_ID || '208a2e8684d88883eded'
   : 'ed3e924f4a599313c83b';
+
+const SLACK_OAUTH_CLIENT_ID = IS_PROD
+  ? process.env.SLACK_CLIENT_ID
+  : process.env.SLACK_CLIENT_ID_DEVELOPMENT;
+
+const SLACK_OAUTH_CLIENT_SECRET = IS_PROD
+  ? process.env.SLACK_SECRET
+  : process.env.SLACK_SECRET_DEVELOPMENT;
 
 const isSerializedJSON = (str: string) =>
   str[0] === '{' && str[str.length - 1] === '}';
@@ -107,6 +116,7 @@ const init = () => {
           fbProviderId: null,
           googleProviderId: null,
           githubProviderId: null,
+          slackProviderId: null,
           username: null,
           name: name,
           email:
@@ -172,6 +182,7 @@ const init = () => {
           fbProviderId: profile.id,
           googleProviderId: null,
           githubProviderId: null,
+          slackProviderId: null,
           username: null,
           name: profile.displayName,
           firstName:
@@ -230,6 +241,7 @@ const init = () => {
           fbProviderId: null,
           googleProviderId: profile.id,
           githubProviderId: null,
+          slackProviderId: null,
           username: null,
           name: name,
           firstName:
@@ -371,6 +383,7 @@ const init = () => {
           fbProviderId: null,
           googleProviderId: null,
           githubProviderId: profile.id,
+          slackProviderId: null,
           githubUsername: githubUsername,
           username: null,
           name: name,
@@ -386,6 +399,45 @@ const init = () => {
         };
 
         return createOrFindUser(user, 'githubProviderId')
+          .then(user => {
+            done(null, user);
+            return user;
+          })
+          .catch(err => {
+            done(err);
+            return null;
+          });
+      }
+    )
+  );
+
+  passport.use(
+    new SlackStrategy(
+      {
+        clientID: SLACK_OAUTH_CLIENT_ID,
+        clientSecret: SLACK_OAUTH_CLIENT_SECRET,
+        callbackURL: IS_PROD
+          ? 'https://chat.grindery.io/auth/slack/callback'
+          : 'http://localhost:3001/auth/slack/callback',
+      },
+      (accessToken, refreshToken, profile, done) => {
+        const user = {
+          providerId: null,
+          fbProviderId: null,
+          googleProviderId: null,
+          githubProviderId: null,
+          slackProviderId: profile.id,
+          username: null,
+          name: profile.displayName,
+          email: profile.user.email || null,
+          profilePhoto:
+            profile.user.image_1024 ||
+            profile.user.image_192 ||
+            profile.user.image_32 ||
+            null,
+        };
+
+        return createOrFindUser(user, 'slackProviderId')
           .then(user => {
             done(null, user);
             return user;
