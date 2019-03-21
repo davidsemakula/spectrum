@@ -59,6 +59,8 @@
     "AMPLITUDE_API_KEY": "@amplitude-api-key",
     "AMPLITUDE_API_KEY_DEVELOPMENT": "@amplitude-api-key-development",
     "ENCRYPTION_KEY": "@encryption-key",
+    "EXTERNAL_AUTH_JWT_SECRET": "@external-auth-jwt-secret",
+    "EXTERNAL_AUTH_ADMIN_TOKEN": "@external-auth-admin-token",
     "IMGIX_PROXY_SECURITY_KEY": "@imgix-proxy-security-key",
     "IMGIX_SECURITY_KEY": "@imgix-security-key",
     "IMGIX_DOMAIN": "@imgix-domain",

@@ -6,6 +6,7 @@ const { Strategy: FacebookStrategy } = require('passport-facebook');
 const { Strategy: GoogleStrategy } = require('passport-google-oauth2');
 const { Strategy: GitHubStrategy } = require('passport-github2');
 const { Strategy: SlackStrategy } = require('passport-slack');
+const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
 const {
   getUserById,
   createOrFindUser,
@@ -50,11 +51,13 @@ const GITHUB_OAUTH_CLIENT_ID = IS_PROD
 
 const SLACK_OAUTH_CLIENT_ID = IS_PROD
   ? process.env.SLACK_CLIENT_ID
-  : process.env.SLACK_CLIENT_ID_DEVELOPMENT;
+  : process.env.SLACK_CLIENT_ID_DEVELOPMENT || 'DUMMY';
 
 const SLACK_OAUTH_CLIENT_SECRET = IS_PROD
   ? process.env.SLACK_SECRET
-  : process.env.SLACK_SECRET_DEVELOPMENT;
+  : process.env.SLACK_SECRET_DEVELOPMENT || 'DUMMY';
+
+const EXTERNAL_AUTH_JWT_SECRET = process.env.EXTERNAL_AUTH_JWT_SECRET;
 
 const isSerializedJSON = (str: string) =>
   str[0] === '{' && str[str.length - 1] === '}';
@@ -440,6 +443,38 @@ const init = () => {
         return createOrFindUser(user, 'slackProviderId')
           .then(user => {
             done(null, user);
+            return user;
+          })
+          .catch(err => {
+            done(err);
+            return null;
+          });
+      }
+    )
+  );
+
+  passport.use(
+    new JwtStrategy(
+      {
+        secretOrKey: EXTERNAL_AUTH_JWT_SECRET,
+        secretOrKeyProvider: EXTERNAL_AUTH_JWT_SECRET
+          ? undefined
+          : (request, rawJwtToken, done) => done('JWT auth is not enabled'),
+        jwtFromRequest: ExtractJwt.fromExtractors([
+          ExtractJwt.fromAuthHeaderAsBearerToken(),
+          ExtractJwt.fromBodyField('token'),
+        ]),
+      },
+      (jwtPayload, done) => {
+        if (!jwtPayload.externalProviderId) {
+          return done(null, false);
+        }
+        return getUserByIndex(
+          'externalProviderId',
+          jwtPayload.externalProviderId
+        )
+          .then(user => {
+            done(null, user || false);
             return user;
           })
           .catch(err => {

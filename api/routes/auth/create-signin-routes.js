@@ -16,7 +16,7 @@ const FALLBACK_URL = IS_PROD
   ? 'https://chat.grindery.io/home'
   : 'http://localhost:3000/home';
 
-type Strategy = 'twitter' | 'facebook' | 'github' | 'google' | 'slack';
+type Strategy = 'twitter' | 'facebook' | 'github' | 'google' | 'slack' | 'jwt';
 
 export const createSigninRoutes = (
   strategy: Strategy,
