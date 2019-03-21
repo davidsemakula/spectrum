@@ -93,7 +93,7 @@ class ProfileDropdown extends React.Component<ProfileProps, State> {
             </Link>
             <Link to={`/earningLevels`}>
                 <UserProfileDropdownListItem>
-                    Earning levels
+                    Earning Levels
                 </UserProfileDropdownListItem>
             </Link>
             <Link to={`/becomeCoach`}>
