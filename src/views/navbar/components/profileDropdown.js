@@ -96,17 +96,13 @@ class ProfileDropdown extends React.Component<ProfileProps, State> {
                     Earning Levels
                 </UserProfileDropdownListItem>
             </Link>
-            <Link to={`/becomeCoach`}>
-                <UserProfileDropdownListItem>
-                    Become a Coach
-                </UserProfileDropdownListItem>
-            </Link>
-
-          <Link to={`/about`}>
             <UserProfileDropdownListItem>
-              About Keyy
+                <a href="https://www.keyy.org/become-a-coach?utm_campaign=In%20App%20Usage%20-%20Learn.Keyy.org&utm_source=in%20app%20user%20menu&utm_content=Become%20a%20Coach" target="_blank">Become a Coach</a>
             </UserProfileDropdownListItem>
-          </Link>
+            <UserProfileDropdownListItem>
+                <a href="https://www.keyy.org/about" target="_blank">About Keyy</a>
+            </UserProfileDropdownListItem>
+
           <Link to={`/support`}>
             <UserProfileDropdownListItem>Support</UserProfileDropdownListItem>
           </Link>

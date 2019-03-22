@@ -474,7 +474,7 @@ class Routes extends React.Component<Props, State> {
                       )}
                     />
                     <Route
-                      path="/becomeCoach"
+                      path="/becomeAcoach"
                       render={externalRedirect(
                           'https://www.keyy.org/become-a-coach?utm_campaign=In%20App%20Usage%20-%20Learn.Keyy.org&utm_source=in%20app%20user%20menu&utm_content=Become%20a%20Coach'
                       )}
