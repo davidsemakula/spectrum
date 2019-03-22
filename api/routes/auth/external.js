@@ -7,6 +7,8 @@ const {
   storeUser,
   getUserByUsername,
   getUserById,
+  getUsersByEmail,
+  saveUserProvider,
 } = require('shared/db/queries/user');
 
 const externalAuthRouter = Router();
@@ -30,25 +32,47 @@ externalAuthRouter.post(
         error: 'No user in body',
       });
     }
-    if (user.externalProviderId) {
+    if (!user.email) {
       return res.status(400).json({
-        error: "New user can't have prefilled externalProviderId",
+        error: 'New user should have email address',
       });
     }
-    user.externalProviderId = uuidv4();
+    if (user.externalProviderId || user.id) {
+      return res.status(400).json({
+        error: "New user can't have prefilled id",
+      });
+    }
     (user.username ? getUserByUsername(user.username) : Promise.resolve())
       .then(resp => {
-        if (resp) {
-          user.username += '-' + user.externalProviderId.slice(0, 12);
+        let conflictingUsername = !!resp;
+        if (conflictingUsername) {
+          user.username += '-' + uuidv4().slice(0, 8);
         }
-        return storeUser(user);
+        return getUsersByEmail(user.email).then(dbUsers => {
+          dbUsers = dbUsers || [];
+          if (dbUsers.length) {
+            if (conflictingUsername) {
+              delete user.username;
+            }
+            user.modifiedAt = new Date().toISOString();
+            return saveUserProvider(
+              dbUsers[0].id,
+              'externalProviderId',
+              dbUsers[0].externalProviderId,
+              user
+            );
+          } else {
+            user.externalProviderId = uuidv4();
+            return storeUser(user);
+          }
+        });
       })
       .then(dbUser => {
         return res.json(dbUser);
       })
       .catch(e => {
         res.status(500).json({
-          error: 'Failed to create user',
+          error: 'Failed to create or update user',
           detail: e.message || e.toString(),
         });
         Raven.captureException(e);
