@@ -144,6 +144,7 @@
     "moment": "^2.22.2",
     "ms": "^2.1.1",
     "node-env-file": "^0.1.8",
+    "node-fetch": "^2.3.0",
     "now-env": "^3.1.0",
     "offline-plugin": "^5.0.5",
     "passport": "^0.4.0",
