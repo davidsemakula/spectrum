@@ -51,6 +51,9 @@ externalAuthRouter.post(
         return getUsersByEmail(user.email).then(dbUsers => {
           dbUsers = dbUsers || [];
           if (dbUsers.length) {
+            dbUsers.sort((a, b) => {
+              (a.createdAt || '').localeCompare(b.createdAt || '');
+            });
             if (conflictingUsername) {
               delete user.username;
             }
