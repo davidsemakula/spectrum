@@ -218,6 +218,25 @@ export const createOrFindUser = (user: Object, providerMethod: string): Promise<
           if (storedUser) {
             return storedUser;
           }
+          if (user.email) {
+            return getUsersByEmail(user.email).then(users => {
+              if (!users || !users.length) {
+                return null;
+              }
+              // Choose oldest user
+              users.sort((a, b) => {
+                (a.createdAt || "").localeCompare(b.createdAt || "")
+              });
+              const extraFields = {};
+              // Save unknown fields, skip existing fields
+              for (const key of user) {
+                if ([null, undefined].includes(users[0][key])) {
+                  extraFields[key] = user[key]
+                }
+              }
+              return saveUserProvider(users[0].id, providerMethod, user[providerMethod], extraFields);
+            });
+          }
 
           return Promise.resolve(null);
         }
