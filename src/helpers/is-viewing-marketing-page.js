@@ -9,7 +9,7 @@ export const isViewingMarketingPage = (
   if (isRoot && (!currentUser || !currentUser.id)) return true;
 
   return (
-    viewing === '/home' ||
+    (viewing === '/home' && (!currentUser || !currentUser.id)) ||
     viewing === '/about' ||
     viewing === '/code-of-conduct' ||
     viewing === '/contact' ||
