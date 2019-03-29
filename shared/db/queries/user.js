@@ -17,6 +17,7 @@ import { disableAllThreadNotificationsForUser } from 'api/models/usersThreads';
 import { disableAllUsersEmailSettings } from 'api/models/usersSettings';
 import type { PaginationOptions } from 'api/utils/paginate-arrays';
 import type { DBUser, FileUpload } from 'shared/types';
+import Raven from 'shared/raven';
 
 export const getUserById = createReadQuery((userId: string) => {
   // fallback for a bad id coming in that is a stringified user object
@@ -229,7 +230,7 @@ export const createOrFindUser = (user: Object, providerMethod: string): Promise<
               });
               const extraFields = {};
               // Save unknown fields, skip existing fields
-              for (const key of user) {
+              for (const key of Object.keys(user)) {
                 if ([null, undefined].includes(users[0][key])) {
                   extraFields[key] = user[key]
                 }
@@ -256,6 +257,7 @@ export const createOrFindUser = (user: Object, providerMethod: string): Promise<
       return storeUser(user);
     })
     .catch(err => {
+      Raven.captureException(err);
       if (user.id) {
         console.error(err);
         return null;
@@ -667,6 +669,7 @@ export const deleteUser = createWriteQuery((userId: string) => ({
         googleProviderId: null,
         githubProviderId: null,
         githubUsername: null,
+        slackProviderId: null,
         profilePhoto: null,
         description: null,
         website: null,
