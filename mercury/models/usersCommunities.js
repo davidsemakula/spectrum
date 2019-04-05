@@ -39,3 +39,31 @@ export const updateUserReputation = (
     score,
   });
 };
+
+export const getMemberCount = (communityId: string): Promise<number> => {
+  return db
+    .table('usersCommunities')
+    .filter({ communityId, isMember: true })
+    .count()
+    .default(0)
+    .run();
+};
+
+export const getNonOwnerMemberCount = (
+  communityId: string
+): Promise<number> => {
+  return db
+    .table('usersCommunities')
+    .filter({ communityId, isMember: true, isOwner: false })
+    .count()
+    .default(0)
+    .run();
+};
+
+export const getOwners = (communityId: string): Promise<Array<Object>> => {
+  return db
+    .table('usersCommunities')
+    .filter({ communityId, isOwner: true })
+    .coerceTo('array')
+    .run();
+};

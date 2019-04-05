@@ -49,6 +49,11 @@ export const COMMUNITIES_JOINED_2 = 'communities joined 2';
 export const COMMUNITIES_JOINED_3 = 'communities joined 3';
 export const COMMUNITIES_JOINED_4 = 'communities joined 4';
 
+export const COMMUNITY_MEMBERS_2 = 'community members 2';
+export const COMMUNITY_MEMBERS_5 = 'community members 5';
+export const COMMUNITY_MEMBERS_10 = 'community members 10';
+export const COMMUNITY_MEMBERS_20 = 'community members 20';
+
 // scores
 export const THREAD_CREATED_SCORE = 20;
 export const THREAD_DELETED_SCORE = -20;
