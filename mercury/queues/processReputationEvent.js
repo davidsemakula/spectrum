@@ -9,6 +9,9 @@ import processThreadReactionCreated from '../functions/processThreadReactionCrea
 import processThreadReactionDeleted from '../functions/processThreadReactionDeleted';
 import processMessageDeleted from '../functions/processMessageDeleted';
 import processThreadDeletedByModeration from '../functions/processThreadDeletedByModeration';
+import processProfileCompleted from '../functions/processProfileCompleted';
+import processCommunityCreated from '../functions/processCommunityCreated';
+import processCommunityJoined from '../functions/processCommunityJoined';
 import Raven from 'shared/raven';
 import {
   THREAD_CREATED,
@@ -20,6 +23,9 @@ import {
   REACTION_DELETED,
   THREAD_REACTION_CREATED,
   THREAD_REACTION_DELETED,
+  PROFILE_COMPLETED,
+  COMMUNITY_CREATED,
+  USER_JOINED_COMMUNITY,
 } from '../constants';
 import type { Job, ReputationEventJobData } from 'shared/bull/types';
 
@@ -61,6 +67,15 @@ export default async (job: Job<ReputationEventJobData>) => {
       }
       case MESSAGE_DELETED: {
         return await processMessageDeleted(job.data);
+      }
+      case PROFILE_COMPLETED: {
+        return await processProfileCompleted(job.data);
+      }
+      case COMMUNITY_CREATED: {
+        return await processCommunityCreated(job.data);
+      }
+      case USER_JOINED_COMMUNITY: {
+        return await processCommunityJoined(job.data);
       }
       default: {
         debug('❌ No reputation event type matched');

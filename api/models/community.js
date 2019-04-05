@@ -9,6 +9,7 @@ import {
   _adminSendCommunityCreatedEmailQueue,
   searchQueue,
   trackQueue,
+  processReputationEventQueue,
 } from 'shared/bull/queues';
 import { createChangefeed } from 'shared/changefeed-utils';
 import { events } from 'shared/analytics';
@@ -263,7 +264,13 @@ export const createCommunity = ({ input }: CreateCommunityInput, user: DBUser): 
         id: community.id,
         type: 'community',
         event: 'created'
-      })
+      });
+
+      processReputationEventQueue.add({
+        userId: user.id,
+        type: 'community created',
+        entityId: community.id,
+      });
 
       // send a welcome email to the community creator
       sendNewCommunityWelcomeEmailQueue.add({ user, community });

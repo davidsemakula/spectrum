@@ -3,7 +3,7 @@ const { db } = require('shared/db');
 import { sendCommunityNotificationQueue } from 'shared/bull/queues';
 import type { DBUsersCommunities, DBCommunity } from 'shared/types';
 import { events } from 'shared/analytics';
-import { trackQueue } from 'shared/bull/queues';
+import { trackQueue, processReputationEventQueue } from 'shared/bull/queues';
 import {
   incrementMemberCount,
   decrementMemberCount,
@@ -63,7 +63,13 @@ export const createMemberInCommunity = (communityId: string, userId: string): Pr
     userId,
     event: events.USER_JOINED_COMMUNITY,
     context: { communityId }
-  })
+  });
+
+  processReputationEventQueue.add({
+    userId: userId,
+    type: 'user joined community',
+    entityId: communityId,
+  });
 
   return db
     .table('usersCommunities')

@@ -1,12 +1,22 @@
 // @flow
 const debug = require('debug')('mercury:queue:process-message-created');
-import { updateReputation } from '../models/usersCommunities';
+import {
+  updateReputation,
+  updateUserReputation,
+} from '../models/usersCommunities';
 import { getThread } from '../models/thread';
+import { getMessageCount } from '../models/user';
 import {
   MESSAGE_CREATED,
   MESSAGE_CREATED_SCORE,
   MESSAGE_CREATED_POST_AUTHOR_SCORE,
   MESSAGE_CREATED_POST_AUTHOR_BONUS,
+  MESSAGES_CREATED_SCORE_10,
+  MESSAGES_CREATED_10,
+  MESSAGES_CREATED_SCORE_5,
+  MESSAGES_CREATED_5,
+  MESSAGES_CREATED_SCORE_1,
+  MESSAGES_CREATED_1,
 } from '../constants';
 import type { ReputationEventJobData } from 'shared/bull/types';
 
@@ -39,12 +49,33 @@ export default async (data: ReputationEventJobData) => {
         )
       : Promise.resolve();
 
-  debug(`Processing message created reputation event`);
-  debug(`Got communityId: ${communityId}`);
-  return Promise.all([
+  let promiseArray = [
     // give reputation to the person who posted the message
     updateMessageCreatorReputation,
     // give reputation to the thread creator
     updateThreadCreatorReputation,
-  ]);
+  ];
+
+  const numExistingMessages = await getMessageCount(userId);
+  if (numExistingMessages >= 10) {
+    promiseArray.push(
+      updateUserReputation(
+        userId,
+        MESSAGES_CREATED_SCORE_10,
+        MESSAGES_CREATED_10
+      )
+    );
+  } else if (numExistingMessages >= 5) {
+    promiseArray.push(
+      updateUserReputation(userId, MESSAGES_CREATED_SCORE_5, MESSAGES_CREATED_5)
+    );
+  } else if (numExistingMessages >= 1) {
+    promiseArray.push(
+      updateUserReputation(userId, MESSAGES_CREATED_SCORE_1, MESSAGES_CREATED_1)
+    );
+  }
+
+  debug(`Processing message created reputation event`);
+  debug(`Got communityId: ${communityId}`);
+  return Promise.all(promiseArray);
 };

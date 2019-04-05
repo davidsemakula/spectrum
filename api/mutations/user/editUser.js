@@ -11,7 +11,7 @@ import {
   setUserPendingEmail,
 } from 'shared/db/queries/user';
 import { events } from 'shared/analytics';
-import { trackQueue } from 'shared/bull/queues';
+import { trackQueue, processReputationEventQueue } from 'shared/bull/queues';
 import { isAuthedResolver as requireAuth } from '../../utils/permissions';
 import isEmail from 'validator/lib/isEmail';
 import { sendEmailValidationEmailQueue } from 'shared/bull/queues';
@@ -86,6 +86,29 @@ export default requireAuth(
       );
       return editedUser;
     });
+
+    if (
+      ![
+        'email',
+        'name',
+        'description',
+        'username',
+        'website',
+        'profilePhoto',
+        'coverPhoto',
+      ]
+        .map(key => {
+          return editedUser[key] || currentUser[key] || input[key];
+        })
+        .includes(false)
+    ) {
+      // Only trigger for users with completed profiles
+      processReputationEventQueue.add({
+        userId: currentUser.id,
+        type: 'profile completed',
+        entityId: currentUser.id,
+      });
+    }
 
     return editedUser;
   }

@@ -1,6 +1,9 @@
 // @flow
 const { db } = require('shared/db');
-import { saveReputationEvent } from './reputationEvent';
+import {
+  saveReputationEvent,
+  upsertUserReputationEvent,
+} from './reputationEvent';
 
 export const updateReputation = (
   userId: string,
@@ -23,4 +26,16 @@ export const updateReputation = (
         score,
       })
     );
+};
+
+export const updateUserReputation = (
+  userId: string,
+  score: number,
+  type: string
+): Promise<Object> => {
+  return upsertUserReputationEvent({
+    userId,
+    type,
+    score,
+  });
 };
