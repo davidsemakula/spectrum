@@ -171,7 +171,7 @@ import threadParamRedirect from 'shared/middlewares/thread-param';
 app.use(threadParamRedirect);
 
 app.get('/', (req: express$Request, res, next) => {
-  if (req.hostname.toLowerCase() !== 'learn.keyy.org') {
+  if (req.hostname.toLowerCase() !== 'learn.keyy.org' || req.query.t) {
     return next();
   }
   if (req.query.t) {
@@ -185,10 +185,10 @@ app.get('/', (req: express$Request, res, next) => {
   }
 });
 app.get('/home', (req: express$Request, res, next) => {
-  if (req.hostname.toLowerCase() !== 'learn.keyy.org') {
+  if (req.hostname.toLowerCase() !== 'learn.keyy.org' || req.query.t) {
     return next();
   }
-  if (req.session && req.user && !req.query.t) {
+  if (req.session && req.user) {
     return res.redirect('/');
   } else {
     return res.redirect('/login');
