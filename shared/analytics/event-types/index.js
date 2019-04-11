@@ -23,6 +23,7 @@ import * as threadEvents from './thread'
 import * as userEvents from './user'
 import * as userOnboardingEvents from './userOnboarding'
 import * as webPushNotificationEvents from './web-push-notification'
+import * as reputationEvents from './reputation'
 
 export const events = {
   ...channelEvents,
@@ -49,4 +50,5 @@ export const events = {
   ...userEvents,
   ...userOnboardingEvents,
   ...webPushNotificationEvents,
+  ...reputationEvents
 }

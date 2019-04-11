@@ -25,6 +25,8 @@ import {
   COMMUNITY_MEMBERS_SCORE_5,
 } from '../constants';
 import type { ReputationEventJobData } from 'shared/bull/types';
+import { trackQueue } from 'shared/bull/queues';
+import { events } from 'shared/analytics';
 
 export default async (data: ReputationEventJobData) => {
   // entityId represents the communityId
@@ -33,6 +35,9 @@ export default async (data: ReputationEventJobData) => {
   let promiseArray = [];
 
   const numJoinedCommunities = await getJoinedCommunitiesCount(userId);
+
+  let repEventScore = null;
+
   if (numJoinedCommunities >= 4) {
     promiseArray.push(
       updateUserReputation(
@@ -41,6 +46,10 @@ export default async (data: ReputationEventJobData) => {
         COMMUNITIES_JOINED_4
       )
     );
+
+    if (numJoinedCommunities === 4) {
+      repEventScore = COMMUNITIES_JOINED_SCORE_4;
+    }
   } else if (numJoinedCommunities === 3) {
     promiseArray.push(
       updateUserReputation(
@@ -49,6 +58,8 @@ export default async (data: ReputationEventJobData) => {
         COMMUNITIES_JOINED_3
       )
     );
+
+    repEventScore = COMMUNITIES_JOINED_SCORE_3;
   } else if (numJoinedCommunities === 2) {
     promiseArray.push(
       updateUserReputation(
@@ -57,6 +68,8 @@ export default async (data: ReputationEventJobData) => {
         COMMUNITIES_JOINED_2
       )
     );
+
+    repEventScore = COMMUNITIES_JOINED_SCORE_2;
   } else if (numJoinedCommunities === 1) {
     promiseArray.push(
       updateUserReputation(
@@ -65,8 +78,22 @@ export default async (data: ReputationEventJobData) => {
         COMMUNITIES_JOINED_1
       )
     );
+
+    repEventScore = COMMUNITIES_JOINED_SCORE_1;
   } else {
     promiseArray.push(Promise.resolve());
+  }
+
+  if (repEventScore) {
+    trackQueue.add({
+      userId,
+      event: events.TOTAL_COMMUNITIES_JOINED,
+      context: {
+        userId,
+        threshold: numJoinedCommunities,
+        score: repEventScore,
+      },
+    });
   }
 
   const numNonOwnerMembers = await getNonOwnerMemberCount(entityId);
@@ -101,6 +128,16 @@ export default async (data: ReputationEventJobData) => {
               memberThresholdEventType
             )
           );
+
+          trackQueue.add({
+            userId: owner.userId,
+            event: events.TOTAL_COMMUNITY_MEMBERS,
+            context: {
+              userId,
+              threshold: numNonOwnerMembers,
+              score: memberThresholdScore,
+            },
+          });
         });
       }
     }

@@ -20,6 +20,8 @@ import {
   REACTIONS_CREATED_1,
 } from '../constants';
 import type { ReputationEventJobData } from 'shared/bull/types';
+import { trackQueue } from 'shared/bull/queues';
+import { events } from 'shared/analytics';
 
 /*
   If a reaction was created, it is the message creator who should receive reputation, not the reaction leaver. Therefore the userId passed in from reaction mutation doesn't matter; instead we need to get the userId of the person who left the message.
@@ -42,9 +44,10 @@ export default async (data: ReputationEventJobData) => {
 
   let promiseArray = [];
 
-  const numReactionsByOthers = await getReactionByOthersCount(senderId, 'like');
+  const numReactionsReceived = await getReactionByOthersCount(senderId, 'like');
+  let repEventScore = null;
 
-  if (![1, 5, 10].includes(numReactionsByOthers)) {
+  if (![1, 5, 10].includes(numReactionsReceived)) {
     promiseArray.push(
       // give reputation to the person who posted the message
       updateReputation(
@@ -66,7 +69,7 @@ export default async (data: ReputationEventJobData) => {
     )
   );
 
-  if (numReactionsByOthers >= 10) {
+  if (numReactionsReceived >= 10) {
     promiseArray.push(
       updateUserReputation(
         senderId,
@@ -74,7 +77,11 @@ export default async (data: ReputationEventJobData) => {
         REACTIONS_CREATED_10
       )
     );
-  } else if (numReactionsByOthers >= 5) {
+
+    if (numReactionsReceived === 10) {
+      repEventScore = REACTIONS_CREATED_SCORE_10;
+    }
+  } else if (numReactionsReceived >= 5) {
     promiseArray.push(
       updateUserReputation(
         senderId,
@@ -82,7 +89,11 @@ export default async (data: ReputationEventJobData) => {
         REACTIONS_CREATED_5
       )
     );
-  } else if (numReactionsByOthers >= 1) {
+
+    if (numReactionsReceived === 5) {
+      repEventScore = REACTIONS_CREATED_SCORE_5;
+    }
+  } else if (numReactionsReceived >= 1) {
     promiseArray.push(
       updateUserReputation(
         senderId,
@@ -90,6 +101,23 @@ export default async (data: ReputationEventJobData) => {
         REACTIONS_CREATED_1
       )
     );
+
+    if (numReactionsReceived === 1) {
+      repEventScore = REACTIONS_CREATED_SCORE_1;
+    }
+  }
+
+  if (repEventScore) {
+    trackQueue.add({
+      userId,
+      event: events.TOTAL_REACTIONS_RECEIVED,
+      context: {
+        userId,
+        threshold: numReactionsReceived,
+        score: repEventScore,
+        type: 'like',
+      },
+    });
   }
 
   debug(`Processing reaction created reputation event`);
