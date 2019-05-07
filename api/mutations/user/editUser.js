@@ -98,7 +98,7 @@ export default requireAuth(
         'coverPhoto',
       ]
         .map(key => {
-          return editedUser[key] || currentUser[key] || input[key];
+          return !!editedUser[key];
         })
         .includes(false)
     ) {
