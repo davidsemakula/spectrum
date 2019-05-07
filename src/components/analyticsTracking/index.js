@@ -34,6 +34,15 @@ class AnalyticsTracking extends React.Component<Props> {
 
     if (!prev.data.user && user) {
       setTrackingContexts(user);
+
+      if (window.Intercom) {
+        window.Intercom('boot', {
+          app_id: 'daw37xn5',
+          name: user.name,
+          email: user.email,
+          //Website visitor so may not have any user related info
+        });
+      }
     }
   }
 

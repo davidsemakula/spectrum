@@ -35,51 +35,163 @@ export const getHeader = ({
   nonce: string,
 }) => {
   return html`
-      <!DOCTYPE html>
-      <html lang="en">
-        <head>
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width,initial-scale=1">
-          <link rel="mask-icon" href="/img/pinned-tab.svg" color="#171A21">
-          <meta name="theme-color" content="#171A21">
-          <link rel="manifest" href="/manifest.json">
-          <meta property="og:site_name" content="Keyy">
-          <meta name="twitter:card" content="summary">
-          <meta name="twitter:site" content="@withgrindery">
-          <meta name="twitter:image:alt" content="Where communities are built">
-          <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/img/apple-icon-57x57-precomposed.png" />
-          <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/apple-icon-72x72-precomposed.png" />
-          <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/apple-icon-114x114-precomposed.png" />
-          <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/apple-icon-144x144-precomposed.png" />
-          ${metaTags}
-          <script type="text/javascript" nonce="${nonce}">
-              !function(e,a,t,n,g,c,o){e.GoogleAnalyticsObject=g,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),o=a.getElementsByTagName(t)[0],c.defer=1,c.src="https://www.google-analytics.com/analytics.js",o.parentNode.insertBefore(c,o)}(window,document,"script",0,"ga"),ga("create","UA-92673909-1","auto"),ga("send","pageview"),ga('set', 'anonymizeIp', true)
-          </script>
-          <script nonce="${nonce}" type="text/javascript">
-            (function(e,t){var n=e.amplitude||{_q:[],_iq:{}};var r=t.createElement("script")
-            ;r.type="text/javascript";r.async=true
-            ;r.src="https://cdn.amplitude.com/libs/amplitude-4.2.1-min.gz.js"
-            ;r.onload=function(){if(e.amplitude.runQueuedFunctions){
-            e.amplitude.runQueuedFunctions()}else{
-            console.error("[Amplitude] Error: could not load SDK")}}
-            ;var i=t.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)
-            ;function s(e,t){e.prototype[t]=function(){
-            this._q.push([t].concat(Array.prototype.slice.call(arguments,0)));return this}}
-            var o=function(){this._q=[];return this}
-            ;var a=["add","append","clearAll","prepend","set","setOnce","unset"]
-            ;for(var u=0;u<a.length;u++){s(o,a[u])}n.Identify=o;var c=function(){this._q=[]
-            ;return this}
-            ;var l=["setProductId","setQuantity","setPrice","setRevenueType","setEventProperties"]
-            ;for(var p=0;p<l.length;p++){s(c,l[p])}n.Revenue=c
-            ;var d=["init","logEvent","logRevenue","setUserId","setUserProperties","setOptOut","setVersionName","setDomain","setDeviceId","setGlobalUserProperties","identify","clearUserProperties","setGroup","logRevenueV2","regenerateDeviceId","logEventWithTimestamp","logEventWithGroups","setSessionId","resetSessionId"]
-            ;function v(e){function t(t){e[t]=function(){
-            e._q.push([t].concat(Array.prototype.slice.call(arguments,0)))}}
-            for(var n=0;n<d.length;n++){t(d[n])}}v(n);n.getInstance=function(e){
-            e=(!e||e.length===0?"$default_instance":e).toLowerCase()
-            ;if(!n._iq.hasOwnProperty(e)){n._iq[e]={_q:[]};v(n._iq[e])}return n._iq[e]}
-            ;e.amplitude=n})(window,document);
-          </script>
-          <!-- Hotjar Tracking Code for https://learn.keyy.org -->
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="mask-icon" href="/img/pinned-tab.svg" color="#171A21" />
+        <meta name="theme-color" content="#171A21" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta property="og:site_name" content="Keyy" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@withgrindery" />
+        <meta name="twitter:image:alt" content="Where communities are built" />
+        <link
+          rel="apple-touch-icon-precomposed"
+          sizes="57x57"
+          href="/img/apple-icon-57x57-precomposed.png"
+        />
+        <link
+          rel="apple-touch-icon-precomposed"
+          sizes="72x72"
+          href="/img/apple-icon-72x72-precomposed.png"
+        />
+        <link
+          rel="apple-touch-icon-precomposed"
+          sizes="114x114"
+          href="/img/apple-icon-114x114-precomposed.png"
+        />
+        <link
+          rel="apple-touch-icon-precomposed"
+          sizes="144x144"
+          href="/img/apple-icon-144x144-precomposed.png"
+        />
+        ${metaTags}
+        <script type="text/javascript" nonce="${nonce}">
+          !(function(e, a, t, n, g, c, o) {
+            (e.GoogleAnalyticsObject = g),
+              (e.ga =
+                e.ga ||
+                function() {
+                  (e.ga.q = e.ga.q || []).push(arguments);
+                }),
+              (e.ga.l = 1 * new Date()),
+              (c = a.createElement(t)),
+              (o = a.getElementsByTagName(t)[0]),
+              (c.defer = 1),
+              (c.src = 'https://www.google-analytics.com/analytics.js'),
+              o.parentNode.insertBefore(c, o);
+          })(window, document, 'script', 0, 'ga'),
+            ga('create', 'UA-92673909-1', 'auto'),
+            ga('send', 'pageview'),
+            ga('set', 'anonymizeIp', true);
+        </script>
+        <script nonce="${nonce}" type="text/javascript">
+          (function(e, t) {
+            var n = e.amplitude || { _q: [], _iq: {} };
+            var r = t.createElement('script');
+            r.type = 'text/javascript';
+            r.async = true;
+            r.src = 'https://cdn.amplitude.com/libs/amplitude-4.2.1-min.gz.js';
+            r.onload = function() {
+              if (e.amplitude.runQueuedFunctions) {
+                e.amplitude.runQueuedFunctions();
+              } else {
+                console.error('[Amplitude] Error: could not load SDK');
+              }
+            };
+            var i = t.getElementsByTagName('script')[0];
+            i.parentNode.insertBefore(r, i);
+            function s(e, t) {
+              e.prototype[t] = function() {
+                this._q.push(
+                  [t].concat(Array.prototype.slice.call(arguments, 0))
+                );
+                return this;
+              };
+            }
+            var o = function() {
+              this._q = [];
+              return this;
+            };
+            var a = [
+              'add',
+              'append',
+              'clearAll',
+              'prepend',
+              'set',
+              'setOnce',
+              'unset',
+            ];
+            for (var u = 0; u < a.length; u++) {
+              s(o, a[u]);
+            }
+            n.Identify = o;
+            var c = function() {
+              this._q = [];
+              return this;
+            };
+            var l = [
+              'setProductId',
+              'setQuantity',
+              'setPrice',
+              'setRevenueType',
+              'setEventProperties',
+            ];
+            for (var p = 0; p < l.length; p++) {
+              s(c, l[p]);
+            }
+            n.Revenue = c;
+            var d = [
+              'init',
+              'logEvent',
+              'logRevenue',
+              'setUserId',
+              'setUserProperties',
+              'setOptOut',
+              'setVersionName',
+              'setDomain',
+              'setDeviceId',
+              'setGlobalUserProperties',
+              'identify',
+              'clearUserProperties',
+              'setGroup',
+              'logRevenueV2',
+              'regenerateDeviceId',
+              'logEventWithTimestamp',
+              'logEventWithGroups',
+              'setSessionId',
+              'resetSessionId',
+            ];
+            function v(e) {
+              function t(t) {
+                e[t] = function() {
+                  e._q.push(
+                    [t].concat(Array.prototype.slice.call(arguments, 0))
+                  );
+                };
+              }
+              for (var n = 0; n < d.length; n++) {
+                t(d[n]);
+              }
+            }
+            v(n);
+            n.getInstance = function(e) {
+              e = (!e || e.length === 0
+                ? '$default_instance'
+                : e
+              ).toLowerCase();
+              if (!n._iq.hasOwnProperty(e)) {
+                n._iq[e] = { _q: [] };
+                v(n._iq[e]);
+              }
+              return n._iq[e];
+            };
+            e.amplitude = n;
+          })(window, document);
+        </script>
+        <!-- Hotjar Tracking Code for https://learn.keyy.org -->
         <script>
           (function(h, o, t, j, a, r) {
             h.hj =
@@ -214,9 +326,12 @@ export const getHeader = ({
           })();
         </script>
         <!-- end Adroll -->
-        </head>
-        <body>
-          <div id="root">`;
+      </head>
+      <body>
+        <div id="root"></div>
+      </body>
+    </html>
+  `;
 };
 
 export const getFooter = ({
@@ -241,6 +356,12 @@ export const getFooter = ({
       <script type="text/javascript" src="/static/js/bootstrap.js"></script>
       ${bundles.map(src => createScriptTag({ src }))}
       ${createScriptTag({ src: `/static/js/${mainBundle}` })}
+      <script type="text/javascript">
+        window.intercomSettings = {
+          app_id: "daw37xn5",
+        };
+      </script>
+      <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/daw37xn5';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
     </body>
     </html>
   `;

@@ -86,6 +86,7 @@ function securityMiddleware(
         'cdn.ravenjs.com',
         'cdn.polyfill.io',
         'cdn.amplitude.com',
+        '*.intercom.io',
 
         // Note: We will execution of any inline scripts that have the following
         // nonce identifier attached to them.
