@@ -3,6 +3,9 @@ const path = require('path');
 const parse = require('./utils/parse-argv');
 const error = require('./utils/error');
 
+const DOMAIN = 'chat.grindery.io';
+const TEAM = 'inboundlabs';
+
 // Debug util
 const exec = process.env.DEBUG
   ? cmd => {
@@ -11,7 +14,7 @@ const exec = process.env.DEBUG
     }
   : execSync;
 // Append --team space-program to all now commands
-const now = (cmd = '') => `now ${cmd} --team space-program`;
+const now = (cmd = '') => `now ${cmd} --team ${TEAM}`;
 
 const VALID_SERVERS = [
   'all',
@@ -87,10 +90,8 @@ if (servers.length > 0) {
 
     const alias =
       server === 'api'
-        ? `api.${!flags.prod ? 'alpha.' : ''}chat.grindery.io`
-        : `${server}.${
-            flags.prod === true ? 'workers' : 'alpha'
-          }.chat.grindery.io`;
+        ? `api.${!flags.prod ? 'alpha.' : ''}${DOMAIN}`
+        : `${server}.${flags.prod === true ? 'workers' : 'alpha'}.${DOMAIN}`;
     console.log(`Aliasing ${stdout.toString()} to ${alias}...`);
     exec(now(`alias ${stdout.toString()} ${alias}`), {
       cwd: buildDir,
@@ -105,7 +106,7 @@ if (servers.length > 0) {
         now(
           `alias -r rules${!flags.prod ? '-alpha' : ''}.json ${
             !flags.prod ? 'alpha.' : ''
-          }spectrum.chat`
+          }${DOMAIN}`
         ),
         {
           stdio: 'inherit',
