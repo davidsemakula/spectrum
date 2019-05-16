@@ -91,7 +91,7 @@ describe('/new/thread community and channel selection', () => {
     communityDropdownIsEnabled();
     channelDropdownIsHidden();
 
-    communityDropdown().select('Spectrum');
+    communityDropdown().select('Grindery');
     channelDropdownIsEnabled();
     channelDropdown().contains('General');
     channelDropdown().contains('Private');
@@ -108,7 +108,7 @@ describe('/new/thread community and channel selection', () => {
     cy.get('[data-cy="rich-text-editor"]').type('Bar');
     publishButtonIsDisabled();
 
-    communityDropdown().select('Spectrum');
+    communityDropdown().select('Grindery');
     publishButtonIsDisabled();
 
     channelDropdownIsEnabled();
@@ -119,7 +119,7 @@ describe('/new/thread community and channel selection', () => {
     channelDropdown().should('not.be.visible');
     publishButtonIsDisabled();
 
-    communityDropdown().select('Spectrum');
+    communityDropdown().select('Grindery');
     cy.wait(50);
     channelDropdown()
       .should('be.visible')
@@ -156,7 +156,7 @@ describe('/new/thread community and channel selection', () => {
   it('selects a community and channel if both params are passed and the user is a member of both', () => {
     cy.visit('/new/thread?composerCommunityId=1&composerChannelId=1');
     communityIsLocked();
-    communitySelected().contains('Spectrum');
+    communitySelected().contains('Grindery');
     channelIsLocked();
     channelSelected().contains('General');
   });

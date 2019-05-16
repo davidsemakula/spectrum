@@ -5,6 +5,8 @@ import getThreadLink from 'src/helpers/get-thread-link';
 import generateMetaInfo from 'shared/generate-meta-info';
 import type { ThreadInfoType } from 'shared/graphql/fragments/thread/threadInfo';
 
+import DOMAIN from 'shared/site-domain';
+
 type Props = {
   thread: ThreadInfoType,
 };
@@ -38,10 +40,7 @@ const ThreadHead = (props: Props) => {
       image={metaImage}
       key={title}
     >
-      <link
-        rel="canonical"
-        href={`https://spectrum.chat${getThreadLink(thread)}`}
-      />
+      <link rel="canonical" href={`https://${DOMAIN}{getThreadLink(thread)}`} />
       {metaImage && <meta name="twitter:card" content="summary_large_image" />}
       <meta
         property="article:published_time"
@@ -53,7 +52,7 @@ const ThreadHead = (props: Props) => {
       />
       <meta
         property="article:author"
-        content={`https://spectrum.chat/users/@${author.user.username}`}
+        content={`https://${DOMAIN}/users/@${author.user.username}`}
       />
       <meta
         property="article:section"

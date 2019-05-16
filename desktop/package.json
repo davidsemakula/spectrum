@@ -1,5 +1,5 @@
 {
-  "name": "Spectrum",
+  "name": "Grindery",
   "description": "The community platform for the future.",
   "homepage": "https://chat.grindery.io",
   "author": {
@@ -35,7 +35,7 @@
     "release": "yarn run package:all --publish always"
   },
   "build": {
-    "productName": "Spectrum",
+    "productName": "Grindery",
     "appId": "chat.spectrum",
     "copyright": "Copyright © 2018 Space Program Inc.",
     "publish": [

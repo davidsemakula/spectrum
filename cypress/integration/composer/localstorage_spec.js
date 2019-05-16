@@ -47,7 +47,7 @@ describe('composer content persistence', () => {
     cy.get('[data-cy="rich-text-editor"]').should('be.visible');
     cy.get('[data-cy="composer-community-selector"]')
       .should('be.visible')
-      .select('Spectrum');
+      .select('Grindery');
     cy.get('[data-cy="composer-channel-selector"]')
       .should('be.visible')
       .select('General');
@@ -69,7 +69,7 @@ describe('composer content persistence', () => {
     cy.get('[data-cy="rich-text-editor"]').should('be.visible');
     cy.get('[data-cy="composer-community-selector"]')
       .should('be.visible')
-      .select('Spectrum');
+      .select('Grindery');
     cy.get('[data-cy="composer-channel-selector"]')
       .should('be.visible')
       .select('General');

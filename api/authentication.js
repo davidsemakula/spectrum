@@ -361,7 +361,7 @@ const init = () => {
           if (existingUserWithProviderId) {
             return done(null, req.user, {
               message:
-                'Your GitHub account is already linked to another Spectrum profile.',
+                'Your GitHub account is already linked to another Grindery profile.',
             });
           }
         }

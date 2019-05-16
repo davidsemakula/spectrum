@@ -4,6 +4,8 @@ import { OutlineButton, PrimaryButton } from 'src/components/button';
 import { Emoji, Heading, Description, ActionsRow, Card } from './style';
 import { ViewGrid, CenteredGrid } from 'src/components/layout';
 
+import DOMAIN from 'shared/site-domain';
+
 type Props = {
   emoji?: string,
   heading?: string,
@@ -14,7 +16,7 @@ export const ErrorView = (props: Props) => {
   const {
     emoji = '😣',
     heading = 'We ran into trouble loading this page',
-    subheading = 'You may be trying to view something that is deleted, or Spectrum is just having a hiccup. If you think something has gone wrong, please contact us.',
+    subheading = 'You may be trying to view something that is deleted, or Grindery is just having a hiccup. If you think something has gone wrong, please contact us.',
     ...rest
   } = props;
 
@@ -28,7 +30,7 @@ export const ErrorView = (props: Props) => {
           <Heading>{heading}</Heading>
           <Description>{subheading}</Description>
           <ActionsRow>
-            <OutlineButton href={'mailto:hi@spectrum.chat'}>
+            <OutlineButton href={`mailto:hi@${DOMAIN}`}>
               Contact us
             </OutlineButton>
             <PrimaryButton to={'/'}>Go home</PrimaryButton>

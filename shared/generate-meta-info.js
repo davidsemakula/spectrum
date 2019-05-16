@@ -142,7 +142,7 @@ function generateMetaInfo(input /*: Input */) /*: Meta */ {
     case 'notifications': {
       return setDefault({
         title: 'Notifications',
-        description: 'Notifications on Spectrum',
+        description: 'Notifications on Grindery',
       });
     }
     default: {

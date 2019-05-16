@@ -15,6 +15,8 @@ import {
 import { track, events } from 'src/helpers/analytics';
 import Head from 'src/components/head';
 
+import DOMAIN from 'shared/site-domain';
+
 class Support extends React.Component<{}> {
   componentDidMount() {
     track(events.SUPPORT_PAGE_VIEWED);
@@ -108,7 +110,7 @@ class Support extends React.Component<{}> {
               </div>
 
               <OutlineButton
-                href="mailto:hi@spectrum.chat"
+                href={`mailto:hi@${DOMAIN}`}
                 onClick={() => track(events.SUPPORT_PAGE_EMAIL_US)}
               >
                 Email us
