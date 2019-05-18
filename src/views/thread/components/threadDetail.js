@@ -329,6 +329,7 @@ class ThreadDetailPure extends React.Component<Props, State> {
                   messageButton={
                     currentUser && author.user.id !== currentUser.id
                   }
+                  reputation={author.reputation}
                 />
               </BylineContainer>
 

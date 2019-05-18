@@ -20,6 +20,7 @@ import {
   Description,
   Actions,
   CardLink,
+  ReputationWrapper,
 } from './style';
 
 type Props = {
@@ -93,15 +94,16 @@ const User = (props: Props) => {
                 badges.map((b, i) => (
                   <Badge style={{ marginLeft: '8px' }} key={i} type={b} />
                 ))}
+              {typeof reputation === 'number' && (
+                // $FlowIssue
+                <ReputationWrapper>
+                  <Reputation size="mini" reputation={reputation} />
+                </ReputationWrapper>
+              )}
             </Label>
           )}
 
           {username && <Sublabel title={username}>@{username}</Sublabel>}
-
-          {typeof reputation === 'number' && (
-            // $FlowIssue
-            <Reputation reputation={reputation} />
-          )}
 
           {description && <Description>{description}</Description>}
         </Content>

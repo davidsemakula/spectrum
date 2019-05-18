@@ -121,3 +121,9 @@ export const Actions = styled.div`
 export const ChannelActions = styled(Actions)`
   flex-direction: row;
 `;
+
+export const ReputationWrapper = styled.div`
+  display: inline-block;
+  margin-left: 6px;
+  vertical-align: middle;
+`;

@@ -231,6 +231,7 @@ class Message extends React.Component<Props, State> {
                 roles={message.author.roles}
                 bot={message.bot}
                 messageUrl={messageUrl}
+                reputation={message.author.reputation}
               />
             )}
 

@@ -500,3 +500,7 @@ export const EditedIndicator = styled.span`
 `;
 
 export const ThreadAttachmentsContainer = styled.ul``;
+
+export const ReputationWrapper = styled.div`
+  margin: 0 6px;
+`;

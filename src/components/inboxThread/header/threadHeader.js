@@ -18,6 +18,7 @@ import {
   MetaSubtitlePinned,
 } from './style';
 import Timestamp from './timestamp';
+import Reputation from 'src/components/reputation';
 import type { HeaderProps } from './index';
 
 class Header extends React.Component<HeaderProps> {
@@ -56,6 +57,8 @@ class Header extends React.Component<HeaderProps> {
               </MetaTitleText>
             )}
 
+            <Divider>·</Divider>
+            <Reputation reputation={author.reputation} />
             <Divider>·</Divider>
             <Timestamp {...this.props} />
 

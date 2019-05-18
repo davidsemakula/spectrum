@@ -5,6 +5,7 @@ import renderTextWithLinks from 'src/helpers/render-text-with-markdown-links';
 import addProtocolToString from 'shared/normalize-url';
 import Icon from 'src/components/icon';
 import GithubProfile from 'src/components/githubProfile';
+import Reputation from 'src/components/reputation';
 import {
   MetaContainer,
   Name,
@@ -29,6 +30,9 @@ export const UserMeta = (props: Props) => {
     <MetaContainer>
       <Name>{user.name}</Name>
       {user.username && <Username>@{user.username}</Username>}
+      {typeof user.totalReputation === 'number' && (
+        <Reputation reputation={user.totalReputation} />
+      )}
 
       {formattedDescription && (
         <Description>{formattedDescription}</Description>

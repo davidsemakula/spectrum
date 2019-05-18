@@ -5,12 +5,14 @@ import ConditionalWrap from 'src/components/conditionalWrap';
 import { UserHoverProfile } from 'src/components/hoverProfile';
 import { Link } from 'react-router-dom';
 import Badge from '../badges';
+import Reputation from 'src/components/reputation';
 import {
   BadgesContainer,
   Byline,
   GutterTimestamp,
   Name,
   Username,
+  ReputationWrapper,
 } from './style';
 
 type Props = {
@@ -19,10 +21,11 @@ type Props = {
   roles?: Array<string>,
   bot?: boolean,
   messageUrl: string,
+  reputation?: Number,
 };
 
 export default (props: Props) => {
-  const { user, roles, timestamp, messageUrl } = props;
+  const { user, roles, timestamp, messageUrl, reputation } = props;
   return (
     <Byline>
       <ConditionalWrap
@@ -37,6 +40,11 @@ export default (props: Props) => {
               onClick={e => e.stopPropagation()}
             >
               {children}
+              {typeof reputation === 'number' && (
+                <ReputationWrapper>
+                  <Reputation reputation={reputation} size="mini" />
+                </ReputationWrapper>
+              )}
               <Username>{user.username && `@${user.username}`}</Username>
             </Link>
           </UserHoverProfile>
