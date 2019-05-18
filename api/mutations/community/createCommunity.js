@@ -42,7 +42,7 @@ export default requireAuth(
       });
 
       return new UserError(
-        'Communities must have a valid url so people can find it!'
+        'Learning groups must have a valid url so people can find it!'
       );
     }
 

@@ -232,7 +232,7 @@ class UserView extends React.Component<Props, State> {
 
                 <SidebarSection>
                   <SidebarSectionHeader>
-                    <SidebarSectionHeading>Communities</SidebarSectionHeading>
+                    <SidebarSectionHeading>Learning groups</SidebarSectionHeading>
                   </SidebarSectionHeader>
 
                   <CommunityList
@@ -310,7 +310,7 @@ class UserView extends React.Component<Props, State> {
                       <SidebarSection>
                         <SidebarSectionHeader>
                           <SidebarSectionHeading>
-                            Communities
+                            Learning groups
                           </SidebarSectionHeading>
                         </SidebarSectionHeader>
 
