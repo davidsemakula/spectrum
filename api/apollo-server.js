@@ -30,7 +30,7 @@ class ProtectedApolloServer extends ApolloServer {
       validationRules: [
         ...options.validationRules,
         costAnalysis({
-          maximumCost: 750,
+          maximumCost: 1500,
           defaultCost: 1,
           variables: req.body.variables,
           createError: (max, actual) => {
