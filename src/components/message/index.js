@@ -265,9 +265,7 @@ class Message extends React.Component<Props, State> {
                 currentUser={currentUser}
                 dispatch={dispatch}
                 render={({ me, count, hasReacted, mutation }) => (
-                  <Tooltip
-                    content={me ? 'Likes' : hasReacted ? 'Unlike' : 'Like'}
-                  >
+                  <Tooltip content={me ? 'Aha!' : hasReacted ? 'Aha!' : 'Aha!'}>
                     <ReactionWrapper
                       hasCount={count}
                       hasReacted={hasReacted}
@@ -289,7 +287,7 @@ class Message extends React.Component<Props, State> {
                             ? 'inline-unlike-action'
                             : 'inline-like-action'
                         }
-                        glyph="like-fill"
+                        glyph="aha"
                         size={16}
                         color={'text.reverse'}
                       />
@@ -341,7 +339,7 @@ class Message extends React.Component<Props, State> {
                       currentUser={currentUser}
                       dispatch={dispatch}
                       render={({ hasReacted, mutation }) => (
-                        <Tooltip content={hasReacted ? 'Unlike' : 'Like'}>
+                        <Tooltip content={hasReacted ? 'Aha!' : 'Aha!'}>
                           <LikeAction
                             hasReacted={hasReacted}
                             onClick={e => {
@@ -353,7 +351,7 @@ class Message extends React.Component<Props, State> {
                               data-cy={
                                 hasReacted ? 'unlike-action' : 'like-action'
                               }
-                              glyph={hasReacted ? 'like-fill' : 'like'}
+                              glyph={hasReacted ? 'aha' : 'aha'}
                               size={20}
                             />
                           </LikeAction>

@@ -35,7 +35,7 @@ class Reputation extends React.Component<Props> {
     const renderedReputation = reputation > 0 ? `${reputation}` : '0';
 
     return (
-      <Tooltip content={'Reputation'}>
+      <Tooltip content={'Keyy Coin'}>
         <ReputationWrapper
           onClick={this.open}
           tipText={`${tipText}`}
