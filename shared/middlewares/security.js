@@ -86,7 +86,15 @@ function securityMiddleware(
         'cdn.ravenjs.com',
         'cdn.polyfill.io',
         'cdn.amplitude.com',
-        '*.intercom.io',
+        'static.hotjar.com',
+        'script.hotjar.com',
+        'd10lpsik1i8c69.cloudfront.net',
+        'connect.facebook.net',
+        'js.hs-analytics.net',
+        'js.hsleadflows.net',
+        '*.adroll.com',
+        'widget.intercom.io',
+        'js.intercomcdn.com',
 
         // Note: We will execution of any inline scripts that have the following
         // nonce identifier attached to them.
@@ -118,6 +126,8 @@ function securityMiddleware(
 
       // restricts the origins allowed to deliver video and audio.
       mediaSrc: ["'none'"],
+
+      fontSrc: ['js.intercomcdn.com'],
     },
 
     // Set to true if you only want browsers to report errors, not block them.

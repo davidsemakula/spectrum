@@ -89,6 +89,7 @@ export const getHeader = ({
               (c = a.createElement(t)),
               (o = a.getElementsByTagName(t)[0]),
               (c.defer = 1),
+              (c.nonce = '${nonce}'),
               (c.src = 'https://www.google-analytics.com/analytics.js'),
               o.parentNode.insertBefore(c, o);
           })(window, document, 'script', 0, 'ga'),
@@ -102,6 +103,7 @@ export const getHeader = ({
             var r = t.createElement('script');
             r.type = 'text/javascript';
             r.async = true;
+            r.nonce = '${nonce}';
             r.src = 'https://cdn.amplitude.com/libs/amplitude-4.2.1-min.gz.js';
             r.onload = function() {
               if (e.amplitude.runQueuedFunctions) {
@@ -201,7 +203,7 @@ export const getHeader = ({
           })(window, document);
         </script>
         <!-- Hotjar Tracking Code for https://learn.keyy.org -->
-        <script>
+        <script nonce="${nonce}">
           (function(h, o, t, j, a, r) {
             h.hj =
               h.hj ||
@@ -212,6 +214,7 @@ export const getHeader = ({
             a = o.getElementsByTagName('head')[0];
             r = o.createElement('script');
             r.async = 1;
+            r.nonce = '${nonce}';
             r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
             a.appendChild(r);
           })(
@@ -228,16 +231,18 @@ export const getHeader = ({
           async
           defer
           src="//js.hs-scripts.com/470535.js"
+          nonce="${nonce}"
         ></script>
         <!-- End of HubSpot Embed Code -->
         <!-- Start LuckyOrange Tracking ---->
-        <script type="text/javascript">
+        <script type="text/javascript" nonce="${nonce}">
           window.__lo_site_id = 141389;
 
           (function() {
             var wa = document.createElement('script');
             wa.type = 'text/javascript';
             wa.async = true;
+            wa.nonce = '${nonce}';
             wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(wa, s);
@@ -245,7 +250,7 @@ export const getHeader = ({
         </script>
         <!-- End LuckyOrange -->
         <!-- Facebook Pixel Code -->
-        <script>
+        <script nonce="${nonce}">
           !(function(f, b, e, v, n, t, s) {
             if (f.fbq) return;
             n = f.fbq = function() {
@@ -260,6 +265,7 @@ export const getHeader = ({
             n.queue = [];
             t = b.createElement(e);
             t.async = !0;
+            t.nonce = '${nonce}';
             t.src = v;
             s = b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t, s);
@@ -282,10 +288,11 @@ export const getHeader = ({
         <!-- End Facebook Pixel Code -->
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script
+          nonce="${nonce}"
           async
           src="https://www.googletagmanager.com/gtag/js?id=UA-37080412-3"
         ></script>
-        <script>
+        <script nonce="${nonce}">
           window.dataLayer = window.dataLayer || [];
           function gtag() {
             dataLayer.push(arguments);
@@ -296,7 +303,7 @@ export const getHeader = ({
         </script>
         <!-- end GA -->
         <!-- Adroll Pixel - No-EU with no GDPR -->
-        <script type="text/javascript">
+        <script type="text/javascript" nonce="${nonce}">
           adroll_adv_id = 'K2LAE7GLABAZNEGQYJQ6EM';
           adroll_pix_id = '7CPCGD6JORGJPD46RIYNJY';
 
@@ -320,6 +327,7 @@ export const getHeader = ({
                   ? 'https://s.adroll.com'
                   : 'http://a.adroll.com';
               scr.setAttribute('async', 'true');
+              scr.setAttribute('nonce', '${nonce}');
               scr.type = 'text/javascript';
               scr.src = host + '/j/roundtrip.js';
               (
@@ -365,12 +373,12 @@ export const getFooter = ({
       ${createScriptTag({ src: `/static/js/${bootstrapBundle}` })}
       ${bundles.map(src => createScriptTag({ src }))}
       ${createScriptTag({ src: `/static/js/${mainBundle}` })}
-      <script type="text/javascript">
+      <script type="text/javascript" nonce="${nonce}">
         window.intercomSettings = {
           app_id: "daw37xn5",
         };
       </script>
-      <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/daw37xn5';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
+      <script nonce="${nonce}">(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/daw37xn5';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
     </body>
     </html>
   `;
