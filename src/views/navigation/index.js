@@ -27,6 +27,8 @@ import CommunityList from './communityList';
 import { NavigationContext } from 'src/helpers/navigation-context';
 import { MIN_WIDTH_TO_EXPAND_NAVIGATION } from 'src/components/layout';
 
+import { canCreateCommunity } from 'shared/keyy-utils';
+
 type Props = {
   history: History,
   currentUser?: Object,
@@ -177,6 +179,36 @@ const Navigation = (props: Props) => {
                 )}
               </Route>
 
+              <Route path="/shop">
+                {({ match }) => (
+                  <Tooltip
+                    content="Shop"
+                    placement={'left'}
+                    isEnabled={!isWideViewport}
+                  >
+                    <AvatarGrid isActive={!!match}>
+                      <AvatarLink
+                        to={'/shop'}
+                        data-cy="navigation-shop"
+                        onClick={e => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          location.href =
+                            'https://shop.keyy.org/?utm_source=in-app';
+                        }}
+                        {...getAccessibilityActiveState(!!match)}
+                      >
+                        <IconWrapper>
+                          <Icon glyph="shop" />
+                        </IconWrapper>
+
+                        <Label>Shop</Label>
+                      </AvatarLink>
+                    </AvatarGrid>
+                  </Tooltip>
+                )}
+              </Route>
+
               <Divider />
 
               <Route path="/login">
@@ -310,7 +342,7 @@ const Navigation = (props: Props) => {
                 {...props}
               />
 
-              {currentUser && (
+              {currentUser && canCreateCommunity(props.currentUser.email) && (
                 <React.Fragment>
                   <Divider />
                   <Route path="/new/community">

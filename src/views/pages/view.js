@@ -168,14 +168,6 @@ export const Overview = (props: Props) => {
             >
               <ThisPrimaryCTA icon="welcome">Join Keyy</ThisPrimaryCTA>
             </Link>
-            <Link
-              to="/new/community"
-              onClick={() => track(events.HOME_PAGE_CREATE_COMMUNITY_CLICKED)}
-            >
-              <ThisSecondaryCTA icon="plus-fill">
-                Create your learning group
-              </ThisSecondaryCTA>
-            </Link>
           </Actions>
         </ThisText>
         <Img src={'/img/diagram.svg'} alt="" />

@@ -3,6 +3,7 @@ import * as React from 'react';
 import compose from 'recompose/compose';
 import { connect } from 'react-redux';
 import { withApollo } from 'react-apollo';
+import { Redirect } from 'react-router';
 import queryString from 'query-string';
 import { Button, TextButton } from 'src/components/button';
 import SlackConnection from '../communitySettings/components/slack';
@@ -33,6 +34,8 @@ import viewNetworkHandler, {
   type ViewNetworkHandlerType,
 } from 'src/components/viewNetworkHandler';
 import { ViewGrid, SingleColumnGrid } from 'src/components/layout';
+
+import { canCreateCommunity } from 'shared/keyy-utils';
 
 type State = {
   activeStep: number,
@@ -185,6 +188,9 @@ class NewCommunity extends React.Component<Props, State> {
     const title = this.title();
     const description = this.description();
     if (user && user.email) {
+      if (!canCreateCommunity(user.email)) {
+        return <Redirect to="/" />;
+      }
       return (
         <ViewGrid>
           <Head

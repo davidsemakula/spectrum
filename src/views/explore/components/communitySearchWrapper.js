@@ -10,6 +10,8 @@ import { CLIENT_URL } from '../../../api/constants';
 import { Tagline, Copy, Content } from '../../pages/style';
 import { track, events } from 'src/helpers/analytics';
 
+import { canCreateCommunity } from 'shared/keyy-utils';
+
 // $FlowFixMe
 const CommunitySearchWrapper = props => {
   const ThisContent = styled(Content)`
@@ -88,32 +90,30 @@ const CommunitySearchWrapper = props => {
           Try searching for topics like "start" or for products like "Keyy"
         </ThisCopy>
         {props.children}
-          {props.currentUser && ['luke@keyy.org', 'lukesummerfield@gmail.com'].includes(props.currentUser.email)?
-              <SecondaryContent>
-                  <SecondaryTagline>
-                      ...or create your own learning group
-                  </SecondaryTagline>
-                  <SecondaryCopy>
-                      Building learning groups on Keyy is easy and free!
-                  </SecondaryCopy>
-                  {props.currentUser ? (
-                      <Link
-                          to={'/new/community'}
-                          onClick={() =>
-                              track(events.EXPLORE_PAGE_CREATE_COMMUNITY_CLICKED)
-                          }
-                      >
-                          <PrimaryCTA>Get Started</PrimaryCTA>
-                      </Link>
-                  ) : (
-                      <Link to={`/login?r=${CLIENT_URL}/new/community`}>
-                          <PrimaryCTA>Get Started</PrimaryCTA>
-                      </Link>
-                  )}
-              </SecondaryContent>
-              : null
-          }
-
+        {props.currentUser && canCreateCommunity(props.currentUser.email) ? (
+          <SecondaryContent>
+            <SecondaryTagline>
+              ...or create your own learning group
+            </SecondaryTagline>
+            <SecondaryCopy>
+              Building learning groups on Keyy is easy and free!
+            </SecondaryCopy>
+            {props.currentUser ? (
+              <Link
+                to={'/new/community'}
+                onClick={() =>
+                  track(events.EXPLORE_PAGE_CREATE_COMMUNITY_CLICKED)
+                }
+              >
+                <PrimaryCTA>Get Started</PrimaryCTA>
+              </Link>
+            ) : (
+              <Link to={`/login?r=${CLIENT_URL}/new/community`}>
+                <PrimaryCTA>Get Started</PrimaryCTA>
+              </Link>
+            )}
+          </SecondaryContent>
+        ) : null}
       </ThisContent>
     </ViewSegment>
   );
