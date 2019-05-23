@@ -334,6 +334,36 @@ const Navigation = (props: Props) => {
                 )}
               </Route>
 
+              <Route path="/shop">
+                {({ match }) => (
+                  <Tooltip
+                    content="Shop"
+                    placement={'left'}
+                    isEnabled={!isWideViewport}
+                  >
+                    <AvatarGrid isActive={!!match}>
+                      <AvatarLink
+                        to={'/shop'}
+                        data-cy="navigation-shop"
+                        onClick={e => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          location.href =
+                            'https://shop.keyy.org/?utm_source=in-app';
+                        }}
+                        {...getAccessibilityActiveState(!!match)}
+                      >
+                        <IconWrapper>
+                          <Icon glyph="shop" />
+                        </IconWrapper>
+
+                        <Label>Shop</Label>
+                      </AvatarLink>
+                    </AvatarGrid>
+                  </Tooltip>
+                )}
+              </Route>
+
               <Divider />
 
               <CommunityList
