@@ -12,6 +12,7 @@ import {
   NavigationGrid,
   AvatarGrid,
   AvatarLink,
+  AvatarLinkPlain,
   Label,
   IconWrapper,
   Divider,
@@ -87,10 +88,9 @@ const Navigation = (props: Props) => {
                     isEnabled={!isWideViewport}
                   >
                     <AvatarGrid isActive={!!match}>
-                      <AvatarLink
-                        to={'/features'}
+                      <AvatarLinkPlain
                         data-cy="navigation-features"
-                        onClick={() => setNavigationIsOpen(false)}
+                        href='https://www.keyy.org/features'
                         {...getAccessibilityActiveState(!!match)}
                       >
                         <IconWrapper>
@@ -98,7 +98,7 @@ const Navigation = (props: Props) => {
                         </IconWrapper>
 
                         <Label>Features</Label>
-                      </AvatarLink>
+                      </AvatarLinkPlain>
                     </AvatarGrid>
                   </Tooltip>
                 )}
@@ -137,10 +137,9 @@ const Navigation = (props: Props) => {
                     isEnabled={!isWideViewport}
                   >
                     <AvatarGrid isActive={!!match}>
-                      <AvatarLink
-                        to={'/apps'}
+                      <AvatarLinkPlain
                         data-cy="navigation-apps"
-                        onClick={() => setNavigationIsOpen(false)}
+                        href='https://www.keyy.org/download'
                         {...getAccessibilityActiveState(!!match)}
                       >
                         <IconWrapper>
@@ -148,7 +147,7 @@ const Navigation = (props: Props) => {
                         </IconWrapper>
 
                         <Label>Apps</Label>
-                      </AvatarLink>
+                      </AvatarLinkPlain>
                     </AvatarGrid>
                   </Tooltip>
                 )}
@@ -187,23 +186,17 @@ const Navigation = (props: Props) => {
                     isEnabled={!isWideViewport}
                   >
                     <AvatarGrid isActive={!!match}>
-                      <AvatarLink
-                        to={'/shop'}
+                      <AvatarLinkPlain
                         data-cy="navigation-shop"
-                        onClick={e => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          location.href =
-                            'https://shop.keyy.org/?utm_source=in-app';
-                        }}
+                        href='https://shop.keyy.org/?utm_source=in-app'
                         {...getAccessibilityActiveState(!!match)}
                       >
                         <IconWrapper>
-                          <Icon glyph="shop" />
+                          <Icon glyph="shop" size="10" />
                         </IconWrapper>
 
                         <Label>Shop</Label>
-                      </AvatarLink>
+                      </AvatarLinkPlain>
                     </AvatarGrid>
                   </Tooltip>
                 )}
@@ -296,6 +289,30 @@ const Navigation = (props: Props) => {
                 )}
               </Route>
 
+              <Route path="/shop">
+                {({ match }) => (
+                  <Tooltip
+                    content="Shop"
+                    placement={'left'}
+                    isEnabled={!isWideViewport}
+                  >
+                    <AvatarGrid isActive={!!match}>
+                      <AvatarLinkPlain
+                        data-cy="navigation-shop"
+                        href='https://shop.keyy.org/?utm_source=in-app'
+                        {...getAccessibilityActiveState(!!match)}
+                      >
+                        <IconWrapper>
+                          <Icon glyph="shop" size="23" />
+                        </IconWrapper>
+
+                        <Label>Shop</Label>
+                      </AvatarLinkPlain>
+                    </AvatarGrid>
+                  </Tooltip>
+                )}
+              </Route>
+
               <Route path="/users/:username">
                 {({ match }) => (
                   <Tooltip
@@ -328,36 +345,6 @@ const Navigation = (props: Props) => {
                           showHoverProfile={false}
                         />
                         <Label>Profile</Label>
-                      </AvatarLink>
-                    </AvatarGrid>
-                  </Tooltip>
-                )}
-              </Route>
-
-              <Route path="/shop">
-                {({ match }) => (
-                  <Tooltip
-                    content="Shop"
-                    placement={'left'}
-                    isEnabled={!isWideViewport}
-                  >
-                    <AvatarGrid isActive={!!match}>
-                      <AvatarLink
-                        to={'/shop'}
-                        data-cy="navigation-shop"
-                        onClick={e => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          location.href =
-                            'https://shop.keyy.org/?utm_source=in-app';
-                        }}
-                        {...getAccessibilityActiveState(!!match)}
-                      >
-                        <IconWrapper>
-                          <Icon glyph="shop" />
-                        </IconWrapper>
-
-                        <Label>Shop</Label>
                       </AvatarLink>
                     </AvatarGrid>
                   </Tooltip>

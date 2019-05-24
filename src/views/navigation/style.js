@@ -246,6 +246,8 @@ export const AvatarLink = styled(Link)`
   }
 `;
 
+export const AvatarLinkPlain = AvatarLink.withComponent("a");
+
 export const Avatar = styled.img`
   width: ${props => props.size}px;
   height: ${props => props.size}px;
@@ -298,6 +300,8 @@ export const IconWrapper = styled.div`
   border-radius: 6px;
   opacity: 1;
   position: relative;
+  min-width: 32px;
+  min-height: 32px;
 
   &:hover {
     color: ${theme.text.default};
