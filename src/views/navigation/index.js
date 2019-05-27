@@ -90,7 +90,8 @@ const Navigation = (props: Props) => {
                     <AvatarGrid isActive={!!match}>
                       <AvatarLinkPlain
                         data-cy="navigation-features"
-                        href='https://www.keyy.org/features'
+                        target="_blank"
+                        href="https://www.keyy.org/features"
                         {...getAccessibilityActiveState(!!match)}
                       >
                         <IconWrapper>
@@ -139,7 +140,8 @@ const Navigation = (props: Props) => {
                     <AvatarGrid isActive={!!match}>
                       <AvatarLinkPlain
                         data-cy="navigation-apps"
-                        href='https://www.keyy.org/download'
+                        target="_blank"
+                        href="https://www.keyy.org/download"
                         {...getAccessibilityActiveState(!!match)}
                       >
                         <IconWrapper>
@@ -188,11 +190,12 @@ const Navigation = (props: Props) => {
                     <AvatarGrid isActive={!!match}>
                       <AvatarLinkPlain
                         data-cy="navigation-shop"
-                        href='https://shop.keyy.org/?utm_source=in-app'
+                        target="_blank"
+                        href="https://shop.keyy.org/?utm_source=in-app"
                         {...getAccessibilityActiveState(!!match)}
                       >
                         <IconWrapper>
-                          <Icon glyph="shop" size="10" />
+                          <Icon glyph="shop" size="23" />
                         </IconWrapper>
 
                         <Label>Shop</Label>
@@ -299,7 +302,8 @@ const Navigation = (props: Props) => {
                     <AvatarGrid isActive={!!match}>
                       <AvatarLinkPlain
                         data-cy="navigation-shop"
-                        href='https://shop.keyy.org/?utm_source=in-app'
+                        target="_blank"
+                        href="https://shop.keyy.org/?utm_source=in-app"
                         {...getAccessibilityActiveState(!!match)}
                       >
                         <IconWrapper>
