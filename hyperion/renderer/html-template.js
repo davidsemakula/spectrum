@@ -345,9 +345,7 @@ export const getHeader = ({
         <!-- end Adroll -->
       </head>
       <body>
-        <div id="root"></div>
-      </body>
-    </html>
+        <div id="root">
   `;
 };
 
