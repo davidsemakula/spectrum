@@ -19,25 +19,9 @@ class ImportSlackTeam extends React.Component<Props> {
   render() {
     const { community, isOnboarding = false } = this.props;
 
-    const url = isOnboarding
-      ? `https://slack.com/oauth/authorize?client_id=${
-          process.env.SLACK_CLIENT_ID
-        }&scope=users:read.email%20users:read%20chat:write:bot%20groups:read%20channels:read&state=${
-          community.id
-        }&redirect_uri=${
-          process.env.NODE_ENV === 'development'
-            ? 'http://localhost:3001/api/slack/onboarding'
-            : 'https://learn.keyy.org/api/slack/onboarding'
-        }`
-      : `https://slack.com/oauth/authorize?client_id=${
-          process.env.SLACK_CLIENT_ID
-        }&scope=users:read.email%20users:read%20chat:write:bot%20groups:read%20channels:read&state=${
-          community.id
-        }&redirect_uri=${
-          process.env.NODE_ENV === 'development'
-            ? 'http://localhost:3001/api/slack'
-            : 'https://learn.keyy.org/api/slack'
-        }`;
+    const url = `/api/slack/connect?community=${community.id}&${
+      isOnboarding ? 'onboarding=1' : ''
+    }`;
 
     return (
       <SectionCard>

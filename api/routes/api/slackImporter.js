@@ -5,6 +5,8 @@ import { generateOAuthToken } from '../../models/slackImport';
 import { updateSlackSettingsAfterConnection } from '../../models/communitySettings';
 import { encryptString } from 'shared/encryption';
 
+import DOMAIN from 'shared/site-domain';
+
 const IS_PROD = process.env.NODE_ENV === 'production';
 
 const slackRouter = Router();
@@ -47,9 +49,24 @@ slackRouter.get('/', (req: any, res: any) => {
     .then(community => community.slug)
     .then(slug => {
       return IS_PROD
-        ? res.redirect(`https://learn.keyy.org/${slug}/settings`)
+        ? res.redirect(`https://${DOMAIN}/${slug}/settings`)
         : res.redirect(`http://localhost:3000/${slug}/settings`);
     });
+});
+
+slackRouter.get('/connect', (req: any, res: any) => {
+  const isOnboarding = !!req.query.onboarding;
+  const communityId = req.query.community;
+  const urlBase =
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:3001'
+      : `https://${DOMAIN}`;
+  const url = `https://slack.com/oauth/authorize?client_id=${
+    process.env.SLACK_CLIENT_ID
+  }&scope=users:read.email%20users:read%20chat:write:bot%20groups:read%20channels:read&state=${communityId}&redirect_uri=${urlBase}/api/slack${
+    isOnboarding ? '/onboarding' : ''
+  }`;
+  return res.redirect(url);
 });
 
 // TODO: Figure out how to type this properly
@@ -75,7 +92,7 @@ slackRouter.get('/onboarding', (req: any, res: any) => {
     .then(community => community.id)
     .then(id => {
       return IS_PROD
-        ? res.redirect(`https://learn.keyy.org/new/community?s=2&id=${id}`)
+        ? res.redirect(`https://${DOMAIN}/new/community?s=2&id=${id}`)
         : res.redirect(`http://localhost:3000/new/community?s=2&id=${id}`);
     });
 });
