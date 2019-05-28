@@ -19,7 +19,7 @@ import {
 import { getChannelsByCommunity } from '../../models/channel';
 
 // $FlowIssue
-emailRouter.get('/unsubscribe', (req, res) => {
+emailRouter.get('/unsubscribe', async (req, res) => {
   const { token } = req.query;
 
   // if no token was provided
