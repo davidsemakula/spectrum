@@ -166,7 +166,7 @@ class UpsellNewUser extends Component {
               </Button>
             </a>
             <a
-              href={`https://twitter.com/share?text=Come hang out with me on @withkeyy, a new place on the internet for learning groups!&url=https://learn.keyy.org`}
+              href={`https://twitter.com/share?text=Come hang out with me on @KeyyEdu, a new place on the internet for learning groups!&url=https://learn.keyy.org`}
               target="_blank"
               rel="noopener noreferrer"
             >

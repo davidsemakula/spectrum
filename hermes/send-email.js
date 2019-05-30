@@ -23,7 +23,7 @@ type Options = {
 
 const defaultOptions = {
   from: {
-    email: 'hi@learn.keyy.org',
+    email: 'hi@keyy.org',
     name: 'Keyy',
   },
   tracking_settings: {

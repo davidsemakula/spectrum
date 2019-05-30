@@ -136,7 +136,7 @@ emailRouter.get('/unsubscribe', async (req, res) => {
     return res
       .status(400)
       .send(
-        'We ran into an issue unsubscribing you from this email. You can always unsubscribe from this email type in your user settings, or get in touch with us at hi@learn.keyy.org.'
+        'We ran into an issue unsubscribing you from this email. You can always unsubscribe from this email type in your user settings, or get in touch with us at hi@keyy.org.'
       );
   }
 });
@@ -193,7 +193,7 @@ emailRouter.get('/validate', (req, res) => {
       return res
         .status(400)
         .send(
-          'We ran into an issue validating this email address. You can re-enter your email address in your community settings to resend a confirmation email, or get in touch with us at hi@learn.keyy.org.'
+          'We ran into an issue validating this email address. You can re-enter your email address in your community settings to resend a confirmation email, or get in touch with us at hi@keyy.org.'
         );
     }
   }
@@ -210,7 +210,7 @@ emailRouter.get('/validate', (req, res) => {
           return res
             .status(400)
             .send(
-              'We ran into an issue validating this email address. You can re-enter your email address in your community settings to resend a confirmation email, or get in touch with us at hi@learn.keyy.org.'
+              'We ran into an issue validating this email address. You can re-enter your email address in your community settings to resend a confirmation email, or get in touch with us at hi@keyy.org.'
             );
         }
 
@@ -223,7 +223,7 @@ emailRouter.get('/validate', (req, res) => {
     return res
       .status(400)
       .send(
-        'We ran into an issue validating this email address. You can re-enter your email address in your user settings to resend a confirmation email, or get in touch with us at hi@learn.keyy.org.'
+        'We ran into an issue validating this email address. You can re-enter your email address in your user settings to resend a confirmation email, or get in touch with us at hi@keyy.org.'
       );
   }
 });

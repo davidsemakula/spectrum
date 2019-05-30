@@ -31,7 +31,7 @@ sg.setApiKey(SENDGRID_API_KEY);
 const sendEmail = (templateId, dynamic_template_data) => {
   return sg.send({
     from: {
-      email: 'hi@learn.keyy.org',
+      email: 'hi@keyy.org',
       name: 'Keyy',
     },
     tracking_settings: {

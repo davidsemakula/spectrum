@@ -35,7 +35,7 @@ const Share = ({ community, history, onboarding }) => {
         <a
           href={`https://twitter.com/share?text=Come hang out with me in the ${
             community.name
-          } learning group on @withkeyy!&url=https://learn.keyy.org/${encodeURIComponent(
+          } learning group on @KeyyEdu!&url=https://learn.keyy.org/${encodeURIComponent(
             community.slug
           )}`}
           target="_blank"

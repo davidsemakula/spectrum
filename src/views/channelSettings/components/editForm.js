@@ -225,8 +225,7 @@ class ChannelWithData extends React.Component<Props, State> {
               <Description>
                 Anyone on Keyy can join this channel, post threads and messages,
                 and will be able to see other members. If you want to create
-                private channels,{' '}
-                <a href="mailto:hi@learn.keyy.org">get in touch</a>.
+                private channels, <a href="mailto:hi@keyy.org">get in touch</a>.
               </Description>
             )}
 

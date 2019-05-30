@@ -43,10 +43,8 @@ const MaintenanceDowntime = () => {
         <Tagline>Keyy is currently undergoing maintenance</Tagline>
         <Text>
           We’ll be back soon, check{' '}
-          <a href="https://twitter.com/withkeyy">
-            @withkeyy on Twitter
-          </a>{' '}
-          for updates!
+          <a href="https://twitter.com/withkeyy">@KeyyEdu on Twitter</a> for
+          updates!
         </Text>
       </Wrapper>
     </ViewSegment>
