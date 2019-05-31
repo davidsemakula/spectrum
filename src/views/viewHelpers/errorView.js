@@ -4,7 +4,7 @@ import { OutlineButton, PrimaryButton } from 'src/components/button';
 import { Emoji, Heading, Description, ActionsRow, Card } from './style';
 import { ViewGrid, CenteredGrid } from 'src/components/layout';
 
-import DOMAIN from 'shared/site-domain';
+import DOMAIN, { EMAIL_DOMAIN } from 'shared/site-domain';
 
 type Props = {
   emoji?: string,
@@ -30,7 +30,7 @@ export const ErrorView = (props: Props) => {
           <Heading>{heading}</Heading>
           <Description>{subheading}</Description>
           <ActionsRow>
-            <OutlineButton href={`mailto:hi@${DOMAIN}`}>
+            <OutlineButton href={`mailto:hi@${EMAIL_DOMAIN || DOMAIN}`}>
               Contact us
             </OutlineButton>
             <PrimaryButton to={'/'}>Go home</PrimaryButton>
