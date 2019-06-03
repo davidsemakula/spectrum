@@ -183,8 +183,10 @@ class Component extends React.Component<Props> {
         .filter(channel => {
           if (!channel) return null;
           if (channel.isArchived) return null;
+          /*
           if (channel.isPrivate && !channel.channelPermissions.isMember)
             return null;
+            */
 
           return channel;
         })

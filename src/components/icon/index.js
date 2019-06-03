@@ -1040,9 +1040,9 @@ export const Glyph = ({ glyph }: GlyphProps) => {
         <g
           id="----Logos-and-groups"
           stroke="none"
-          stroke-width="1"
+          strokeWidth="1"
           fill="none"
-          fill-rule="evenodd"
+          fillRule="evenodd"
           transform="scale(0.44444444)"
         >
           <g id="Keyy-Fav-Icons" transform="translate(-593.000000, -9.000000)">
@@ -1064,6 +1064,16 @@ export const Glyph = ({ glyph }: GlyphProps) => {
                 id="Fill-1"
                 fill="#FFFFFF"
               />
+            </g>
+          </g>
+        </g>
+      );
+    case 'hubspot-colored':
+      return (
+        <g id="Sprocket">
+          <g>
+            <g>
+              <path d="M162.79,101.25V82a14.84,14.84,0,0,0,8.56-13.38v-.45a14.87,14.87,0,0,0-14.83-14.83h-.45a14.87,14.87,0,0,0-14.83,14.83v.45A14.84,14.84,0,0,0,149.8,82v19.29a42.06,42.06,0,0,0-20,8.8L76.86,68.86a16.89,16.89,0,1,0-7.91,10.29L121,119.67a42.18,42.18,0,0,0,.65,47.56l-15.84,15.84a13.6,13.6,0,0,0-3.93-.64,13.75,13.75,0,1,0,13.75,13.75,13.56,13.56,0,0,0-.64-3.93l15.67-15.67a42.25,42.25,0,1,0,32.1-75.33m-6.49,63.42A21.68,21.68,0,1,1,178,143a21.68,21.68,0,0,1-21.68,21.68" />
             </g>
           </g>
         </g>

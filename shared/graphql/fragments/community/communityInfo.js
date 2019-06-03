@@ -27,6 +27,15 @@ export type CommunityInfoType = {
     isEnabled: boolean,
     message: ?string,
   },
+  ctaSettings: {
+    title: ?string,
+    body: ?string,
+    text: ?string,
+    link: ?string,
+  },
+  zapierSettings: {
+    url: ?string,
+  },
 };
 
 export default gql`
@@ -55,6 +64,15 @@ export default gql`
     brandedLogin {
       isEnabled
       message
+    }
+    ctaSettings {
+      title
+      body
+      text
+      link
+    }
+    zapierSettings {
+      url
     }
   }
 `;

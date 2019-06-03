@@ -49,6 +49,18 @@ export type DBCommunitySettings = {
   brandedLogin: ?{
     customMessage: ?string,
   },
+  hubSpotSettings: ?{
+    connectedAt: ?string,
+    connectedBy: ?string,
+    accessToken: ?string,
+    refreshToken: ?string,
+    hubId: ?string,
+    appId: ?string,
+    userId: ?string,
+    hubDomain: ?string,
+    email: ?string,
+    scope: ?string,
+  },
   slackSettings: ?{
     connectedAt: ?string,
     connectedBy: ?string,

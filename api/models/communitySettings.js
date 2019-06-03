@@ -13,6 +13,18 @@ const defaultSettings = {
     isEnabled: false,
     message: null,
   },
+  hubSpotSettings: {
+    connectedAt: null,
+    connectedBy: null,
+    accessToken: null,
+    refreshToken: null,
+    hubId: null,
+    appId: null,
+    userId: null,
+    hubDomain: null,
+    email: null,
+    scope: null,
+  },
   slackSettings: {
     connectedAt: null,
     connectedBy: null,
@@ -190,6 +202,75 @@ export const updateCommunityBrandedLoginMessage = (communityId: string, message:
         context: { communityId }
       })
       return await getCommunityById(communityId)
+    });
+};
+
+type UpdateHubSpotSettingsInput = {
+  accessToken: string,
+  refreshToken: string,
+  hubId: string,
+  appId: string,
+  userId: string,
+  hubDomain: string,
+  email: string,
+  scope: string,
+  connectedBy: string,
+};
+export const updateHubSpotSettingsAfterConnection = async (
+  communityId: string,
+  input: UpdateHubSpotSettingsInput,
+  userId: string
+): Promise<DBCommunity> => {
+  const settings = await db
+    .table('communitySettings')
+    .getAll(communityId, { index: 'communityId' })
+    .run();
+
+  if (!settings || settings.length === 0) {
+    return await createCommunitySettings(communityId)
+      .then(() => {
+        return db
+          .table('communitySettings')
+          .getAll(communityId, { index: 'communityId' })
+          .update({
+            hubSpotSettings: {
+              ...defaultSettings.hubSpotSettings,
+              ...input,
+              connectedAt: new Date(),
+            },
+          })
+          .run();
+      })
+      .then(async () => {
+        trackQueue.add({
+          userId,
+          event: events.COMMUNITY_HUBSPOT_PORTAL_CONNECTED,
+          context: { communityId },
+        });
+
+        return await getCommunityById(communityId);
+      });
+  }
+
+  return await db
+    .table('communitySettings')
+    .getAll(communityId, { index: 'communityId' })
+    .update({
+      hubSpotSettings: {
+        ...defaultSettings.hubSpotSettings,
+        ...input,
+        connectedAt: new Date(),
+      },
+    })
+    .run()
+    .then(async () => {
+      trackQueue.add({
+        userId,
+        event: events.COMMUNITY_HUBSPOT_PORTAL_CONNECTED,
+        context: { communityId },
+      });
+
+      return await getCommunityById(communityId);
     });
 };
 
@@ -373,7 +454,7 @@ const handleSlackChannelResponse = async (data: Object, communityId: string) => 
         error: data.error
       }
     })
-    
+
     return resetSlackSettings(communityId);
   }
 

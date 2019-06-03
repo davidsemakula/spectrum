@@ -135,6 +135,17 @@ const Community = /* GraphQL */ `
     subscriptions: [StripeSubscription]
   }
 
+  type CTASettings {
+    title: String
+    body: String
+    text: String
+    link: String
+  }
+
+  type ZapierSettings {
+    url: String
+  }
+
   type Community @cacheControl(maxAge: 1200) {
     id: ID!
     createdAt: Date
@@ -150,6 +161,9 @@ const Community = /* GraphQL */ `
     isPrivate: Boolean
     lastActive: Date
     communityPermissions: CommunityPermissions @cost(complexity: 1)
+
+    ctaSettings: CTASettings @cost(complexity: 1)
+    zapierSettings: ZapierSettings @cost(complexity: 1)
 
     channelConnection: CommunityChannelsConnection @cost(complexity: 1)
     members(
@@ -174,6 +188,7 @@ const Community = /* GraphQL */ `
     brandedLogin: BrandedLogin
     joinSettings: JoinSettings
     slackSettings: CommunitySlackSettings @cost(complexity: 2)
+    hubSpotSettings: CommunityHubSpotSettings @cost(complexity: 2)
 
     watercoolerId: String
     slackImport: SlackImport
@@ -246,6 +261,17 @@ const Community = /* GraphQL */ `
     isPrivate: Boolean
   }
 
+  input CTASettingsInput {
+    title: String
+    body: String
+    text: String
+    link: String
+  }
+
+  input ZapierSettingsInput {
+    url: String
+  }
+
   input EditCommunityInput {
     name: String
     description: String
@@ -254,6 +280,8 @@ const Community = /* GraphQL */ `
     coverFile: Upload
     coverPhoto: String
     communityId: ID!
+    ctaSettings: CTASettingsInput
+    zapierSettings: ZapierSettingsInput
   }
 
   input UpgradeCommunityInput {

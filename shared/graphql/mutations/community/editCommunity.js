@@ -20,6 +20,8 @@ type EditCommunityInput = {
   file: Object,
   coverFile: Object,
   communityId: string,
+  ctaSettings: ?Object,
+  zapierSettings: ?Object,
 };
 
 export const editCommunityMutation = gql`

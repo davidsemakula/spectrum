@@ -225,6 +225,8 @@ export type EditCommunityInput = {
     coverPhoto: string,
     communityId: string,
     watercoolerId?: boolean,
+    ctaSettings: ?Object,
+    zapierSettings: ?Object,
   },
 };
 
@@ -438,7 +440,7 @@ export const editCommunity = async ({ input }: EditCommunityInput, userId: strin
   // in this case we can just set a new default. Otherwise, just keep their
   // original cover photo
   let updatedCoverPhoto = community.coverPhoto
-  if (input.coverPhoto.length === 0) {
+  if (input.coverPhoto && input.coverPhoto.length === 0) {
     ({ coverPhoto: updatedCoverPhoto } = getRandomDefaultPhoto())
   }
 
@@ -452,12 +454,14 @@ export const editCommunity = async ({ input }: EditCommunityInput, userId: strin
       description,
       website,
       watercoolerId: watercoolerId || community.watercoolerId,
-      coverPhoto: coverFile 
-        ? await uploadImage(coverFile, 'communities', community.id) 
+      coverPhoto: coverFile
+        ? await uploadImage(coverFile, 'communities', community.id)
         : updatedCoverPhoto,
-      profilePhoto: file 
-        ? await uploadImage(file, 'communities', community.id) 
+      profilePhoto: file
+        ? await uploadImage(file, 'communities', community.id)
         : community.profilePhoto,
+      ctaSettings: input.ctaSettings || community.ctaSettings || {},
+      zapierSettings: input.zapierSettings || community.zapierSettings || {},
       modifiedAt: new Date()
     }, { returnChanges: 'always' })
     .run()

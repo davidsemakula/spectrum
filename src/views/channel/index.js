@@ -159,6 +159,7 @@ class ChannelView extends React.Component<Props> {
   };
 
   render() {
+    console.log('channel props => ', this.props);
     const {
       data: { channel },
       currentUser,

@@ -1,11 +1,14 @@
 // @flow
 import * as React from 'react';
 import EditForm from './editForm';
+import EditCTAForm from './editCTAForm';
 import ChannelList from './channelList';
 import BrandedLogin from './brandedLogin';
 import { SectionsContainer, Column } from 'src/components/settingsViews/style';
 import SlackSettings from './slack';
 import Watercooler from './watercooler';
+import HubSpotSettings from './hubspot';
+import ZapierSettings from './zapier';
 import { ErrorBoundary, SettingsFallback } from 'src/components/error';
 
 type Props = {
@@ -23,6 +26,11 @@ class Overview extends React.Component<Props> {
           <ErrorBoundary fallbackComponent={SettingsFallback}>
             <EditForm community={community} />
           </ErrorBoundary>
+          {community.isPrivate ? (
+            <ErrorBoundary fallbackComponent={SettingsFallback}>
+              <EditCTAForm community={community} />
+            </ErrorBoundary>
+          ) : null}
         </Column>
         <Column>
           <ErrorBoundary fallbackComponent={SettingsFallback}>
@@ -39,6 +47,14 @@ class Overview extends React.Component<Props> {
 
           <ErrorBoundary fallbackComponent={SettingsFallback}>
             <ChannelList id={community.id} communitySlug={communitySlug} />
+          </ErrorBoundary>
+
+          <ErrorBoundary fallbackComponent={SettingsFallback}>
+            <HubSpotSettings id={community.id} />
+          </ErrorBoundary>
+
+          <ErrorBoundary fallbackComponent={SettingsFallback}>
+            <ZapierSettings community={community} />
           </ErrorBoundary>
         </Column>
       </SectionsContainer>

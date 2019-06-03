@@ -45,3 +45,5 @@ export const COMMUNITY_ANALYTICS_LEARN_MORE_CLICKED = 'Community Analytics Learn
 
 export const COMMUNITY_WATERCOOLER_ENABLED_FAILED = 'Community Watercooler Enabled Failed';
 export const COMMUNITY_WATERCOOLER_DISABLED_FAILED = 'Community Watercooler Disabled Failed'
+
+export const COMMUNITY_HUBSPOT_PORTAL_CONNECTED = 'Community HubSpot Team Connected';

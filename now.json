@@ -58,6 +58,8 @@
     "IMGIX_SECURITY_KEY": "@imgix-security-key",
     "IMGIX_DOMAIN": "@imgix-domain",
     "IMGIX_PROXY_DOMAIN": "@imgix-proxy-domain",
-    "SESSION_COOKIE_SECRET": "@session-cookie-secret"
+    "SESSION_COOKIE_SECRET": "@session-cookie-secret",
+    "HUBSPOT_CLIENT_ID": "@hubspot-client-id",
+    "HUBSPOT_CLIENT_SECRET": "@hubspot-client-secret"
   }
 }

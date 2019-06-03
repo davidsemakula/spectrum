@@ -21,6 +21,7 @@ const Channel = require('./types/Channel');
 const ChannelSlackSettings = require('./types/ChannelSlackSettings');
 const Community = require('./types/Community');
 const CommunitySlackSettings = require('./types/CommunitySlackSettings');
+const CommunityHubSpotSettings = require('./types/CommunityHubSpotSettings');
 const Message = require('./types/Message');
 const Reaction = require('./types/Reaction');
 const User = require('./types/User');
@@ -44,6 +45,7 @@ const metaQueries = require('./queries/meta');
 const searchQueries = require('./queries/search');
 const communityMemberQueries = require('./queries/communityMember');
 const communitySlackSettingsQueries = require('./queries/communitySlackSettings');
+const communityHubSpotSettingsQueries = require('./queries/communityHubSpotSettings');
 const channelSlackSettingsQueries = require('./queries/channelSlackSettings');
 
 const messageMutations = require('./mutations/message');
@@ -116,6 +118,7 @@ const resolvers = merge(
   searchQueries,
   communityMemberQueries,
   communitySlackSettingsQueries,
+  communityHubSpotSettingsQueries,
   channelSlackSettingsQueries,
   // mutations
   messageMutations,
@@ -150,6 +153,7 @@ const schema = makeExecutableSchema({
     Root,
     Community,
     CommunitySlackSettings,
+    CommunityHubSpotSettings,
     CommunityMember,
     Channel,
     ChannelSlackSettings,

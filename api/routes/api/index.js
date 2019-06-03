@@ -12,6 +12,9 @@ const apiRouter = Router();
 import slackImporter from './slackImporter';
 apiRouter.use('/slack', slackImporter);
 
+import hubSpot from './hubSpot';
+apiRouter.use('/hubspot', hubSpot);
+
 import email from './email';
 apiRouter.use('/email', email);
 
