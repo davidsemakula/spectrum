@@ -18,16 +18,18 @@ type Props = {
 
 export const PrivateCommunity = (props: Props) => {
   const { community } = props;
-  const { communityPermissions } = community;
+  const { communityPermissions, ctaSettings } = community;
   const { isPending } = communityPermissions;
+  const { title, body, text, link } = ctaSettings;
 
   const heading = isPending
     ? 'Your request to join is pending'
-    : 'This community is private';
+    : title || 'This community is private';
 
   const description = isPending
     ? 'Your request to join this community is pending. The owners have been notified, and you will be notified if your request is approved.'
-    : 'You can request to join this community below. The owners will be notified of your request, and you will be notified if your request is approved.';
+    : body ||
+      'You can request to join this community below. The owners will be notified of your request, and you will be notified if your request is approved.';
 
   const primaryAction = ({ isLoading }) =>
     isPending ? (
@@ -36,7 +38,7 @@ export const PrivateCommunity = (props: Props) => {
       </PrimaryButton>
     ) : (
       <PrimaryButton isLoading={isLoading}>
-        {isLoading ? 'Requesting...' : 'Request to join'}
+        {isLoading ? 'Requesting...' : text || 'Request to join'}
       </PrimaryButton>
     );
 
