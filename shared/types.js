@@ -41,6 +41,15 @@ export type DBCommunity = {
   pendingAdministratorEmail?: string,
   isPrivate: boolean,
   memberCount: number,
+  ctaSettings: ?{
+    title: ?string,
+    body: ?string,
+    text: ?string,
+    link: ?string,
+  },
+  zapierSettings: ?{
+    url: ?string,
+  },
 };
 
 export type DBCommunitySettings = {

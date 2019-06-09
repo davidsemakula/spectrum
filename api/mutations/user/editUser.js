@@ -11,7 +11,11 @@ import {
   setUserPendingEmail,
 } from 'shared/db/queries/user';
 import { events } from 'shared/analytics';
-import { trackQueue, processReputationEventQueue } from 'shared/bull/queues';
+import {
+  trackQueue,
+  processReputationEventQueue,
+  processActivitySyncEventQueue,
+} from 'shared/bull/queues';
 import { isAuthedResolver as requireAuth } from '../../utils/permissions';
 import isEmail from 'validator/lib/isEmail';
 import { sendEmailValidationEmailQueue } from 'shared/bull/queues';
@@ -109,6 +113,12 @@ export default requireAuth(
         entityId: currentUser.id,
       });
     }
+
+    processActivitySyncEventQueue.add({
+      userId: currentUser.id,
+      type: 'profile edited',
+      entityId: currentUser.id,
+    });
 
     return editedUser;
   }

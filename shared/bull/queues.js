@@ -72,6 +72,8 @@ import {
   PROCESS_REMOVE_SEEN_USERS_NOTIFICATIONS,
 } from 'chronos/queues/constants';
 
+import { PROCESS_ACTIVITY_SYNC_EVENT } from 'activity-sync/constants';
+
 // Normalize our (inconsistent) queue names to a set of JS compatible names
 exports.QUEUE_NAMES = {
   // athena - notifications
@@ -141,6 +143,9 @@ exports.QUEUE_NAMES = {
   dailyCoreMetricsQueue: PROCESS_DAILY_CORE_METRICS,
   activeCommunityReportQueue: PROCESS_ACTIVE_COMMUNITY_ADMIN_REPORT,
   removeSeenUsersNotificationsQueue: PROCESS_REMOVE_SEEN_USERS_NOTIFICATIONS,
+
+  // activity sync
+  processActivitySyncEventQueue: PROCESS_ACTIVITY_SYNC_EVENT,
 };
 
 // We add one error listener per queue, so we have to set the max listeners

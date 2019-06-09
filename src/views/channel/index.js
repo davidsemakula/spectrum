@@ -36,6 +36,7 @@ import { SidebarSection } from 'src/views/community/style';
 import CommunitySidebar from 'src/components/communitySidebar';
 import { FeedsContainer } from './style';
 import { InfoContainer } from '../community/style';
+import CommunityView from '../community/index';
 
 const ThreadFeedWithData = compose(
   connect(),
@@ -159,7 +160,6 @@ class ChannelView extends React.Component<Props> {
   };
 
   render() {
-    console.log('channel props => ', this.props);
     const {
       data: { channel },
       currentUser,
@@ -285,7 +285,8 @@ class ChannelView extends React.Component<Props> {
       return <LoadingView />;
     }
 
-    return <ErrorView data-cy="channel-view-error" />;
+    return <CommunityView {...this.props} />;
+    //return <ErrorView data-cy="channel-view-error" />;
   }
 }
 

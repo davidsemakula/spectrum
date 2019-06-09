@@ -19,6 +19,7 @@ import { setCommunityLastActive } from '../../models/community';
 import { setCommunityLastSeen } from '../../models/usersCommunities';
 import {
   processReputationEventQueue,
+  processActivitySyncEventQueue,
   sendThreadNotificationQueue,
   _adminProcessToxicThreadQueue,
   _adminProcessUserSpammingThreadsQueue,
@@ -323,11 +324,21 @@ export default requireAuth(
         type: 'thread created',
         entityId: dbThread.id,
       });
+      processActivitySyncEventQueue.add({
+        userId: user.id,
+        type: 'thread created',
+        entityId: dbThread.id,
+      });
     } else {
       debug('Thread is not toxic, send notifications and add rep');
       // thread is clean, send notifications and process reputation
       sendThreadNotificationQueue.add({ thread: dbThread });
       processReputationEventQueue.add({
+        userId: user.id,
+        type: 'thread created',
+        entityId: dbThread.id,
+      });
+      processActivitySyncEventQueue.add({
         userId: user.id,
         type: 'thread created',
         entityId: dbThread.id,

@@ -19,6 +19,7 @@ build-vulcan
 build-hyperion
 build-electron
 build-analytics
+build-activity-sync
 package-lock.json
 .vscode
 dump.rdb

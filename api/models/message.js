@@ -4,6 +4,7 @@ import {
   sendMessageNotificationQueue,
   sendDirectMessageNotificationQueue,
   processReputationEventQueue,
+  processActivitySyncEventQueue,
   _adminProcessToxicMessageQueue,
   trackQueue,
   searchQueue,
@@ -167,6 +168,11 @@ export const storeMessage = (message: Object, userId: string): Promise<DBMessage
           type: 'message created',
           entityId: message.threadId,
         }),
+        processActivitySyncEventQueue.add({
+          userId,
+          type: 'message created',
+          entityId: message.id,
+        }),
         trackQueue.add({
           userId,
           event: events.MESSAGE_SENT,
@@ -246,6 +252,11 @@ export const deleteMessage = (userId: string, messageId: string) => {
           type: 'message deleted',
           entityId: messageId,
         }),
+        processActivitySyncEventQueue.add({
+          userId,
+          type: 'message deleted',
+          entityId: messageId,
+        }),
         message.threadType === 'story'
           ? decrementMessageCount(message.threadId)
           : Promise.resolve(),
@@ -301,7 +312,7 @@ export const deleteMessagesInThread = async (threadId: string, userId: string) =
     .run();
 
   return await Promise.all([
-    ...trackingPromises, 
+    ...trackingPromises,
     deletePromise,
     ...searchPromises
   ]).then(() => {
@@ -336,13 +347,13 @@ export const editMessage = (message: EditInput, userId: string): Promise<DBMessa
         content: message.content,
         modifiedAt: new Date(),
         edits: db.branch(
-          db.row.hasFields('edits'), 
+          db.row.hasFields('edits'),
           db.row('edits').append({
             content: db.row('content'),
             timestamp: db.row('modifiedAt'),
           }),
-          [{ 
-            content: db.row('content'), 
+          [{
+            content: db.row('content'),
             timstamp: db.row('timestamp')
           }]
         ),

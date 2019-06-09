@@ -10,6 +10,7 @@ import {
   searchQueue,
   trackQueue,
   processReputationEventQueue,
+  processActivitySyncEventQueue,
 } from 'shared/bull/queues';
 import { createChangefeed } from 'shared/changefeed-utils';
 import { events } from 'shared/analytics';
@@ -269,6 +270,11 @@ export const createCommunity = ({ input }: CreateCommunityInput, user: DBUser): 
       });
 
       processReputationEventQueue.add({
+        userId: user.id,
+        type: 'community created',
+        entityId: community.id,
+      });
+      processActivitySyncEventQueue.add({
         userId: user.id,
         type: 'community created',
         entityId: community.id,

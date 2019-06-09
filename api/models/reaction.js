@@ -3,6 +3,7 @@ import { db } from 'shared/db';
 import {
   sendReactionNotificationQueue,
   processReputationEventQueue,
+  processActivitySyncEventQueue,
 } from 'shared/bull/queues';
 import type { DBReaction } from 'shared/types';
 import { events } from 'shared/analytics';
@@ -69,6 +70,12 @@ export const toggleReaction = (reaction: ReactionInput, userId: string): Promise
             entityId: thisReaction.messageId,
           });
 
+          processActivitySyncEventQueue.add({
+            userId,
+            type: 'reaction created',
+            entityId: thisReaction.id,
+          });
+
           return db
             .table('reactions')
             .get(thisReaction.id)
@@ -91,6 +98,12 @@ export const toggleReaction = (reaction: ReactionInput, userId: string): Promise
           userId,
           type: 'reaction deleted',
           entityId: thisReaction.messageId,
+        });
+
+        processActivitySyncEventQueue.add({
+          userId,
+          type: 'reaction deleted',
+          entityId: thisReaction.id,
         });
 
         return db
@@ -128,6 +141,12 @@ export const toggleReaction = (reaction: ReactionInput, userId: string): Promise
             userId,
             type: 'reaction created',
             entityId: reaction.messageId,
+          });
+
+          processActivitySyncEventQueue.add({
+            userId,
+            type: 'reaction created',
+            entityId: reaction.id,
           });
 
           return reaction;

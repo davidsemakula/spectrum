@@ -1,7 +1,10 @@
 // @flow
 import type { GraphQLContext } from '../../';
 import UserError from '../../utils/UserError';
-import { processReputationEventQueue } from 'shared/bull/queues';
+import {
+  processReputationEventQueue,
+  processActivitySyncEventQueue,
+} from 'shared/bull/queues';
 import { getUserPermissionsInCommunity } from '../../models/usersCommunities';
 import { getUserPermissionsInChannel } from '../../models/usersChannels';
 import { deleteThread, getThreads } from '../../models/thread';
@@ -59,6 +62,12 @@ export default requireAuth(async (_: any, args: Input, ctx: GraphQLContext) => {
         userId: user.id,
         type: 'thread deleted by moderation',
         entityId: threadToEvaluate.communityId,
+      });
+
+      processActivitySyncEventQueue.add({
+        userId: user.id,
+        type: 'thread deleted by moderation',
+        entityId: threadToEvaluate.id,
       });
     }
 

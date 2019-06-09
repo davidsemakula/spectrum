@@ -3,14 +3,24 @@ import { db } from 'shared/db';
 import {
   sendThreadReactionNotificationQueue,
   processReputationEventQueue,
+  processActivitySyncEventQueue,
 } from 'shared/bull/queues';
 import type { DBThreadReaction } from 'shared/types';
 import { events } from 'shared/analytics';
 import { trackQueue } from 'shared/bull/queues';
 import { incrementReactionCount, decrementReactionCount } from './thread';
 import { getThreadById } from './thread';
+import type { DBCommunitySettings, DBReaction } from '../../shared/types';
 
 type ThreadReactionType = 'like';
+
+// prettier-ignore
+export const getThreadReaction = (threadReactionId: string): Promise<DBReaction> => {
+  return db
+    .table('threadReactions')
+    .get(threadReactionId)
+    .run();
+};
 
 // prettier-ignore
 export const getThreadReactions = (threadIds: Array<string>): Promise<Array<DBThreadReaction>> => {
@@ -73,6 +83,11 @@ export const addThreadReaction = (input: ThreadReactionInput, userId: string): P
             type: 'thread reaction created',
             entityId: thisReaction.threadId,
           }),
+          processActivitySyncEventQueue.add({
+            userId,
+            type: 'thread reaction created',
+            entityId: thisReaction.id,
+          }),
           incrementReactionCount(thisReaction.threadId)
         ])
 
@@ -114,6 +129,11 @@ export const addThreadReaction = (input: ThreadReactionInput, userId: string): P
               type: 'thread reaction created',
               entityId: threadReaction.threadId,
             }),
+            processActivitySyncEventQueue.add({
+              userId,
+              type: 'thread reaction created',
+              entityId: threadReaction.id,
+            }),
             sendReactionNotification,
             incrementReactionCount(threadReaction.threadId)
           ])
@@ -146,6 +166,11 @@ export const removeThreadReaction = (threadId: string, userId: string): Promise<
           userId,
           type: 'thread reaction deleted',
           entityId: threadReaction.threadId,
+        }),
+        processActivitySyncEventQueue.add({
+          userId,
+          type: 'thread reaction deleted',
+          entityId: threadReaction.id,
         }),
         decrementReactionCount(threadId)
       ])
