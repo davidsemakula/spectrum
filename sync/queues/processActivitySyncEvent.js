@@ -31,8 +31,8 @@ import type { Job, ReputationEventJobData } from 'shared/bull/types';
 export default async (job: Job<ReputationEventJobData>) => {
   const { type, userId, entityId } = job.data;
   debug(`\nnew job: ${job.id}`);
-  debug(`\nprocessing activity sync type: ${type}`);
-  debug(`\nprocessing activity sync entityId: ${entityId}`);
+  debug(`\nprocessing sync type: ${type}`);
+  debug(`\nprocessing sync entityId: ${entityId}`);
 
   // if the event came in with bad data, escape
   if (!type || !userId || !entityId) return Promise.resolve();
@@ -65,7 +65,7 @@ export default async (job: Job<ReputationEventJobData>) => {
         return await processCommunityActivity(type, job.data);
       }
       default: {
-        debug('❌ No activity sync event type matched');
+        debug('❌ No sync event type matched');
         return Promise.resolve();
       }
     }
