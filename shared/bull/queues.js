@@ -72,7 +72,7 @@ import {
   PROCESS_REMOVE_SEEN_USERS_NOTIFICATIONS,
 } from 'chronos/queues/constants';
 
-import { PROCESS_ACTIVITY_SYNC_EVENT } from 'activity-sync/constants';
+import { PROCESS_ACTIVITY_SYNC_EVENT } from 'sync/constants';
 
 // Normalize our (inconsistent) queue names to a set of JS compatible names
 exports.QUEUE_NAMES = {

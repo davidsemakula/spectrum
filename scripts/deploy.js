@@ -26,7 +26,7 @@ const VALID_SERVERS = [
   'hyperion',
   'mercury',
   'vulcan',
-  'activity-sync',
+  'sync',
 ];
 const VALID_ALPHA_SERVERS = ['api', 'hyperion'];
 const { args, flags } = parse(process.argv);

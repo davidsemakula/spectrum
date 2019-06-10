@@ -5,9 +5,7 @@ import { getUserById } from 'shared/db/queries/user';
 import { getCommunitySettings } from 'api/models/communitySettings';
 import { getThreadReaction } from 'api/models/threadReaction';
 
-const debug = require('debug')(
-  'activity-sync:queue:process-threadreaction-activity'
-);
+const debug = require('debug')('sync:queue:process-threadreaction-activity');
 import type { ReputationEventJobData } from 'shared/bull/types';
 import { shareCommunityActivity } from '../zapier';
 

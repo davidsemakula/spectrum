@@ -1,4 +1,4 @@
-const debug = require('debug')('activity-sync');
+const debug = require('debug')('sync');
 const createWorker = require('../shared/bull/create-worker');
 import processActivitySyncEvent from './queues/processActivitySyncEvent';
 import { PROCESS_ACTIVITY_SYNC_EVENT } from './constants';

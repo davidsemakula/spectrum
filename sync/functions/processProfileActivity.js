@@ -1,7 +1,7 @@
 // @flow
 import { getUserById } from '../../shared/db/queries/user';
 
-const debug = require('debug')('activity-sync:queue:process-profile-activity');
+const debug = require('debug')('sync:queue:process-profile-activity');
 import type { ReputationEventJobData } from 'shared/bull/types';
 
 export default async (type: string, data: ReputationEventJobData) => {

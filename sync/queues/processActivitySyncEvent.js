@@ -1,7 +1,5 @@
 // flow
-const debug = require('debug')(
-  'activity-sync:queue:process-activity-sync-event'
-);
+const debug = require('debug')('sync:queue:process-sync-event');
 import processCommunityActivity from '../functions/processCommunityActivity';
 import processThreadActivity from '../functions/processThreadActivity';
 import processMessageActivity from '../functions/processMessageActivity';
