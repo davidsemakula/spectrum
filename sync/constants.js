@@ -29,3 +29,8 @@ export const PROFILE_EDITED = 'profile edited';
 export const COMMUNITY_CREATED = 'community created';
 
 export const USER_JOINED_COMMUNITY = 'user joined community';
+
+export const CHANNEL_CREATED = 'channel created';
+export const CHANNEL_ARCHIVED = 'channel archived';
+export const CHANNEL_RESTORED = 'channel restored';
+export const CHANNEL_DELETED = 'channel deleted';

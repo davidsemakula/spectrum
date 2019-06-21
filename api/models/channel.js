@@ -2,7 +2,7 @@
 const { db } = require('shared/db');
 import { sendChannelNotificationQueue } from 'shared/bull/queues';
 import { events } from 'shared/analytics';
-import { trackQueue } from 'shared/bull/queues';
+import { trackQueue, processActivitySyncEventQueue } from 'shared/bull/queues';
 import type { DBChannel } from 'shared/types';
 
 // reusable query parts -- begin
@@ -63,7 +63,7 @@ const getChannelsByUserAndCommunity = async (communityId: string, userId: string
   const channels = await channelsByCommunitiesQuery(communityId).run();
   const unarchived = channels.filter(channel => !channel.archivedAt)
   const channelIds = unarchived.map(channel => channel.id)
-  
+
   return db
     .table('usersChannels')
     .getAll(...channelIds.map(id => ([userId, id])), {
@@ -201,6 +201,12 @@ const createChannel = ({ input }: CreateChannelInput, userId: string): Promise<D
         context: { channelId: channel.id },
       });
 
+      processActivitySyncEventQueue.add({
+        userId: userId,
+        type: 'channel created',
+        entityId: channel.id,
+      });
+
       // only trigger a new channel notification is the channel is public
       if (!channel.isPrivate) {
         sendChannelNotificationQueue.add({ channel, userId });
@@ -258,6 +264,12 @@ const editChannel = async ({ input }: EditChannelInput, userId: string): Promise
           context: { channelId: channelId },
         });
 
+        processActivitySyncEventQueue.add({
+          userId: userId,
+          type: 'channel edited',
+          entityId: channelId,
+        });
+
         return result.changes[0].new_val;
       }
 
@@ -301,6 +313,12 @@ const deleteChannel = (channelId: string, userId: string): Promise<Boolean> => {
         event: events.CHANNEL_DELETED,
         context: { channelId },
       });
+
+      processActivitySyncEventQueue.add({
+        userId: userId,
+        type: 'channel deleted',
+        entityId: channelId,
+      });
     });
 };
 
@@ -316,6 +334,12 @@ const archiveChannel = (channelId: string, userId: string): Promise<DBChannel> =
         userId: userId,
         event: events.CHANNEL_ARCHIVED,
         context: { channelId },
+      });
+
+      processActivitySyncEventQueue.add({
+        userId: userId,
+        type: 'channel archived',
+        entityId: channelId,
       });
 
       return result.changes[0].new_val || result.changes[0].old_val;
@@ -334,6 +358,12 @@ const restoreChannel = (channelId: string, userId: string): Promise<DBChannel> =
         userId,
         event: events.CHANNEL_RESTORED,
         context: { channelId },
+      });
+
+      processActivitySyncEventQueue.add({
+        userId: userId,
+        type: 'channel restored',
+        entityId: channelId,
       });
 
       return result.changes[0].new_val || result.changes[0].old_val;
@@ -358,6 +388,14 @@ const archiveAllPrivateChannels = async (communityId: string, userId: string) =>
     });
   });
 
+  const syncActivityPromises = channels.map(channel => {
+    return processActivitySyncEventQueue.add({
+      userId: userId,
+      type: 'channel archived',
+      entityId: channel.id,
+    });
+  });
+
   const archivePromise = db
     .table('channels')
     .getAll(communityId, { index: 'communityId' })
@@ -365,7 +403,7 @@ const archiveAllPrivateChannels = async (communityId: string, userId: string) =>
     .update({ archivedAt: new Date() })
     .run();
 
-  return await Promise.all([...trackingPromises, archivePromise]);
+  return await Promise.all([...trackingPromises, ...syncActivityPromises, archivePromise]);
 };
 
 const incrementMemberCount = (channelId: string): Promise<DBChannel> => {

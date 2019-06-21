@@ -1,6 +1,7 @@
 // flow
 const debug = require('debug')('sync:queue:process-sync-event');
 import processCommunityActivity from '../functions/processCommunityActivity';
+import processChannelActivity from '../functions/processChannelActivity';
 import processThreadActivity from '../functions/processThreadActivity';
 import processMessageActivity from '../functions/processMessageActivity';
 import processProfileActivity from '../functions/processProfileActivity';
@@ -25,6 +26,10 @@ import {
   COMMUNITY_CREATED,
   USER_JOINED_COMMUNITY,
   PROFILE_EDITED,
+  CHANNEL_CREATED,
+  CHANNEL_ARCHIVED,
+  CHANNEL_DELETED,
+  CHANNEL_RESTORED,
 } from '../constants';
 import type { Job, ReputationEventJobData } from 'shared/bull/types';
 
@@ -63,6 +68,11 @@ export default async (job: Job<ReputationEventJobData>) => {
       case COMMUNITY_CREATED:
       case USER_JOINED_COMMUNITY: {
         return await processCommunityActivity(type, job.data);
+      }
+      case CHANNEL_CREATED:
+      case CHANNEL_RESTORED:
+      case CHANNEL_ARCHIVED: {
+        return await processChannelActivity(type, job.data);
       }
       default: {
         debug('❌ No sync event type matched');
