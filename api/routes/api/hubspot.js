@@ -5,7 +5,7 @@ import axios from 'axios';
 const querystring = require('querystring');
 
 import DOMAIN from 'shared/site-domain';
-import { updateHubSpotSettingsAfterConnection } from '../../models/communitySettings';
+import { updateHubspotSettingsAfterConnection } from '../../models/communitySettings';
 import UserError from '../../utils/UserError';
 
 const IS_PROD = process.env.NODE_ENV === 'production';
@@ -110,7 +110,7 @@ hubSpotRouter.get('/', (req: any, res: any) => {
       if (!data)
         return new UserError('No token generated for this HubSpot portal');
       const input = constructInput(data, connectedBy);
-      return updateHubSpotSettingsAfterConnection(
+      return updateHubspotSettingsAfterConnection(
         communityId,
         input,
         connectedBy

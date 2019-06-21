@@ -2,21 +2,21 @@
 import * as React from 'react';
 import compose from 'recompose/compose';
 import { connect } from 'react-redux';
-import getHubSpotSettings, {
-  type GetHubSpotSettingsType,
-} from 'shared/graphql/queries/community/getCommunityHubSpotSettings';
+import getHubspotSettings, {
+  type GetHubspotSettingsType,
+} from 'shared/graphql/queries/community/getCommunityHubspotSettings';
 import viewNetworkHandler, {
   type ViewNetworkHandlerType,
 } from 'src/components/viewNetworkHandler';
 import { Loading } from 'src/components/loading';
 import { SectionCard } from 'src/components/settingsViews/style';
 import ViewError from 'src/components/viewError';
-import ConnectHubSpot from './connectHubSpot';
+import ConnectHubSpot from './connectHubspot';
 
 type Props = {
   ...$Exact<ViewNetworkHandlerType>,
   data: {
-    community: GetHubSpotSettingsType,
+    community: GetHubspotSettingsType,
   },
   type: 'import-only' | 'bot-only',
   isOnboarding: boolean,
@@ -64,6 +64,6 @@ export class HubSpot extends React.Component<Props> {
 
 export default compose(
   connect(),
-  getHubSpotSettings,
+  getHubspotSettings,
   viewNetworkHandler
 )(HubSpot);

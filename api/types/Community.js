@@ -188,7 +188,7 @@ const Community = /* GraphQL */ `
     brandedLogin: BrandedLogin
     joinSettings: JoinSettings
     slackSettings: CommunitySlackSettings @cost(complexity: 2)
-    hubSpotSettings: CommunityHubSpotSettings @cost(complexity: 2)
+    hubspotSettings: CommunityHubspotSettings @cost(complexity: 2)
 
     watercoolerId: String
     slackImport: SlackImport

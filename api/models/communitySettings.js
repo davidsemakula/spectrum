@@ -13,7 +13,7 @@ const defaultSettings = {
     isEnabled: false,
     message: null,
   },
-  hubSpotSettings: {
+  hubspotSettings: {
     connectedAt: null,
     connectedBy: null,
     accessToken: null,
@@ -205,7 +205,7 @@ export const updateCommunityBrandedLoginMessage = (communityId: string, message:
     });
 };
 
-type UpdateHubSpotSettingsInput = {
+type UpdateHubspotSettingsInput = {
   accessToken: string,
   refreshToken: string,
   hubId: string,
@@ -216,9 +216,9 @@ type UpdateHubSpotSettingsInput = {
   scope: string,
   connectedBy: string,
 };
-export const updateHubSpotSettingsAfterConnection = async (
+export const updateHubspotSettingsAfterConnection = async (
   communityId: string,
-  input: UpdateHubSpotSettingsInput,
+  input: UpdateHubspotSettingsInput,
   userId: string
 ): Promise<DBCommunity> => {
   const settings = await db
@@ -233,8 +233,8 @@ export const updateHubSpotSettingsAfterConnection = async (
           .table('communitySettings')
           .getAll(communityId, { index: 'communityId' })
           .update({
-            hubSpotSettings: {
-              ...defaultSettings.hubSpotSettings,
+            hubspotSettings: {
+              ...defaultSettings.hubspotSettings,
               ...input,
               connectedAt: new Date(),
             },
@@ -256,8 +256,8 @@ export const updateHubSpotSettingsAfterConnection = async (
     .table('communitySettings')
     .getAll(communityId, { index: 'communityId' })
     .update({
-      hubSpotSettings: {
-        ...defaultSettings.hubSpotSettings,
+      hubspotSettings: {
+        ...defaultSettings.hubspotSettings,
         ...input,
         connectedAt: new Date(),
       },

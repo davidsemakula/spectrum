@@ -58,7 +58,7 @@ export type DBCommunitySettings = {
   brandedLogin: ?{
     customMessage: ?string,
   },
-  hubSpotSettings: ?{
+  hubspotSettings: ?{
     connectedAt: ?string,
     connectedBy: ?string,
     accessToken: ?string,

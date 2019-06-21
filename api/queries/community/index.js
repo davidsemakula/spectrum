@@ -23,6 +23,7 @@ import contextPermissions from './contextPermissions';
 import watercooler from './watercooler';
 import brandedLogin from './brandedLogin';
 import slackSettings from './slackSettings';
+import hubspotSettings from './hubspotSettings';
 import joinSettings from './joinSettings';
 import coverPhoto from './coverPhoto';
 import profilePhoto from './profilePhoto';
@@ -68,6 +69,7 @@ module.exports = {
     watercooler,
     brandedLogin,
     slackSettings,
+    hubspotSettings,
     joinSettings,
     coverPhoto,
     profilePhoto,

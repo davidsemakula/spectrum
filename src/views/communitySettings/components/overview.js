@@ -7,7 +7,7 @@ import BrandedLogin from './brandedLogin';
 import { SectionsContainer, Column } from 'src/components/settingsViews/style';
 import SlackSettings from './slack';
 import Watercooler from './watercooler';
-import HubSpotSettings from './hubspot';
+import HubspotSettings from './hubspot';
 import ZapierSettings from './zapier';
 import { ErrorBoundary, SettingsFallback } from 'src/components/error';
 
@@ -50,7 +50,7 @@ class Overview extends React.Component<Props> {
           </ErrorBoundary>
 
           <ErrorBoundary fallbackComponent={SettingsFallback}>
-            <HubSpotSettings id={community.id} />
+            <HubspotSettings id={community.id} />
           </ErrorBoundary>
 
           <ErrorBoundary fallbackComponent={SettingsFallback}>

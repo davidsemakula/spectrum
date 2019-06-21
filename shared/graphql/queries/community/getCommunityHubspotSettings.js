@@ -4,20 +4,22 @@ import { graphql } from 'react-apollo';
 import communityInfoFragment from '../../fragments/community/communityInfo';
 import type { CommunityInfoType } from '../../fragments/community/communityInfo';
 
-export type GetHubSpotSettingsType = {
+export type GetHubspotSettingsType = {
   ...$Exact<CommunityInfoType>,
-  hubSpotSettings: {
+  hubspotSettings: {
     hubId: string,
+    hubDomain: string,
     isConnected: boolean,
   },
 };
 
-export const getHubSpotSettingsQuery = gql`
-  query getHubSpotSettings($id: ID!) {
+export const getHubspotSettingsQuery = gql`
+  query getHubspotSettings($id: ID!) {
     community(id: $id) {
       ...communityInfo
-      hubSpotSettings {
+      hubspotSettings {
         hubId
+        hubDomain
         isConnected
       }
     }
@@ -25,7 +27,7 @@ export const getHubSpotSettingsQuery = gql`
   ${communityInfoFragment}
 `;
 
-const getHubSpotSettingsOptions = {
+const getHubspotSettingsOptions = {
   options: ({ id }) => ({
     variables: {
       id,
@@ -33,4 +35,4 @@ const getHubSpotSettingsOptions = {
   }),
 };
 
-export default graphql(getHubSpotSettingsQuery, getHubSpotSettingsOptions);
+export default graphql(getHubspotSettingsQuery, getHubspotSettingsOptions);

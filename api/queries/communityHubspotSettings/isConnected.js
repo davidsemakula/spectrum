@@ -3,9 +3,9 @@ import type { DBCommunitySettings } from 'shared/types';
 import type { GraphQLContext } from '../../';
 
 export default async (
-  { hubSpotSettings }: DBCommunitySettings,
+  { hubspotSettings }: DBCommunitySettings,
   _: any,
   { loaders }: GraphQLContext
 ) => {
-  return hubSpotSettings ? (hubSpotSettings.connectedAt ? true : false) : false;
+  return hubspotSettings ? (hubspotSettings.connectedAt ? true : false) : false;
 };
