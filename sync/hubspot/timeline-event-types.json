@@ -1,0 +1,90 @@
+[
+    {
+        "id": 391412,
+        "name": "Sign Up",
+        "headerTemplate": "signed up",
+        "detailTemplate": null,
+        "applicationId": 195892,
+        "objectType": "CONTACT"
+    },
+    {
+        "id": 391413,
+        "name": "Sign In",
+        "headerTemplate": "signed in",
+        "detailTemplate": null,
+        "applicationId": 195892,
+        "objectType": "CONTACT"
+    },
+    {
+        "id": 391414,
+        "name": "Log Out",
+        "headerTemplate": "logged out",
+        "detailTemplate": null,
+        "applicationId": 195892,
+        "objectType": "CONTACT"
+    },
+    {
+        "id": 391415,
+        "name": "Create Community",
+        "headerTemplate": "Created a community: [{{ communityName }}]({{ communityUrl }})",
+        "detailTemplate": "Community Name: {{ communityName }}",
+        "applicationId": 195892,
+        "objectType": "CONTACT"
+    },
+    {
+        "id": 391416,
+        "name": "Join Community",
+        "headerTemplate": "Joined a community: [{{ communityName }}]({{ communityUrl }})",
+        "detailTemplate": "Community Name: {{ communityName }}",
+        "applicationId": 195892,
+        "objectType": "CONTACT"
+    },
+    {
+        "id": 391417,
+        "name": "Create Channel",
+        "headerTemplate": "Created a [channel]({{ channelUrl }})",
+        "detailTemplate": "Channel Name: {{ channelName }}",
+        "applicationId": 195892,
+        "objectType": "CONTACT"
+    },
+    {
+        "id": 391418,
+        "name": "Join Channel",
+        "headerTemplate": "Joined a [channel]({{ channelUrl }})",
+        "detailTemplate": "Channel Name: {{ channelName }}",
+        "applicationId": 195892,
+        "objectType": "CONTACT"
+    },
+    {
+        "id": 391423,
+        "name": "Create Thread",
+        "headerTemplate": "Created a [thread]({{ threadUrl }})",
+        "detailTemplate": "{{ threadTitle }}\n{{ threadBody }}",
+        "applicationId": 195892,
+        "objectType": "CONTACT"
+    },
+    {
+        "id": 391424,
+        "name": "Create Message",
+        "headerTemplate": "[Replied]({{ messageUrl }}) to a thread",
+        "detailTemplate": "{{ messageBody }}",
+        "applicationId": 195892,
+        "objectType": "CONTACT"
+    },
+    {
+        "id": 391421,
+        "name": "Like",
+        "headerTemplate": "Liked a [post]({{ threadUrl }})",
+        "detailTemplate": "{{ threadTitle }}",
+        "applicationId": 195892,
+        "objectType": "CONTACT"
+    },
+    {
+        "id": 391422,
+        "name": "Send Direct Message",
+        "headerTemplate": "Sent a [DM]({{ messageUrl }})",
+        "detailTemplate": "{{ messageBody }}",
+        "applicationId": 195892,
+        "objectType": "CONTACT"
+    }
+]

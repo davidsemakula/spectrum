@@ -34,3 +34,5 @@ export const CHANNEL_CREATED = 'channel created';
 export const CHANNEL_ARCHIVED = 'channel archived';
 export const CHANNEL_RESTORED = 'channel restored';
 export const CHANNEL_DELETED = 'channel deleted';
+
+export const USER_JOINED_CHANNEL = 'user joined channel';
