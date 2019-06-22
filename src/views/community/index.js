@@ -38,11 +38,14 @@ const CommunityView = (props: Props) => {
     // We only got here because channel view couldn't handle this request
     // Either the channel or community are private
     const { community } = props.data;
-    const { isPrivate, communityPermissions } = community;
-    const { isMember, isBlocked } = communityPermissions;
 
-    if (community && isPrivate && !isMember) {
-      return <PrivateCommunity community={community} />;
+    if (community) {
+      const { isPrivate, communityPermissions } = community;
+      const { isMember, isBlocked } = communityPermissions;
+
+      if (community && isPrivate && !isMember) {
+        return <PrivateCommunity community={community} />;
+      }
     }
     // TODO: Replace with request to join channel
     return <PrivateCommunity community={community} />;

@@ -7,6 +7,7 @@ const querystring = require('querystring');
 import DOMAIN from 'shared/site-domain';
 import { updateHubspotSettingsAfterConnection } from '../../models/communitySettings';
 import UserError from '../../utils/UserError';
+import { createSpectrumContactProperties } from 'sync/hubspot/index';
 
 const IS_PROD = process.env.NODE_ENV === 'production';
 
@@ -109,6 +110,10 @@ hubSpotRouter.get('/', (req: any, res: any) => {
     .then(data => {
       if (!data)
         return new UserError('No token generated for this HubSpot portal');
+
+      // Create contact properties async
+      createSpectrumContactProperties(data.access_token).then(res => {});
+
       const input = constructInput(data, connectedBy);
       return updateHubspotSettingsAfterConnection(
         communityId,
