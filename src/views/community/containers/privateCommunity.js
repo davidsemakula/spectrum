@@ -18,7 +18,7 @@ type Props = {
 
 export const PrivateCommunity = (props: Props) => {
   const { community } = props;
-  const { communityPermissions, ctaSettings } = community;
+  const { communityPermissions, ctaSettings } = community || {};
   const { isPending } = communityPermissions;
   const { title, body, text, link } = ctaSettings || {};
 
