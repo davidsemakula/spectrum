@@ -13,6 +13,10 @@ import { getCommunitySettings } from 'api/models/communitySettings';
 import { decryptString } from 'shared/encryption';
 
 const EVENT_TYPE_MAP = {
+  'signed up': ['Sign Up', 'user.modifiedAt'],
+  'signed in': ['Sign In', null],
+  'logged out': ['Log Out', null],
+  'profile edited': ['Update Profile', 'user.modifiedAt'],
   'community created': ['Create Community', 'community.createdAt'],
   'user joined community': ['Join Community', null],
   'channel created': ['Create Channel', 'channel.createdAt'],
@@ -62,6 +66,13 @@ export async function syncUserActivity(type, data) {
   let hsData = {};
 
   if (data) {
+    if (data.user) {
+      hsData.userId = data.user.id;
+      hsData.username = data.user.username;
+      hsData.name = data.user.name;
+      hsData.profileUrl = `${applicationUrl}/users/${data.user.username}`;
+    }
+
     if (data.community) {
       hsData.communityId = data.community.id;
       hsData.communityName = data.community.name;
@@ -124,20 +135,20 @@ export async function syncUserActivity(type, data) {
     }
   }
 
-  console.log('syncUserActivity input  => ', type, data);
-
   let tokens = [];
 
-  if (data.community.id) {
+  if (data.community && data.community.id) {
     const communitySettings = await getCommunitySettings(data.community.id);
     if (
       communitySettings &&
       communitySettings.hubspotSettings &&
-      communitySettings.hubspotSettings.refreshToken
+      communitySettings.hubspotSettings.temp //refreshToken
     ) {
-      const token = decryptString(
+      const token =
+        communitySettings.hubspotSettings
+          .temp; /*decryptString(
         communitySettings.hubspotSettings.refreshToken
-      );
+      );*/
       if (token) {
         tokens.push(token);
       }
@@ -152,31 +163,59 @@ export async function syncUserActivity(type, data) {
   let hsEventId = null;
 
   if (tokens.length) {
-    ['community', 'channel', 'thread', 'message', 'thread reaction'].forEach(
-      key => {
-        const contentKey = key === 'thread reaction' ? 'threadReaction' : key;
-        if (new RegExp(key).test(key) && data[contentKey]) {
-          hsEventId = `${key === 'like' ? 'threadReaction' : key}-${
-            data[contentKey].id
-          }`;
-        }
+    if (['signed up', 'signed in', 'logged out'].includes(type)) {
+      let prefix = 'user';
+      switch (type) {
+        case 'signed up':
+          prefix = 'sign-up';
+          break;
+        case 'signed in':
+          prefix = 'sign-in';
+          break;
+        case 'logged out':
+          prefix = 'log-out';
+          break;
       }
-    );
+      hsEventId = `${prefix}-${data.user.id}-${hsData.timestamp ||
+        moment().valueOf()}`;
+    } else {
+      ['community', 'channel', 'thread', 'message', 'thread reaction'].forEach(
+        key => {
+          const contentKey = key === 'thread reaction' ? 'threadReaction' : key;
+          if (new RegExp(key).test(type) && data[contentKey]) {
+            hsEventId = `${key === 'like' ? 'thread-reaction' : key}-${
+              data[contentKey].id
+            }`;
+          }
+        }
+      );
+    }
   }
 
   const hsAllowedProps = parseEventTypeProperties(hsEventTypeName);
 
   for (let token of tokens) {
-    const accessToken = await refreshToken(token);
+    let accessToken = null;
 
-    await createOrUpdateTimelineEvent(
-      hsEventId,
-      data.user.email,
-      hsEventTypeId,
-      accessToken,
-      _.pick(hsData, hsAllowedProps)
-    );
+    try {
+      accessToken = await refreshToken(token);
+    } catch (e) {
+      accessToken = null;
+    }
+
+    if (accessToken) {
+      try {
+        createOrUpdateTimelineEvent(
+          hsEventId,
+          data.user.email,
+          hsEventTypeId,
+          accessToken,
+          _.pick(hsData, hsAllowedProps),
+          data.user
+        ).catch(() => {});
+      } catch (e) {}
+    }
   }
 
-  return Promise.resolve();
+  return null;
 }

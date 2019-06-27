@@ -59,7 +59,18 @@
     "IMGIX_DOMAIN": "@imgix-domain",
     "IMGIX_PROXY_DOMAIN": "@imgix-proxy-domain",
     "SESSION_COOKIE_SECRET": "@session-cookie-secret",
+    "HUBSPOT_API_KEY": "@hubspot-api-key",
     "HUBSPOT_CLIENT_ID": "@hubspot-client-id",
-    "HUBSPOT_CLIENT_SECRET": "@hubspot-client-secret"
+    "HUBSPOT_CLIENT_SECRET": "@hubspot-client-secret",
+    "HUBSPOT_REFRESH_TOKEN": "@hubspot-refresh_token",
+    "HUBSPOT_APP_ID": "@hubspot-app-id",
+    "HUBSPOT_DEV_HAPI_KEY": "@hubspot-dev-hapi-key",
+    "HUBSPOT_DEV_USER_ID": "@hubspot-dev-user-id",
+    "TWITTER_OAUTH_CLIENT_SECRET_DEVELOPMENT": "@twitter-oauth-client-secret-development",
+    "FACEBOOK_OAUTH_CLIENT_ID_DEVELOPMENT": "@facebook-oauth-client-id-development",
+    "FACEBOOK_OAUTH_CLIENT_SECRET_DEVELOPMENT": "@facebook-oauth-client-secret-development",
+    "GOOGLE_OAUTH_CLIENT_SECRET_DEVELOPMENT": "@google-oauth-client-secret-development",
+    "GITHUB_OAUTH_CLIENT_SECRET_DEVELOPMENT": "@github-oauth-client-secret-development",
+    "SLACK_SECRET_DEVELOPMENT": "@slack-secret-development"
   }
 }

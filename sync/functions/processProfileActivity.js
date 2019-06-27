@@ -9,6 +9,7 @@ import {
   parseUserProperties,
   createOrUpdateContactByEmail,
 } from '../hubspot/index';
+import { syncUserActivity } from '../hubspot/utils';
 
 export default async (type: string, data: ReputationEventJobData) => {
   // entityId represents the threadId
@@ -26,7 +27,8 @@ export default async (type: string, data: ReputationEventJobData) => {
           user.email,
           parseUserProperties(user),
           token
-        )
+        ),
+        syncUserActivity(type, { user })
       );
     }
   }

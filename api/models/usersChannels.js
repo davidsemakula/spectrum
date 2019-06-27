@@ -1,7 +1,7 @@
 // @flow
 const { db } = require('shared/db');
 import { events } from 'shared/analytics';
-import { trackQueue } from 'shared/bull/queues';
+import { trackQueue, processActivitySyncEventQueue } from 'shared/bull/queues';
 import {
   incrementMemberCount,
   decrementMemberCount,
@@ -60,6 +60,12 @@ const createMemberInChannel = (channelId: string, userId: string, token: boolean
     event,
     context: { channelId }
   })
+
+  processActivitySyncEventQueue.add({
+    userId: userId,
+    type: 'user joined channel',
+    entityId: channelId,
+  });
 
   return db
     .table('usersChannels')

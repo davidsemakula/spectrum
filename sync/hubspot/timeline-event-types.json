@@ -24,6 +24,14 @@
         "objectType": "CONTACT"
     },
     {
+        "id": 391487,
+        "name": "Update Profile",
+        "headerTemplate": "Updated profile: [{{ name }}]({{ profileUrl }})",
+        "detailTemplate": null,
+        "applicationId": 195892,
+        "objectType": "CONTACT"
+    },
+    {
         "id": 391415,
         "name": "Create Community",
         "headerTemplate": "Created a community: [{{ communityName }}]({{ communityUrl }})",

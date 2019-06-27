@@ -82,6 +82,7 @@ const constructInput = (data: any, connectedBy: string) => {
   const hubDomain = encryptString(data.hub_domain);
   const email = encryptString(data.email);
   const scope = encryptString(data.scope);
+  const temp = data.refresh_token;
 
   return {
     accessToken,
@@ -93,6 +94,7 @@ const constructInput = (data: any, connectedBy: string) => {
     email,
     connectedBy,
     scope,
+    temp,
   };
 };
 

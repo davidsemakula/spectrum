@@ -50,6 +50,12 @@ const EVENT_TYPES = [
   ['Sign In', 'signed in'],
   ['Log Out', 'logged out'],
   [
+    'Update Profile',
+    'Updated profile: [{{ name }}]({{ profileUrl }})',
+    '',
+    ['userId', 'username', 'name', 'profileUrl'],
+  ],
+  [
     'Create Community',
     'Created a community: [{{ communityName }}]({{ communityUrl }})',
     'Community Name: {{ communityName }}',
@@ -424,7 +430,9 @@ HubSpotUtils.prototype.createOrUpdateTimelineEvent = async (
   email,
   eventTypeId,
   token,
-  data
+  data,
+  user,
+  tries = 0
 ) => {
   const res = await axios
     .put(
@@ -447,12 +455,28 @@ HubSpotUtils.prototype.createOrUpdateTimelineEvent = async (
         },
       }
     )
-    .catch(err => {
-      console.error(
-        '❌ failed to update event',
-        err.response.status,
-        err.response.data
-      );
+    .catch(() => {
+      if (tries < 3) {
+        self
+          .createOrUpdateContactByEmail(
+            email,
+            self.parseUserProperties(user || {})
+          )
+          .then(res => {
+            self
+              .createOrUpdateTimelineEvent(
+                id,
+                email,
+                eventTypeId,
+                token,
+                data,
+                user,
+                tries + 1
+              )
+              .catch(() => {});
+          })
+          .catch(() => {});
+      }
     });
   return (res && res.data) || null;
 };

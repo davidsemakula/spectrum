@@ -23,8 +23,10 @@ export const REACTION_DELETED_POST_AUTHOR_BONUS =
 export const THREAD_REACTION_CREATED = 'thread reaction created';
 export const THREAD_REACTION_DELETED = 'thread reaction deleted';
 
-// Keyy reputation event types
 export const PROFILE_EDITED = 'profile edited';
+export const SIGNED_IN = 'signed in';
+export const SIGNED_UP = 'signed up';
+export const LOGGED_OUT = 'logged out';
 
 export const COMMUNITY_CREATED = 'community created';
 

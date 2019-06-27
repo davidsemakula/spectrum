@@ -215,6 +215,7 @@ type UpdateHubspotSettingsInput = {
   email: string,
   scope: string,
   connectedBy: string,
+  temp: string,
 };
 export const updateHubspotSettingsAfterConnection = async (
   communityId: string,

@@ -30,6 +30,10 @@ import {
   CHANNEL_ARCHIVED,
   CHANNEL_DELETED,
   CHANNEL_RESTORED,
+  USER_JOINED_CHANNEL,
+  SIGNED_IN,
+  SIGNED_UP,
+  LOGGED_OUT,
 } from '../constants';
 import type { Job, ReputationEventJobData } from 'shared/bull/types';
 
@@ -62,6 +66,9 @@ export default async (job: Job<ReputationEventJobData>) => {
       case THREAD_REACTION_CREATED: /*case THREAD_REACTION_DELETED:*/ {
         return await processThreadReactionActivity(type, job.data);
       }
+      case SIGNED_UP:
+      case SIGNED_IN:
+      case LOGGED_OUT:
       case PROFILE_EDITED: {
         return await processProfileActivity(type, job.data);
       }
@@ -71,7 +78,8 @@ export default async (job: Job<ReputationEventJobData>) => {
       }
       case CHANNEL_CREATED:
       case CHANNEL_RESTORED:
-      case CHANNEL_ARCHIVED: {
+      case CHANNEL_ARCHIVED:
+      case USER_JOINED_CHANNEL: {
         return await processChannelActivity(type, job.data);
       }
       default: {

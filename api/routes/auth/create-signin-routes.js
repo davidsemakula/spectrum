@@ -10,6 +10,7 @@
 import passport from 'passport';
 import { URL } from 'url';
 import isSpectrumUrl from '../../utils/is-spectrum-url';
+import { processActivitySyncEventQueue } from 'shared/bull/queues';
 
 const IS_PROD = process.env.NODE_ENV === 'production';
 const FALLBACK_URL = IS_PROD
@@ -67,6 +68,19 @@ export const createSigninRoutes = (
           sameSite: 'lax',
           secure: false,
         });
+
+        if (req.user) {
+          const userId = req.user.id;
+
+          if (userId) {
+            processActivitySyncEventQueue.add({
+              userId: userId,
+              type: 'signed in',
+              entityId: userId,
+            });
+          }
+        }
+
         return res.redirect(redirectUrl.href);
       },
     ],
